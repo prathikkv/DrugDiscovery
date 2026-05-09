@@ -9,30 +9,30 @@ See: .planning/PROJECT.md (updated 2026-05-09)
 
 ## Current Position
 
-Phase: 2 of 8 (Omics Pipeline)
-Plan: 2 of 3 in current phase
-Status: Executing
-Last activity: 2026-05-10 -- Completed 02-02-PLAN.md (Processing, Annotation, Ambient RNA, DE)
+Phase: 2 of 8 (Omics Pipeline) -- COMPLETE
+Plan: 3 of 3 in current phase -- DONE
+Status: Phase Complete
+Last activity: 2026-05-10 -- Completed 02-03-PLAN.md (Enrichment, Orchestrator, Test Suite)
 
-Progress: [██░░░░░░░░] 20%
+Progress: [███░░░░░░░] 25%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: 5min
-- Total execution time: 0.41 hours
+- Total plans completed: 6
+- Average duration: 6min
+- Total execution time: 0.63 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation | 3 | 15min | 5min |
-| 02-omics-pipeline | 2 | 10min | 5min |
+| 02-omics-pipeline | 3 | 23min | 8min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (3min), 01-02 (6min), 01-03 (6min), 02-01 (5min), 02-02 (5min)
-- Trend: Stable ~5min/plan
+- Last 5 plans: 01-02 (6min), 01-03 (6min), 02-01 (5min), 02-02 (5min), 02-03 (13min)
+- Trend: Slight increase on plan 02-03 due to environment setup (scanpy install)
 
 *Updated after each plan completion*
 
@@ -71,6 +71,10 @@ Recent decisions affecting current work:
 - [02-02]: CellTypist normalization guard: ValueError if adata.X max > 50 (raw vs log1p)
 - [02-02]: DE min-cell threshold at 20 cells/group for statistical reliability
 - [02-02]: Case-insensitive substring match in validate_annotations for flexible CellTypist label matching
+- [02-03]: Enrichment thresholds: pvals_adj < 0.05 and logfoldchanges > 0.5, minimum 5 genes for ORA
+- [02-03]: ConnectionError in gseapy handled per cell type (not fatal to pipeline)
+- [02-03]: Resume logic uses stage list membership check for skipping completed stages
+- [02-03]: scanpy installed via conda to enable actual test execution (numpy<2.2 for numba compat)
 
 ### Pending Todos
 
@@ -88,5 +92,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-05-10
-Stopped at: Completed 02-02-PLAN.md (Processing, Annotation, Ambient RNA, DE)
+Stopped at: Completed 02-03-PLAN.md (Enrichment, Orchestrator, Test Suite) -- Phase 2 COMPLETE
 Resume file: None
