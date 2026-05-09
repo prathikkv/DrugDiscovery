@@ -12,8 +12,8 @@ This roadmap transforms the existing BioOrchestrator scRNA-seq pipeline into a c
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Auth, compliance infrastructure, execution model, config system, and test scaffolding
-- [ ] **Phase 2: Omics Pipeline** - Disease-agnostic scRNA-seq pipeline with ambient RNA removal, configurable QC, DE, and annotation
+- [x] **Phase 1: Foundation** - Auth, compliance infrastructure, execution model, config system, and test scaffolding
+- [x] **Phase 2: Omics Pipeline** - Disease-agnostic scRNA-seq pipeline with ambient RNA removal, configurable QC, DE, and annotation
 - [ ] **Phase 3: Evidence Integration** - Six external API integrations with caching, gene resolution, and parallel fetching
 - [ ] **Phase 4: AI Reasoning Engine** - Multi-mode reasoning orchestrator with tool-calling, provenance, and hallucination safeguards
 - [ ] **Phase 5: Target Scoring** - Seven-dimension scoring framework with decision thresholds and comparative assessment
@@ -36,9 +36,9 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 3 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Foundation infrastructure (config, DB utilities, Streamlit config) and authentication module (bcrypt, RBAC, lockout)
-- [ ] 01-02-PLAN.md — 21 CFR Part 11 audit trail with hash chains, electronic signatures, and background task execution engine
-- [ ] 01-03-PLAN.md — Project CRUD with audit integration, Streamlit app shell, and test suite with synthetic h5ad fixture
+- [x] 01-01-PLAN.md — Foundation infrastructure (config, DB utilities, Streamlit config) and authentication module (bcrypt, RBAC, lockout)
+- [x] 01-02-PLAN.md — 21 CFR Part 11 audit trail with hash chains, electronic signatures, and background task execution engine
+- [x] 01-03-PLAN.md — Project CRUD with audit integration, Streamlit app shell, and test suite with synthetic h5ad fixture
 
 ### Phase 2: Omics Pipeline
 **Goal**: Scientists can upload any tissue type's scRNA-seq data and run a complete, disease-agnostic analysis pipeline -- from ingestion through QC, processing, annotation, and differential expression -- with no hardcoded biology.
@@ -53,9 +53,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Pipeline config with tissue defaults, multi-format ingestion, configurable QC, checkpointing, and progress tracking
-- [ ] 02-02-PLAN.md — Processing pipeline (normalize through Leiden), CellTypist annotation with tissue-aware models, ambient RNA removal, and differential expression
-- [ ] 02-03-PLAN.md — Gene set enrichment via gseapy, pipeline orchestrator with checkpoint resume, and test suite
+- [x] 02-01-PLAN.md — Pipeline config with tissue defaults, multi-format ingestion, configurable QC, checkpointing, and progress tracking
+- [x] 02-02-PLAN.md — Processing pipeline (normalize through Leiden), CellTypist annotation with tissue-aware models, ambient RNA removal, and differential expression
+- [x] 02-03-PLAN.md — Gene set enrichment via gseapy, pipeline orchestrator with checkpoint resume, and test suite
 
 ### Phase 3: Evidence Integration
 **Goal**: The platform can fetch, cache, and aggregate structured evidence from six external sources for any gene target, presenting a unified evidence profile that feeds downstream AI reasoning and scoring.
@@ -164,8 +164,8 @@ Phase 1 (Foundation) --> Phase 2+3 (Omics + Evidence, parallel) --> Phase 4 (AI 
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/3 | Planned | - |
-| 2. Omics Pipeline | 0/3 | Planned | - |
+| 1. Foundation | 3/3 | Complete | 2026-05-10 |
+| 2. Omics Pipeline | 3/3 | Complete | 2026-05-10 |
 | 3. Evidence Integration | 0/3 | Not started | - |
 | 4. AI Reasoning Engine | 0/3 | Not started | - |
 | 5. Target Scoring | 0/2 | Not started | - |
@@ -179,16 +179,16 @@ All 58 requirements mapped. No orphans. No duplicates.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| REQ-101 | Phase 2 | Pending |
-| REQ-102 | Phase 2 | Pending |
-| REQ-103 | Phase 2 | Pending |
-| REQ-104 | Phase 2 | Pending |
-| REQ-105 | Phase 2 | Pending |
-| REQ-106 | Phase 2 | Pending |
-| REQ-107 | Phase 2 | Pending |
-| REQ-108 | Phase 2 | Pending |
-| REQ-109 | Phase 2 | Pending |
-| REQ-110 | Phase 2 | Pending |
+| REQ-101 | Phase 2 | Done |
+| REQ-102 | Phase 2 | Done |
+| REQ-103 | Phase 2 | Done |
+| REQ-104 | Phase 2 | Done |
+| REQ-105 | Phase 2 | Done |
+| REQ-106 | Phase 2 | Done |
+| REQ-107 | Phase 2 | Done |
+| REQ-108 | Phase 2 | Done |
+| REQ-109 | Phase 2 | Done |
+| REQ-110 | Phase 2 | Done |
 | REQ-201 | Phase 3 | Pending |
 | REQ-202 | Phase 3 | Pending |
 | REQ-203 | Phase 3 | Pending |
@@ -214,19 +214,19 @@ All 58 requirements mapped. No orphans. No duplicates.
 | REQ-404 | Phase 5 | Pending |
 | REQ-405 | Phase 5 | Pending |
 | REQ-406 | Phase 5 | Pending |
-| REQ-501 | Phase 1 | Pending |
-| REQ-502 | Phase 1 | Pending |
-| REQ-503 | Phase 1 | Pending |
-| REQ-504 | Phase 1 | Pending |
+| REQ-501 | Phase 1 | Done |
+| REQ-502 | Phase 1 | Done |
+| REQ-503 | Phase 1 | Done |
+| REQ-504 | Phase 1 | Done |
 | REQ-505 | Phase 7 | Pending |
 | REQ-506 | Phase 7 | Pending |
-| REQ-507 | Phase 1 | Pending |
-| REQ-508 | Phase 1 | Pending |
+| REQ-507 | Phase 1 | Done |
+| REQ-508 | Phase 1 | Done |
 | REQ-601 | Phase 7 | Pending |
-| REQ-602 | Phase 1 | Pending |
-| REQ-603 | Phase 1 | Pending |
-| REQ-604 | Phase 1 | Pending |
-| REQ-605 | Phase 1 | Pending |
+| REQ-602 | Phase 1 | Done |
+| REQ-603 | Phase 1 | Done |
+| REQ-604 | Phase 1 | Done |
+| REQ-605 | Phase 1 | Done |
 | REQ-606 | Phase 7 | Pending |
 | REQ-701 | Phase 6 | Pending |
 | REQ-702 | Phase 6 | Pending |
@@ -236,5 +236,5 @@ All 58 requirements mapped. No orphans. No duplicates.
 | REQ-802 | Phase 8 | Pending |
 | REQ-803 | Phase 8 | Pending |
 | REQ-804 | Phase 8 | Pending |
-| REQ-805 | Phase 1 | Pending |
+| REQ-805 | Phase 1 | Done |
 | REQ-806 | Phase 8 | Pending |
