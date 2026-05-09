@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-05-09)
 ## Current Position
 
 Phase: 1 of 8 (Foundation)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: Executing
-Last activity: 2026-05-09 -- Completed 01-01-PLAN.md (Foundation Infrastructure + Auth)
+Last activity: 2026-05-09 -- Completed 01-02-PLAN.md (Audit Trail, E-Signatures, Task Engine)
 
-Progress: [█░░░░░░░░░] 4%
+Progress: [██░░░░░░░░] 8%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 3min
-- Total execution time: 0.05 hours
+- Total plans completed: 2
+- Average duration: 4.5min
+- Total execution time: 0.15 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-foundation | 1 | 3min | 3min |
+| 01-foundation | 2 | 9min | 4.5min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (3min)
+- Last 5 plans: 01-01 (3min), 01-02 (6min)
 - Trend: N/A (need more data)
 
 *Updated after each plan completion*
@@ -52,6 +52,11 @@ Recent decisions affecting current work:
 - [01-01]: Per-operation DB connections to avoid SQLite threading issues
 - [01-01]: BEGIN IMMEDIATE for write atomicity under WAL mode
 - [01-01]: bcrypt<5.0 and scanpy<1.11 pinned per research pitfall findings
+- [01-02]: Submit() uses underscore-prefixed params to avoid kwarg collision when forwarding to fn
+- [01-02]: Genesis hash (64 zeros) for first audit record's previous_hash
+- [01-02]: Deterministic JSON serialization for reproducible SHA-256 hashes
+- [01-02]: E-signature uses bcrypt directly (not AuthService) to avoid circular dependency
+- [01-02]: fn_args/fn_kwargs passed as bundles to _wrapped_run to avoid executor-level name collisions
 
 ### Pending Todos
 
@@ -62,12 +67,12 @@ Recent decisions affecting current work:
 
 ### Blockers/Concerns
 
-- R-001: Streamlit reruns kill long operations -- designed (ThreadPoolExecutor), address in Phase 1
-- R-002: SQLite concurrent write deadlock -- designed (WAL mode), address in Phase 1
+- R-001: Streamlit reruns kill long operations -- RESOLVED: TaskManager with ThreadPoolExecutor implemented in 01-02
+- R-002: SQLite concurrent write deadlock -- RESOLVED: WAL mode + per-operation connections + threading.Lock in 01-01/01-02
 - R-005: qwen3:8b tool-calling reliability unknown -- needs testing in Phase 4, fallback chain designed
 
 ## Session Continuity
 
 Last session: 2026-05-09
-Stopped at: Completed 01-01-PLAN.md (Foundation Infrastructure + Auth)
+Stopped at: Completed 01-02-PLAN.md (Audit Trail, E-Signatures, Task Engine)
 Resume file: None
