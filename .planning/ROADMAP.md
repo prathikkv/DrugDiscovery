@@ -33,12 +33,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. A long-running task (simulated 30-second job) completes successfully in the background while the user navigates other Streamlit pages, and task state survives a browser refresh
   4. A project can be created, listed, opened, and deleted, with each operation logged in the audit trail
   5. Running `pytest` executes at least one test using a synthetic h5ad fixture (50 cells, 10 genes) in under 10 seconds
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
-- [ ] 01-03: TBD
+- [ ] 01-01-PLAN.md — Foundation infrastructure (config, DB utilities, Streamlit config) and authentication module (bcrypt, RBAC, lockout)
+- [ ] 01-02-PLAN.md — 21 CFR Part 11 audit trail with hash chains, electronic signatures, and background task execution engine
+- [ ] 01-03-PLAN.md — Project CRUD with audit integration, Streamlit app shell, and test suite with synthetic h5ad fixture
 
 ### Phase 2: Omics Pipeline
 **Goal**: Scientists can upload any tissue type's scRNA-seq data and run a complete, disease-agnostic analysis pipeline -- from ingestion through QC, processing, annotation, and differential expression -- with no hardcoded biology.
@@ -164,7 +164,7 @@ Phase 1 (Foundation) --> Phase 2+3 (Omics + Evidence, parallel) --> Phase 4 (AI 
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/3 | Not started | - |
+| 1. Foundation | 0/3 | Planned | - |
 | 2. Omics Pipeline | 0/3 | Not started | - |
 | 3. Evidence Integration | 0/3 | Not started | - |
 | 4. AI Reasoning Engine | 0/3 | Not started | - |
