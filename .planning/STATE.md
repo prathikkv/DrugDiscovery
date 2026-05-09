@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-05-09)
 ## Current Position
 
 Phase: 2 of 8 (Omics Pipeline)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: Executing
-Last activity: 2026-05-10 -- Completed 02-01-PLAN.md (Pipeline Config, Ingestion, QC, Checkpointing)
+Last activity: 2026-05-10 -- Completed 02-02-PLAN.md (Processing, Annotation, Ambient RNA, DE)
 
-Progress: [██░░░░░░░░] 16%
+Progress: [██░░░░░░░░] 20%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
+- Total plans completed: 5
 - Average duration: 5min
-- Total execution time: 0.33 hours
+- Total execution time: 0.41 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation | 3 | 15min | 5min |
-| 02-omics-pipeline | 1 | 5min | 5min |
+| 02-omics-pipeline | 2 | 10min | 5min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (3min), 01-02 (6min), 01-03 (6min), 02-01 (5min)
+- Last 5 plans: 01-01 (3min), 01-02 (6min), 01-03 (6min), 02-01 (5min), 02-02 (5min)
 - Trend: Stable ~5min/plan
 
 *Updated after each plan completion*
@@ -67,6 +67,10 @@ Recent decisions affecting current work:
 - [02-01]: Ensembl ID auto-detection in ingestion with swap to gene_symbols column when available
 - [02-01]: Flexible donor/sex column detection in QC for cross-dataset compatibility
 - [02-01]: sort_keys=True in PipelineConfig.to_json() for deterministic serialization
+- [02-02]: TISSUE_MODEL_MAP has 12 entries matching TISSUE_DEFAULTS for consistent coverage
+- [02-02]: CellTypist normalization guard: ValueError if adata.X max > 50 (raw vs log1p)
+- [02-02]: DE min-cell threshold at 20 cells/group for statistical reliability
+- [02-02]: Case-insensitive substring match in validate_annotations for flexible CellTypist label matching
 
 ### Pending Todos
 
@@ -84,5 +88,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-05-10
-Stopped at: Completed 02-01-PLAN.md (Pipeline Config, Ingestion, QC, Checkpointing, Progress)
+Stopped at: Completed 02-02-PLAN.md (Processing, Annotation, Ambient RNA, DE)
 Resume file: None
