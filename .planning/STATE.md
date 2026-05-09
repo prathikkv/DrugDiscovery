@@ -9,29 +9,29 @@ See: .planning/PROJECT.md (updated 2026-05-09)
 
 ## Current Position
 
-Phase: 1 of 8 (Foundation)
-Plan: 2 of 3 in current phase
-Status: Executing
-Last activity: 2026-05-09 -- Completed 01-02-PLAN.md (Audit Trail, E-Signatures, Task Engine)
+Phase: 1 of 8 (Foundation) -- COMPLETE
+Plan: 3 of 3 in current phase
+Status: Phase Complete
+Last activity: 2026-05-09 -- Completed 01-03-PLAN.md (Project CRUD, Streamlit App Shell, Test Suite)
 
-Progress: [██░░░░░░░░] 8%
+Progress: [██░░░░░░░░] 12%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
-- Average duration: 4.5min
-- Total execution time: 0.15 hours
+- Total plans completed: 3
+- Average duration: 5min
+- Total execution time: 0.25 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-foundation | 2 | 9min | 4.5min |
+| 01-foundation | 3 | 15min | 5min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (3min), 01-02 (6min)
-- Trend: N/A (need more data)
+- Last 5 plans: 01-01 (3min), 01-02 (6min), 01-03 (6min)
+- Trend: Stable ~5min/plan
 
 *Updated after each plan completion*
 
@@ -57,6 +57,11 @@ Recent decisions affecting current work:
 - [01-02]: Deterministic JSON serialization for reproducible SHA-256 hashes
 - [01-02]: E-signature uses bcrypt directly (not AuthService) to avoid circular dependency
 - [01-02]: fn_args/fn_kwargs passed as bundles to _wrapped_run to avoid executor-level name collisions
+- [01-03]: Soft-delete only -- projects set status='deleted', never physically removed
+- [01-03]: Per-project directory structure (uploads/checkpoints/results/exports) at creation
+- [01-03]: st.navigation/st.Page routing for explicit page control based on auth state
+- [01-03]: Auth guard pattern: session_state check + st.warning + st.stop() on protected pages
+- [01-03]: Synthetic h5ad fixture uses scipy.sparse.random with seed 42 for reproducibility
 
 ### Pending Todos
 
@@ -74,5 +79,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-05-09
-Stopped at: Completed 01-02-PLAN.md (Audit Trail, E-Signatures, Task Engine)
+Stopped at: Completed 01-03-PLAN.md (Project CRUD, Streamlit App Shell, Test Suite) -- Phase 1 Complete
 Resume file: None
