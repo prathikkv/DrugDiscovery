@@ -1,0 +1,36 @@
+# Core framework
+streamlit>=1.40.0,<2.0
+
+# Auth
+bcrypt>=4.0,<5.0
+
+# Scientific computing
+anndata>=0.10.0
+scanpy>=1.10.0,<1.11
+numpy>=1.23,<2.0
+scipy>=1.9.0
+pandas>=1.5.0
+
+# Visualization
+plotly>=5.18.0
+matplotlib>=3.8.0
+seaborn>=0.13.0
+
+# ML & analysis
+scikit-learn>=1.4.0
+harmonypy>=0.0.10
+h5py>=3.10.0
+
+# Text & search
+rapidfuzz>=3.6.0
+
+# LLM clients
+ollama>=0.4.0
+openai>=1.0.0
+anthropic>=0.40.0
+
+# CLI
+rich>=13.0.0
+
+# Testing
+pytest>=7.0
