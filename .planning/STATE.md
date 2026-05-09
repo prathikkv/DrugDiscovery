@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-05-09)
 ## Current Position
 
 Phase: 1 of 8 (Foundation)
-Plan: 0 of 3 in current phase
-Status: Ready to plan
-Last activity: 2026-05-09 -- Roadmap created (8 phases, 59 requirements mapped)
+Plan: 1 of 3 in current phase
+Status: Executing
+Last activity: 2026-05-09 -- Completed 01-01-PLAN.md (Foundation Infrastructure + Auth)
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█░░░░░░░░░] 4%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: -
-- Total execution time: 0 hours
+- Total plans completed: 1
+- Average duration: 3min
+- Total execution time: 0.05 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01-foundation | 1 | 3min | 3min |
 
 **Recent Trend:**
-- Last 5 plans: N/A
-- Trend: N/A
+- Last 5 plans: 01-01 (3min)
+- Trend: N/A (need more data)
 
 *Updated after each plan completion*
 
@@ -48,6 +48,10 @@ Recent decisions affecting current work:
 - [Roadmap]: Split Scoring from Deliverables into separate phases (5 and 6)
 - [Roadmap]: HITL gates (REQ-505, REQ-506) assigned to Phase 7 (UI) since they need pages to render in
 - [Roadmap]: Phases 2+3 marked parallelizable (omics and evidence are independent after foundation)
+- [01-01]: Password hash excluded from User dataclass (security boundary)
+- [01-01]: Per-operation DB connections to avoid SQLite threading issues
+- [01-01]: BEGIN IMMEDIATE for write atomicity under WAL mode
+- [01-01]: bcrypt<5.0 and scanpy<1.11 pinned per research pitfall findings
 
 ### Pending Todos
 
@@ -65,5 +69,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-05-09
-Stopped at: Roadmap created, ready to plan Phase 1
+Stopped at: Completed 01-01-PLAN.md (Foundation Infrastructure + Auth)
 Resume file: None
