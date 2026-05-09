@@ -50,12 +50,12 @@ Plans:
   3. A user can set tissue-specific QC thresholds (e.g., max_mito=5% for brain, 25% for tumor) at project setup, and the pipeline applies those thresholds instead of defaults
   4. The pipeline produces differential expression results with adjusted p-values, gene set enrichment per cell type, and CellTypist annotations validated against canonical markers -- all viewable as structured output
   5. Pipeline stages report progress to the TaskManager and save checkpoints, so a resumed project picks up from the last completed stage rather than restarting
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
-- [ ] 02-03: TBD
+- [ ] 02-01-PLAN.md — Pipeline config with tissue defaults, multi-format ingestion, configurable QC, checkpointing, and progress tracking
+- [ ] 02-02-PLAN.md — Processing pipeline (normalize through Leiden), CellTypist annotation with tissue-aware models, ambient RNA removal, and differential expression
+- [ ] 02-03-PLAN.md — Gene set enrichment via gseapy, pipeline orchestrator with checkpoint resume, and test suite
 
 ### Phase 3: Evidence Integration
 **Goal**: The platform can fetch, cache, and aggregate structured evidence from six external sources for any gene target, presenting a unified evidence profile that feeds downstream AI reasoning and scoring.
@@ -165,7 +165,7 @@ Phase 1 (Foundation) --> Phase 2+3 (Omics + Evidence, parallel) --> Phase 4 (AI 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 0/3 | Planned | - |
-| 2. Omics Pipeline | 0/3 | Not started | - |
+| 2. Omics Pipeline | 0/3 | Planned | - |
 | 3. Evidence Integration | 0/3 | Not started | - |
 | 4. AI Reasoning Engine | 0/3 | Not started | - |
 | 5. Target Scoring | 0/2 | Not started | - |
