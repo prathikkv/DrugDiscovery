@@ -5,32 +5,33 @@
 See: .planning/PROJECT.md (updated 2026-05-09)
 
 **Core value:** Scientists upload omics data and target genes, receive a structured GO/CONDITIONAL/NO-GO recommendation with full audit trail -- replacing 6 months of manual assessment with 2 weeks.
-**Current focus:** Phase 1: Foundation
+**Current focus:** Phase 2: Omics Pipeline
 
 ## Current Position
 
-Phase: 1 of 8 (Foundation) -- COMPLETE
-Plan: 3 of 3 in current phase
-Status: Phase Complete
-Last activity: 2026-05-09 -- Completed 01-03-PLAN.md (Project CRUD, Streamlit App Shell, Test Suite)
+Phase: 2 of 8 (Omics Pipeline)
+Plan: 1 of 3 in current phase
+Status: Executing
+Last activity: 2026-05-10 -- Completed 02-01-PLAN.md (Pipeline Config, Ingestion, QC, Checkpointing)
 
-Progress: [██░░░░░░░░] 12%
+Progress: [██░░░░░░░░] 16%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
+- Total plans completed: 4
 - Average duration: 5min
-- Total execution time: 0.25 hours
+- Total execution time: 0.33 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation | 3 | 15min | 5min |
+| 02-omics-pipeline | 1 | 5min | 5min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (3min), 01-02 (6min), 01-03 (6min)
+- Last 5 plans: 01-01 (3min), 01-02 (6min), 01-03 (6min), 02-01 (5min)
 - Trend: Stable ~5min/plan
 
 *Updated after each plan completion*
@@ -62,6 +63,10 @@ Recent decisions affecting current work:
 - [01-03]: st.navigation/st.Page routing for explicit page control based on auth state
 - [01-03]: Auth guard pattern: session_state check + st.warning + st.stop() on protected pages
 - [01-03]: Synthetic h5ad fixture uses scipy.sparse.random with seed 42 for reproducibility
+- [02-01]: 12 tissues in TISSUE_DEFAULTS (brain, tumor, lung, immune, heart, adipose, kidney, liver, intestine, eye, pancreas, default)
+- [02-01]: Ensembl ID auto-detection in ingestion with swap to gene_symbols column when available
+- [02-01]: Flexible donor/sex column detection in QC for cross-dataset compatibility
+- [02-01]: sort_keys=True in PipelineConfig.to_json() for deterministic serialization
 
 ### Pending Todos
 
@@ -78,6 +83,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-05-09
-Stopped at: Completed 01-03-PLAN.md (Project CRUD, Streamlit App Shell, Test Suite) -- Phase 1 Complete
+Last session: 2026-05-10
+Stopped at: Completed 02-01-PLAN.md (Pipeline Config, Ingestion, QC, Checkpointing, Progress)
 Resume file: None
