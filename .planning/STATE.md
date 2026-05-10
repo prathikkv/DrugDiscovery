@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-05-09)
 ## Current Position
 
 Phase: 3 of 8 (Evidence Integration)
-Plan: 1 of 4 in current phase -- DONE
+Plan: 3 of 4 in current phase -- DONE
 Status: Executing
-Last activity: 2026-05-10 -- Completed 03-01-PLAN.md (Evidence Foundation)
+Last activity: 2026-05-10 -- Completed 03-03-PLAN.md (Additional Evidence Sources)
 
-Progress: [████░░░░░░] 29%
+Progress: [█████░░░░░] 38%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
+- Total plans completed: 8
 - Average duration: 6min
-- Total execution time: 0.73 hours
+- Total execution time: 0.80 hours
 
 **By Phase:**
 
@@ -29,11 +29,11 @@ Progress: [████░░░░░░] 29%
 |-------|-------|-------|----------|
 | 01-foundation | 3 | 15min | 5min |
 | 02-omics-pipeline | 3 | 23min | 8min |
-| 03-evidence-integration | 1 | 6min | 6min |
+| 03-evidence-integration | 2 | 10min | 5min |
 
 **Recent Trend:**
-- Last 5 plans: 01-03 (6min), 02-01 (5min), 02-02 (5min), 02-03 (13min), 03-01 (6min)
-- Trend: Back to baseline after 02-03 environment setup overhead
+- Last 5 plans: 02-01 (5min), 02-02 (5min), 02-03 (13min), 03-01 (6min), 03-03 (4min)
+- Trend: Consistent baseline, evidence sources fast to implement with established patterns
 
 *Updated after each plan completion*
 
@@ -81,6 +81,10 @@ Recent decisions affecting current work:
 - [03-01]: get_stale() returns expired entries as fallback when live fetch fails (REQ-210 step 2)
 - [03-01]: GeneResolver catches all exceptions, returns partial results (graceful degradation)
 - [03-01]: LOCAL_ALIASES dict for 11 common gene aliases without network dependency
+- [03-03]: ClinicalTrials drug_names kwarg enables two-phase fetch (DGIdb first, then ClinicalTrials via aggregator)
+- [03-03]: ChEMBL requires UniProt accession for target lookup -- returns confidence=0.0 if unavailable
+- [03-03]: UniProt field selection (9 fields) minimizes response payload and parsing overhead
+- [03-03]: ClinicalTrials filters to RECRUITING/ACTIVE_NOT_RECRUITING/NOT_YET_RECRUITING only
 
 ### Pending Todos
 
@@ -98,5 +102,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-05-10
-Stopped at: Completed 03-01-PLAN.md (Evidence Foundation) -- Phase 3 in progress
+Stopped at: Completed 03-03-PLAN.md (Additional Evidence Sources) -- Phase 3 in progress
 Resume file: None
