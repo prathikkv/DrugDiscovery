@@ -19,9 +19,9 @@ Progress: [█████░░░░░] 38%
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8
+- Total plans completed: 9
 - Average duration: 6min
-- Total execution time: 0.80 hours
+- Total execution time: 0.87 hours
 
 **By Phase:**
 
@@ -29,10 +29,10 @@ Progress: [█████░░░░░] 38%
 |-------|-------|-------|----------|
 | 01-foundation | 3 | 15min | 5min |
 | 02-omics-pipeline | 3 | 23min | 8min |
-| 03-evidence-integration | 2 | 10min | 5min |
+| 03-evidence-integration | 3 | 14min | 5min |
 
 **Recent Trend:**
-- Last 5 plans: 02-01 (5min), 02-02 (5min), 02-03 (13min), 03-01 (6min), 03-03 (4min)
+- Last 5 plans: 02-02 (5min), 02-03 (13min), 03-01 (6min), 03-03 (4min), 03-02 (4min)
 - Trend: Consistent baseline, evidence sources fast to implement with established patterns
 
 *Updated after each plan completion*
@@ -81,6 +81,10 @@ Recent decisions affecting current work:
 - [03-01]: get_stale() returns expired entries as fallback when live fetch fails (REQ-210 step 2)
 - [03-01]: GeneResolver catches all exceptions, returns partial results (graceful degradation)
 - [03-01]: LOCAL_ALIASES dict for 11 common gene aliases without network dependency
+- [03-02]: OpenTargets fetches top 25 associations (not all) for performance; disease_context flags relevance
+- [03-02]: DGIdb confidence: 1.0 with interactions, 0.5 if gene found but no interactions, 0.0 on error
+- [03-02]: PubMed AI summary uses lazy import of src.execution.llm (Phase 4); returns None if unavailable
+- [03-02]: LLM_SUMMARY_MODEL env var controls summary model (default gpt-4o-mini)
 - [03-03]: ClinicalTrials drug_names kwarg enables two-phase fetch (DGIdb first, then ClinicalTrials via aggregator)
 - [03-03]: ChEMBL requires UniProt accession for target lookup -- returns confidence=0.0 if unavailable
 - [03-03]: UniProt field selection (9 fields) minimizes response payload and parsing overhead
@@ -102,5 +106,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-05-10
-Stopped at: Completed 03-03-PLAN.md (Additional Evidence Sources) -- Phase 3 in progress
+Stopped at: Completed 03-02-PLAN.md (OpenTargets, DGIdb, PubMed sources) -- Phase 3 plans 1-3 done, 03-04 remaining
 Resume file: None
