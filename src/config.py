@@ -18,5 +18,8 @@ LOCKOUT_THRESHOLD = 5          # failed attempts before lockout
 LOCKOUT_DURATION_MINUTES = 15  # lockout cooldown in minutes
 BCRYPT_ROUNDS = 12             # work factor for password hashing
 
+# ── Evidence integration ─────────────────────────────────────────────
+EVIDENCE_CACHE_DB = DB_DIR / "evidence_cache.db"
+
 # ── Database settings ────────────────────────────────────────────────
 DB_TIMEOUT = 30.0              # SQLite busy_timeout in seconds

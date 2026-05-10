@@ -41,3 +41,10 @@ gseapy>=1.1.0
 scrublet>=0.2.3
 rpy2>=3.5.0
 leidenalg>=0.9.0
+
+# Evidence integration (Phase 3)
+requests>=2.31
+tenacity>=8.2
+biopython>=1.83
+mygene>=3.2
+chembl-webresource-client>=0.10
