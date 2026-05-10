@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-05-09)
 
 **Core value:** Scientists upload omics data and target genes, receive a structured GO/CONDITIONAL/NO-GO recommendation with full audit trail -- replacing 6 months of manual assessment with 2 weeks.
-**Current focus:** Phase 2: Omics Pipeline
+**Current focus:** Phase 3: Evidence Integration
 
 ## Current Position
 
-Phase: 2 of 8 (Omics Pipeline) -- COMPLETE
-Plan: 3 of 3 in current phase -- DONE
-Status: Phase Complete
-Last activity: 2026-05-10 -- Completed 02-03-PLAN.md (Enrichment, Orchestrator, Test Suite)
+Phase: 3 of 8 (Evidence Integration)
+Plan: 1 of 4 in current phase -- DONE
+Status: Executing
+Last activity: 2026-05-10 -- Completed 03-01-PLAN.md (Evidence Foundation)
 
-Progress: [███░░░░░░░] 25%
+Progress: [████░░░░░░] 29%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
+- Total plans completed: 7
 - Average duration: 6min
-- Total execution time: 0.63 hours
+- Total execution time: 0.73 hours
 
 **By Phase:**
 
@@ -29,10 +29,11 @@ Progress: [███░░░░░░░] 25%
 |-------|-------|-------|----------|
 | 01-foundation | 3 | 15min | 5min |
 | 02-omics-pipeline | 3 | 23min | 8min |
+| 03-evidence-integration | 1 | 6min | 6min |
 
 **Recent Trend:**
-- Last 5 plans: 01-02 (6min), 01-03 (6min), 02-01 (5min), 02-02 (5min), 02-03 (13min)
-- Trend: Slight increase on plan 02-03 due to environment setup (scanpy install)
+- Last 5 plans: 01-03 (6min), 02-01 (5min), 02-02 (5min), 02-03 (13min), 03-01 (6min)
+- Trend: Back to baseline after 02-03 environment setup overhead
 
 *Updated after each plan completion*
 
@@ -75,6 +76,11 @@ Recent decisions affecting current work:
 - [02-03]: ConnectionError in gseapy handled per cell type (not fatal to pipeline)
 - [02-03]: Resume logic uses stage list membership check for skipping completed stages
 - [02-03]: scanpy installed via conda to enable actual test execution (numpy<2.2 for numba compat)
+- [03-01]: EvidenceSource Protocol takes GeneIdentifiers (not raw symbol) -- resolver runs first
+- [03-01]: Error results (confidence=0.0) never cached to avoid poisoning cache with failures
+- [03-01]: get_stale() returns expired entries as fallback when live fetch fails (REQ-210 step 2)
+- [03-01]: GeneResolver catches all exceptions, returns partial results (graceful degradation)
+- [03-01]: LOCAL_ALIASES dict for 11 common gene aliases without network dependency
 
 ### Pending Todos
 
@@ -92,5 +98,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-05-10
-Stopped at: Completed 02-03-PLAN.md (Enrichment, Orchestrator, Test Suite) -- Phase 2 COMPLETE
+Stopped at: Completed 03-01-PLAN.md (Evidence Foundation) -- Phase 3 in progress
 Resume file: None
