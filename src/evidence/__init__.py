@@ -10,6 +10,8 @@ from src.evidence.models import (
     SourceStatus,
 )
 from src.evidence.interface import EvidenceSource
+from src.evidence.cache import EvidenceCache
+from src.evidence.gene_resolver import GeneResolver
 
 __all__ = [
     "AggregatedEvidence",
@@ -20,14 +22,3 @@ __all__ = [
     "GeneResolver",
     "SourceStatus",
 ]
-
-
-def __getattr__(name: str):
-    """Lazy imports for modules created in later tasks."""
-    if name == "EvidenceCache":
-        from src.evidence.cache import EvidenceCache
-        return EvidenceCache
-    if name == "GeneResolver":
-        from src.evidence.gene_resolver import GeneResolver
-        return GeneResolver
-    raise AttributeError(f"module 'src.evidence' has no attribute {name!r}")
