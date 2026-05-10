@@ -67,12 +67,13 @@ Plans:
   3. Ambiguous gene names (e.g., PD-L1, HER2) resolve to canonical identifiers (CD274, ERBB2) via MyGene.info with local alias fallback, before any API queries are dispatched
   4. When an external API is unavailable, the system retries 3 times with exponential backoff, falls back to cached data if available, and returns evidence with confidence=0.0 and a visible flag rather than failing the entire query
   5. Each evidence source implements a common interface (source_name, source_version, fetch, is_available) making it straightforward to add a seventh source without modifying the aggregator
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 03-01: TBD
-- [ ] 03-02: TBD
-- [ ] 03-03: TBD
+- [ ] 03-01-PLAN.md — Evidence models, Protocol interface, SQLite cache with TTL, and gene alias resolver
+- [ ] 03-02-PLAN.md — OpenTargets GraphQL, DGIdb GraphQL, and PubMed/Entrez evidence sources
+- [ ] 03-03-PLAN.md — ClinicalTrials.gov v2 REST, UniProt REST, and ChEMBL evidence sources
+- [ ] 03-04-PLAN.md — Evidence aggregator (parallel fetch orchestrator) and test suite
 
 ### Phase 4: AI Reasoning Engine
 **Goal**: The platform can apply structured AI reasoning across omics and evidence data -- generating hypotheses, synthesizing findings, identifying contradictions, flagging gaps, and assessing confidence -- with every claim traceable to its source data.
@@ -166,7 +167,7 @@ Phase 1 (Foundation) --> Phase 2+3 (Omics + Evidence, parallel) --> Phase 4 (AI 
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete | 2026-05-10 |
 | 2. Omics Pipeline | 3/3 | Complete | 2026-05-10 |
-| 3. Evidence Integration | 0/3 | Not started | - |
+| 3. Evidence Integration | 0/4 | Not started | - |
 | 4. AI Reasoning Engine | 0/3 | Not started | - |
 | 5. Target Scoring | 0/2 | Not started | - |
 | 6. Deliverables | 0/2 | Not started | - |
