@@ -18,6 +18,9 @@ from src.reasoning.models import (
     ToolCallRecord,
     ToolTrace,
 )
+from src.reasoning.prompts import PromptRegistry
+from src.reasoning.token_manager import TokenManager
+from src.reasoning.tools import CITATION_TO_TOOL, TOOL_DEFINITIONS
 
 __all__ = [
     "ReasoningMode",
@@ -26,4 +29,8 @@ __all__ = [
     "ToolTrace",
     "ToolCallRecord",
     "ProvenanceRecord",
+    "TOOL_DEFINITIONS",
+    "CITATION_TO_TOOL",
+    "PromptRegistry",
+    "TokenManager",
 ]
