@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-05-09)
 
 **Core value:** Scientists upload omics data and target genes, receive a structured GO/CONDITIONAL/NO-GO recommendation with full audit trail -- replacing 6 months of manual assessment with 2 weeks.
-**Current focus:** Phase 3: Evidence Integration -- COMPLETE
+**Current focus:** Phase 4: AI Reasoning Engine
 
 ## Current Position
 
-Phase: 3 of 8 (Evidence Integration) -- COMPLETE
-Plan: 4 of 4 in current phase -- DONE
-Status: Phase Complete
-Last activity: 2026-05-10 -- Completed 03-04-PLAN.md (Evidence Aggregator)
+Phase: 4 of 8 (AI Reasoning Engine)
+Plan: 1 of 3 in current phase -- DONE
+Status: Executing
+Last activity: 2026-05-11 -- Completed 04-01-PLAN.md (Reasoning Foundation)
 
-Progress: [█████░░░░░] 42%
+Progress: [██████░░░░] 46%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 10
+- Total plans completed: 11
 - Average duration: 6min
-- Total execution time: 0.95 hours
+- Total execution time: 1.03 hours
 
 **By Phase:**
 
@@ -30,10 +30,11 @@ Progress: [█████░░░░░] 42%
 | 01-foundation | 3 | 15min | 5min |
 | 02-omics-pipeline | 3 | 23min | 8min |
 | 03-evidence-integration | 4 | 19min | 5min |
+| 04-ai-reasoning-engine | 1 | 5min | 5min |
 
 **Recent Trend:**
-- Last 5 plans: 02-03 (13min), 03-01 (6min), 03-03 (4min), 03-02 (4min), 03-04 (5min)
-- Trend: Consistent 4-6min baseline for evidence phase; aggregator + tests completed in one pass
+- Last 5 plans: 03-01 (6min), 03-03 (4min), 03-02 (4min), 03-04 (5min), 04-01 (5min)
+- Trend: Consistent 4-6min baseline continuing into reasoning phase
 
 *Updated after each plan completion*
 
@@ -93,6 +94,11 @@ Recent decisions affecting current work:
 - [03-04]: ThreadPoolExecutor with max_workers=6 and 60s timeout for parallel source fetching
 - [03-04]: Stale cache fallback on failure: expired entries served with is_fallback=True (REQ-210 step 2)
 - [03-04]: Error results (confidence=0.0) never cached to prevent cache poisoning
+- [04-01]: Pydantic v2 BaseModel for all reasoning models (not dataclasses) for validation
+- [04-01]: SHA256 prompt versioning computed at PromptRegistry init time (zero per-request overhead)
+- [04-01]: tiktoken fallback to len//4 approximation with logged warning when not installed
+- [04-01]: ProvenanceRecord.to_audit_details() excludes reasoning chain (stored separately)
+- [04-01]: ToolTrace.tools_used() preserves insertion order while deduplicating
 
 ### Pending Todos
 
@@ -109,6 +115,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-05-10
-Stopped at: Completed 03-04-PLAN.md (Evidence Aggregator) -- Phase 3 fully complete, ready for Phase 4
+Last session: 2026-05-11
+Stopped at: Completed 04-01-PLAN.md (Reasoning Foundation) -- ready for 04-02
 Resume file: None
