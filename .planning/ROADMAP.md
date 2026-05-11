@@ -85,12 +85,12 @@ Plans:
   3. Every AI-generated claim includes a citation to a specific tool call result (e.g., "[Source: OpenTargets]"), and claims with confidence above 0.8 are backed by 3 or more independent sources
   4. AI output records include full provenance: model name, prompt version (SHA256), input evidence hashes, tools used, and the complete reasoning chain -- all stored in the audit trail
   5. If the primary LLM (Ollama qwen3:8b) fails, the system falls back to Groq then Anthropic, logging each fallback event, and evidence exceeding 8K tokens is automatically summarized to fit context windows
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 04-01: TBD
-- [ ] 04-02: TBD
-- [ ] 04-03: TBD
+- [ ] 04-01-PLAN.md — Reasoning data models (6 Pydantic models), 14 LLM tool definitions, versioned prompt registry, and token manager
+- [ ] 04-02-PLAN.md — Fallback chain (Ollama/Groq/Anthropic), tool executor (14 dispatchers), agentic tool-calling loop (10-round), and provenance tracker
+- [ ] 04-03-PLAN.md — Multi-mode reasoning engine orchestrator, hallucination checker, and comprehensive test suite (26+ tests)
 
 ### Phase 5: Target Scoring
 **Goal**: The platform produces a quantitative, defensible GO/CONDITIONAL/NO-GO recommendation for each target gene based on a published scoring framework, with transparent dimension-level scores that a pharma VP can interrogate.
