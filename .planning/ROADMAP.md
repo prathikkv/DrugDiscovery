@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Auth, compliance infrastructure, execution model, config system, and test scaffolding
 - [x] **Phase 2: Omics Pipeline** - Disease-agnostic scRNA-seq pipeline with ambient RNA removal, configurable QC, DE, and annotation
-- [ ] **Phase 3: Evidence Integration** - Six external API integrations with caching, gene resolution, and parallel fetching
+- [x] **Phase 3: Evidence Integration** - Six external API integrations with caching, gene resolution, and parallel fetching
 - [ ] **Phase 4: AI Reasoning Engine** - Multi-mode reasoning orchestrator with tool-calling, provenance, and hallucination safeguards
 - [ ] **Phase 5: Target Scoring** - Seven-dimension scoring framework with decision thresholds and comparative assessment
 - [ ] **Phase 6: Deliverables** - Target Assessment Dossier generation with interactive visualizations and chart export
@@ -70,10 +70,10 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Evidence models, Protocol interface, SQLite cache with TTL, and gene alias resolver
-- [ ] 03-02-PLAN.md — OpenTargets GraphQL, DGIdb GraphQL, and PubMed/Entrez evidence sources
-- [ ] 03-03-PLAN.md — ClinicalTrials.gov v2 REST, UniProt REST, and ChEMBL evidence sources
-- [ ] 03-04-PLAN.md — Evidence aggregator (parallel fetch orchestrator) and test suite
+- [x] 03-01-PLAN.md — Evidence models, Protocol interface, SQLite cache with TTL, and gene alias resolver
+- [x] 03-02-PLAN.md — OpenTargets GraphQL, DGIdb GraphQL, and PubMed/Entrez evidence sources
+- [x] 03-03-PLAN.md — ClinicalTrials.gov v2 REST, UniProt REST, and ChEMBL evidence sources
+- [x] 03-04-PLAN.md — Evidence aggregator (parallel fetch orchestrator) and test suite
 
 ### Phase 4: AI Reasoning Engine
 **Goal**: The platform can apply structured AI reasoning across omics and evidence data -- generating hypotheses, synthesizing findings, identifying contradictions, flagging gaps, and assessing confidence -- with every claim traceable to its source data.
@@ -167,7 +167,7 @@ Phase 1 (Foundation) --> Phase 2+3 (Omics + Evidence, parallel) --> Phase 4 (AI 
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete | 2026-05-10 |
 | 2. Omics Pipeline | 3/3 | Complete | 2026-05-10 |
-| 3. Evidence Integration | 0/4 | Not started | - |
+| 3. Evidence Integration | 4/4 | Complete | 2026-05-11 |
 | 4. AI Reasoning Engine | 0/3 | Not started | - |
 | 5. Target Scoring | 0/2 | Not started | - |
 | 6. Deliverables | 0/2 | Not started | - |
@@ -190,17 +190,17 @@ All 58 requirements mapped. No orphans. No duplicates.
 | REQ-108 | Phase 2 | Done |
 | REQ-109 | Phase 2 | Done |
 | REQ-110 | Phase 2 | Done |
-| REQ-201 | Phase 3 | Pending |
-| REQ-202 | Phase 3 | Pending |
-| REQ-203 | Phase 3 | Pending |
-| REQ-204 | Phase 3 | Pending |
-| REQ-205 | Phase 3 | Pending |
-| REQ-206 | Phase 3 | Pending |
-| REQ-207 | Phase 3 | Pending |
-| REQ-208 | Phase 3 | Pending |
-| REQ-209 | Phase 3 | Pending |
-| REQ-210 | Phase 3 | Pending |
-| REQ-211 | Phase 3 | Pending |
+| REQ-201 | Phase 3 | Done |
+| REQ-202 | Phase 3 | Done |
+| REQ-203 | Phase 3 | Done |
+| REQ-204 | Phase 3 | Done |
+| REQ-205 | Phase 3 | Done |
+| REQ-206 | Phase 3 | Done |
+| REQ-207 | Phase 3 | Done |
+| REQ-208 | Phase 3 | Done |
+| REQ-209 | Phase 3 | Done |
+| REQ-210 | Phase 3 | Done |
+| REQ-211 | Phase 3 | Done |
 | REQ-301 | Phase 4 | Pending |
 | REQ-302 | Phase 4 | Pending |
 | REQ-303 | Phase 4 | Pending |
