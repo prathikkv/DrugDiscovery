@@ -14,7 +14,9 @@ This module provides the core reasoning subsystem for BioOrchestrator:
 
 from __future__ import annotations
 
+from src.reasoning.engine import ReasoningEngine
 from src.reasoning.fallback import FallbackChain
+from src.reasoning.hallucination import check_citations, check_confidence_sources, validate_output
 from src.reasoning.models import (
     Claim,
     ProvenanceRecord,
@@ -31,6 +33,7 @@ from src.reasoning.tool_loop import run_tool_loop
 from src.reasoning.tools import CITATION_TO_TOOL, TOOL_DEFINITIONS
 
 __all__ = [
+    "ReasoningEngine",
     "ReasoningMode",
     "ReasoningResult",
     "Claim",
@@ -45,4 +48,7 @@ __all__ = [
     "ToolExecutor",
     "run_tool_loop",
     "ProvenanceTracker",
+    "check_citations",
+    "check_confidence_sources",
+    "validate_output",
 ]
