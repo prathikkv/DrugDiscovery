@@ -6,10 +6,13 @@ This module provides the core reasoning subsystem for BioOrchestrator:
 - Tool definitions: 14 LLM-callable tools in Anthropic format
 - Prompt registry: Versioned system prompts with SHA256 hashing
 - Token manager: Context window management and token counting
+- FallbackChain: LLM provider resilience with audit logging
+- ToolExecutor: Tool call dispatch to pipeline and evidence subsystems
 """
 
 from __future__ import annotations
 
+from src.reasoning.fallback import FallbackChain
 from src.reasoning.models import (
     Claim,
     ProvenanceRecord,
@@ -20,6 +23,7 @@ from src.reasoning.models import (
 )
 from src.reasoning.prompts import PromptRegistry
 from src.reasoning.token_manager import TokenManager
+from src.reasoning.tool_executor import ToolExecutor
 from src.reasoning.tools import CITATION_TO_TOOL, TOOL_DEFINITIONS
 
 __all__ = [
@@ -33,4 +37,6 @@ __all__ = [
     "CITATION_TO_TOOL",
     "PromptRegistry",
     "TokenManager",
+    "FallbackChain",
+    "ToolExecutor",
 ]
