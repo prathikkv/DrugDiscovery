@@ -1,7 +1,7 @@
 """Reporting module for BioOrchestrator target assessment dossiers.
 
-Provides data models, data collection, visualization, and chart export
-utilities consumed by HTML and PDF renderers.
+Provides data models, data collection, visualization, chart export
+utilities, and HTML dossier rendering.
 """
 
 from src.reporting.models import DossierConfig, DossierData, SectionContent
@@ -12,6 +12,7 @@ from src.reporting.chart_export import (
     export_chart_png,
     export_chart_svg,
 )
+from src.reporting.html_renderer import HTMLDossierRenderer
 
 __all__ = [
     "DossierData",
@@ -19,6 +20,7 @@ __all__ = [
     "SectionContent",
     "collect_dossier_data",
     "VisualizationBuilder",
+    "HTMLDossierRenderer",
     "export_chart_png",
     "export_chart_svg",
     "chart_to_png_bytes",
