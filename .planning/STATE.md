@@ -10,16 +10,16 @@ See: .planning/PROJECT.md (updated 2026-05-09)
 ## Current Position
 
 Phase: 6 of 8 (Deliverables)
-Plan: 1 of 3 in current phase -- DONE
+Plan: 2 of 3 in current phase -- DONE
 Status: Executing Phase 6
-Last activity: 2026-05-12 -- Completed 06-01-PLAN.md (Reporting Foundation)
+Last activity: 2026-05-12 -- Completed 06-02-PLAN.md (HTML Dossier Renderer)
 
 Progress: [████████░░] 67%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 16
+- Total plans completed: 17
 - Average duration: 7min
 - Total execution time: 1.72 hours
 
@@ -32,11 +32,11 @@ Progress: [████████░░] 67%
 | 03-evidence-integration | 4 | 19min | 5min |
 | 04-ai-reasoning-engine | 3 | 16min | 5min |
 | 05-target-scoring | 2 | 23min | 12min |
-| 06-deliverables | 1 | 8min | 8min |
+| 06-deliverables | 2 | 14min | 7min |
 
 **Recent Trend:**
-- Last 5 plans: 04-03 (5min), 05-01 (14min), 05-02 (9min), 06-01 (8min)
-- Trend: Reporting foundation moderate complexity; 5 files, 2 tasks
+- Last 5 plans: 05-01 (14min), 05-02 (9min), 06-01 (8min), 06-02 (6min)
+- Trend: HTML dossier renderer efficient; 11 files, 2 tasks
 
 *Updated after each plan completion*
 
@@ -123,6 +123,10 @@ Recent decisions affecting current work:
 - [06-01]: Radar charts delegate to existing build_single_radar/build_comparative_radar for consistency
 - [06-01]: kaleido 0.2.1 installed per plan; works with Plotly 6.7.0 despite deprecation warning
 - [06-01]: 7 pre-built sections in collect_dossier_data for renderer consumption
+- [06-02]: Jinja2 autoescape enabled; Plotly chart divs passed via | safe filter (trusted pre-rendered)
+- [06-02]: First chart div includes plotly.js; subsequent divs set include_plotlyjs=False (no duplicate loading)
+- [06-02]: Chart download buttons via Plotly config (PNG, 900x600, 2x scale)
+- [06-02]: Template graceful degradation with {% if %} guards; missing data shows "not available" fallback
 
 ### Pending Todos
 
@@ -140,5 +144,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-05-12
-Stopped at: Completed 06-01-PLAN.md (Reporting Foundation) -- ready for 06-02
+Stopped at: Completed 06-02-PLAN.md (HTML Dossier Renderer) -- ready for 06-03
 Resume file: None
