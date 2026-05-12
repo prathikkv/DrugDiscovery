@@ -9,19 +9,19 @@ See: .planning/PROJECT.md (updated 2026-05-09)
 
 ## Current Position
 
-Phase: 5 of 8 (Target Scoring)
-Plan: 1 of 2 in current phase -- DONE
-Status: In Progress
-Last activity: 2026-05-12 -- Completed 05-01-PLAN.md (Scoring Models & Dimensions)
+Phase: 5 of 8 (Target Scoring) -- PHASE COMPLETE
+Plan: 2 of 2 in current phase -- DONE
+Status: Phase 5 Complete
+Last activity: 2026-05-12 -- Completed 05-02-PLAN.md (Scoring Framework & Comparative)
 
-Progress: [███████░░░] 58%
+Progress: [██████░░░░] 62%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 14
+- Total plans completed: 15
 - Average duration: 6min
-- Total execution time: 1.44 hours
+- Total execution time: 1.59 hours
 
 **By Phase:**
 
@@ -31,11 +31,11 @@ Progress: [███████░░░] 58%
 | 02-omics-pipeline | 3 | 23min | 8min |
 | 03-evidence-integration | 4 | 19min | 5min |
 | 04-ai-reasoning-engine | 3 | 16min | 5min |
-| 05-target-scoring | 1 | 14min | 14min |
+| 05-target-scoring | 2 | 23min | 12min |
 
 **Recent Trend:**
-- Last 5 plans: 04-01 (5min), 04-02 (6min), 04-03 (5min), 05-01 (14min)
-- Trend: Scoring plan larger due to 24 sub-score extractors + 31 tests
+- Last 5 plans: 04-02 (6min), 04-03 (5min), 05-01 (14min), 05-02 (9min)
+- Trend: Scoring plans larger due to framework orchestration + 60 total tests
 
 *Updated after each plan completion*
 
@@ -113,6 +113,10 @@ Recent decisions affecting current work:
 - [05-01]: data_coverage as simple fraction of non-None inputs to dimension calculator
 - [05-01]: Contradiction penalty applied within literature_consensus dimension (not globally) per REQ-406
 - [05-01]: essential_gene_risk returns neutral 2.0 when no essentiality data (avoids penalizing data gaps)
+- [05-02]: Low data coverage threshold at 0.3: dimensions below this get neutral 0.5 score to prevent missing data conflation with negative evidence
+- [05-02]: Evidence hash computed over confidence + data per source (not full EvidenceResult) for deterministic SHA256
+- [05-02]: Plotly Scatterpolar with polygon closure (n+1 points) for radar chart visualization
+- [05-02]: Verdict-based coloring in single radar: green (GO), orange (CONDITIONAL), red (NO-GO)
 
 ### Pending Todos
 
@@ -130,5 +134,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-05-12
-Stopped at: Completed 05-01-PLAN.md (Scoring Models & Dimensions) -- ready for 05-02-PLAN.md
+Stopped at: Completed 05-02-PLAN.md (Scoring Framework & Comparative) -- Phase 5 complete, ready for Phase 6
 Resume file: None
