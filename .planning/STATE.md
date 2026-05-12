@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-05-09)
 
 **Core value:** Scientists upload omics data and target genes, receive a structured GO/CONDITIONAL/NO-GO recommendation with full audit trail -- replacing 6 months of manual assessment with 2 weeks.
-**Current focus:** Phase 6: Deliverables
+**Current focus:** Phase 6: Deliverables -- COMPLETE
 
 ## Current Position
 
-Phase: 6 of 8 (Deliverables)
-Plan: 2 of 3 in current phase -- DONE
-Status: Executing Phase 6
-Last activity: 2026-05-12 -- Completed 06-02-PLAN.md (HTML Dossier Renderer)
+Phase: 6 of 8 (Deliverables) -- COMPLETE
+Plan: 3 of 3 in current phase -- DONE
+Status: Phase 6 complete, ready for Phase 7
+Last activity: 2026-05-12 -- Completed 06-03-PLAN.md (PDF Dossier Renderer & Test Suite)
 
-Progress: [████████░░] 67%
+Progress: [████████░░] 75%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 17
+- Total plans completed: 18
 - Average duration: 7min
-- Total execution time: 1.72 hours
+- Total execution time: 1.87 hours
 
 **By Phase:**
 
@@ -32,11 +32,11 @@ Progress: [████████░░] 67%
 | 03-evidence-integration | 4 | 19min | 5min |
 | 04-ai-reasoning-engine | 3 | 16min | 5min |
 | 05-target-scoring | 2 | 23min | 12min |
-| 06-deliverables | 2 | 14min | 7min |
+| 06-deliverables | 3 | 23min | 8min |
 
 **Recent Trend:**
-- Last 5 plans: 05-01 (14min), 05-02 (9min), 06-01 (8min), 06-02 (6min)
-- Trend: HTML dossier renderer efficient; 11 files, 2 tasks
+- Last 5 plans: 05-02 (9min), 06-01 (8min), 06-02 (6min), 06-03 (9min)
+- Trend: Phase 6 complete; PDF renderer + 22 tests in 9min
 
 *Updated after each plan completion*
 
@@ -127,6 +127,10 @@ Recent decisions affecting current work:
 - [06-02]: First chart div includes plotly.js; subsequent divs set include_plotlyjs=False (no duplicate loading)
 - [06-02]: Chart download buttons via Plotly config (PNG, 900x600, 2x scale)
 - [06-02]: Template graceful degradation with {% if %} guards; missing data shows "not available" fallback
+- [06-03]: fpdf2 output() returns bytearray; wrapped in bytes() for consistent PDFDossierRenderer.render() return type
+- [06-03]: Fresh io.BytesIO per pdf.image() call to avoid stream closure (fpdf2 pitfall #3)
+- [06-03]: generate_dossier() wires collect_dossier_data -> dual renderers in single convenience call
+- [06-03]: Tests use real upstream model instances (ScorecardResult, AggregatedEvidence) for realistic integration coverage
 
 ### Pending Todos
 
@@ -144,5 +148,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-05-12
-Stopped at: Completed 06-02-PLAN.md (HTML Dossier Renderer) -- ready for 06-03
+Stopped at: Completed 06-03-PLAN.md (PDF Dossier Renderer & Test Suite) -- Phase 6 complete, ready for Phase 7
 Resume file: None
