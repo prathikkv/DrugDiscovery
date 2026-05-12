@@ -132,12 +132,13 @@ Plans:
   2. All nine HITL gates across three modules (Omics: 3, Evidence: 3, Reasoning: 3) present approval/rejection UI with decision logging -- in Exploration mode, gates auto-approve with a recorded override; in Compliance mode, gates block until explicitly approved with e-signature
   3. The application uses a consistent design system (primary #0071e3, sans-serif font) with consulting-grade aesthetics suitable for a $100K-$500K engagement demo
   4. Six pre-built pharma showcase scenarios (EGFR/NSCLC, ESR1/ER+Breast, PIK3CA/HR+Breast, GLP1R/Obesity, PARP1/BRCA+Breast, CD274/Pan-cancer) can each be loaded and run through the full workflow in under 5 minutes with pre-cached evidence -- no live API calls required. Each scenario is drawn from a real top-10 pharma pipeline (AstraZeneca, Roche, Eli Lilly, Merck) and tells a distinct story suitable for a pharma VP demo
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 07-01: TBD
-- [ ] 07-02: TBD
-- [ ] 07-03: TBD
+- [ ] 07-01-PLAN.md — Shared components (design system CSS, HITL gate component, showcase loader) and app shell with 7-page navigation
+- [ ] 07-02-PLAN.md — Analysis pages (omics pipeline, evidence explorer, AI insights) with 9 HITL gates and TaskManager polling
+- [ ] 07-03-PLAN.md — Results pages (scorecard with radar chart and dossier export, audit trail viewer) and enhanced projects page with showcase scenarios
+- [ ] 07-04-PLAN.md — Pre-cached showcase scenario data for 6 pharma targets and UI integration test suite
 
 ### Phase 8: Validation + Launch
 **Goal**: The platform is validated against known drug targets, fully tested at three tiers, documented to GxP standards, and packaged for deployment -- ready for the first consulting engagement.
@@ -172,7 +173,7 @@ Phase 1 (Foundation) --> Phase 2+3 (Omics + Evidence, parallel) --> Phase 4 (AI 
 | 4. AI Reasoning Engine | 0/3 | Not started | - |
 | 5. Target Scoring | 0/2 | Not started | - |
 | 6. Deliverables | 0/3 | Not started | - |
-| 7. UI Integration | 0/3 | Not started | - |
+| 7. UI Integration | 0/4 | Not started | - |
 | 8. Validation + Launch | 0/3 | Not started | - |
 
 ## Coverage
