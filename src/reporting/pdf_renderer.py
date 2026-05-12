@@ -114,7 +114,7 @@ class PDFDossierRenderer:
             dossier_data.gene_symbol,
             pdf.page,
         )
-        return pdf.output()
+        return bytes(pdf.output())
 
     def render_to_file(self, dossier_data: DossierData, output_path: Path) -> Path:
         """Render and write PDF to file. Returns output_path.
