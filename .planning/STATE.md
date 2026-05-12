@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-05-09)
 
 **Core value:** Scientists upload omics data and target genes, receive a structured GO/CONDITIONAL/NO-GO recommendation with full audit trail -- replacing 6 months of manual assessment with 2 weeks.
-**Current focus:** Phase 5: Target Scoring
+**Current focus:** Phase 6: Deliverables
 
 ## Current Position
 
-Phase: 5 of 8 (Target Scoring) -- PHASE COMPLETE
-Plan: 2 of 2 in current phase -- DONE
-Status: Phase 5 Complete
-Last activity: 2026-05-12 -- Completed 05-02-PLAN.md (Scoring Framework & Comparative)
+Phase: 6 of 8 (Deliverables)
+Plan: 1 of 3 in current phase -- DONE
+Status: Executing Phase 6
+Last activity: 2026-05-12 -- Completed 06-01-PLAN.md (Reporting Foundation)
 
-Progress: [██████░░░░] 62%
+Progress: [████████░░] 67%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 15
-- Average duration: 6min
-- Total execution time: 1.59 hours
+- Total plans completed: 16
+- Average duration: 7min
+- Total execution time: 1.72 hours
 
 **By Phase:**
 
@@ -32,10 +32,11 @@ Progress: [██████░░░░] 62%
 | 03-evidence-integration | 4 | 19min | 5min |
 | 04-ai-reasoning-engine | 3 | 16min | 5min |
 | 05-target-scoring | 2 | 23min | 12min |
+| 06-deliverables | 1 | 8min | 8min |
 
 **Recent Trend:**
-- Last 5 plans: 04-02 (6min), 04-03 (5min), 05-01 (14min), 05-02 (9min)
-- Trend: Scoring plans larger due to framework orchestration + 60 total tests
+- Last 5 plans: 04-03 (5min), 05-01 (14min), 05-02 (9min), 06-01 (8min)
+- Trend: Reporting foundation moderate complexity; 5 files, 2 tasks
 
 *Updated after each plan completion*
 
@@ -117,6 +118,11 @@ Recent decisions affecting current work:
 - [05-02]: Evidence hash computed over confidence + data per source (not full EvidenceResult) for deterministic SHA256
 - [05-02]: Plotly Scatterpolar with polygon closure (n+1 points) for radar chart visualization
 - [05-02]: Verdict-based coloring in single radar: green (GO), orange (CONDITIONAL), red (NO-GO)
+- [06-01]: Lazy imports for upstream types in reporting module to avoid circular dependencies
+- [06-01]: VisualizationBuilder returns None for charts with missing data (graceful degradation)
+- [06-01]: Radar charts delegate to existing build_single_radar/build_comparative_radar for consistency
+- [06-01]: kaleido 0.2.1 installed per plan; works with Plotly 6.7.0 despite deprecation warning
+- [06-01]: 7 pre-built sections in collect_dossier_data for renderer consumption
 
 ### Pending Todos
 
@@ -134,5 +140,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-05-12
-Stopped at: Completed 05-02-PLAN.md (Scoring Framework & Comparative) -- Phase 5 complete, ready for Phase 6
+Stopped at: Completed 06-01-PLAN.md (Reporting Foundation) -- ready for 06-02
 Resume file: None
