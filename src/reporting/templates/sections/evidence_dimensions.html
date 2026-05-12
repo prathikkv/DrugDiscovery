@@ -1,0 +1,70 @@
+{% set evidence_section = dossier.sections.get('evidence_dimensions') if dossier.sections else None %}
+<div class="section" id="evidence-dimensions">
+    <h2>Evidence Dimensions</h2>
+
+    {% if evidence_section %}
+        {% set data = evidence_section.data %}
+        {% set dimension_scores = data.get('dimension_scores', []) if data else [] %}
+
+        {% if evidence_section.narrative %}
+        <div class="narrative">
+            <p>{{ evidence_section.narrative }}</p>
+        </div>
+        {% endif %}
+
+        {% if dimension_scores %}
+        <h3>Dimension Scores</h3>
+        {% for dim in dimension_scores %}
+            {% set dim_name = dim.get('name', 'unknown') | replace('_', ' ') | title %}
+            {% set score = dim.get('score', 0) %}
+            {% set max_score = dim.get('max_score', 1) %}
+            {% set coverage = dim.get('data_coverage', 0) %}
+            {% set pct = (score / max_score * 100) if max_score > 0 else 0 %}
+
+            <div style="margin-bottom: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                    <strong>{{ dim_name }}</strong>
+                    <span>
+                        {{ score | format_score }} / {{ max_score | format_score }}
+                        <span class="coverage-indicator">({{ coverage | format_pct }} data coverage)</span>
+                    </span>
+                </div>
+                <div class="score-bar">
+                    <div class="fill" style="width: {{ pct }}%;"></div>
+                    <span class="label">{{ pct | int }}%</span>
+                </div>
+
+                {% set sub_scores = dim.get('sub_scores', []) %}
+                {% if sub_scores %}
+                <table class="data-table" style="margin-top: 8px; font-size: 13px;">
+                    <thead>
+                        <tr>
+                            <th>Sub-Score</th>
+                            <th>Value</th>
+                            <th>Max</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for sub in sub_scores %}
+                        <tr>
+                            <td>{{ sub.get('name', '') | replace('_', ' ') | title }}</td>
+                            <td>{{ sub.get('value', 0) | format_score }}</td>
+                            <td>{{ sub.get('max_value', 0) | format_score }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+            </div>
+        {% endfor %}
+        {% endif %}
+
+        {% if charts and charts.get('evidence_dimensions_bar') %}
+        <div class="chart-container">
+            {{ charts.evidence_dimensions_bar | safe }}
+        </div>
+        {% endif %}
+    {% else %}
+        <p>Evidence dimension data not available.</p>
+    {% endif %}
+</div>

@@ -1,0 +1,98 @@
+{% set audit_section = dossier.sections.get('audit_trail') if dossier.sections else None %}
+<div class="section" id="audit-trail">
+    <h2>Audit Trail &amp; Provenance</h2>
+
+    {% if audit_section %}
+        {% set data = audit_section.data %}
+
+        {% if audit_section.narrative %}
+        <div class="narrative">
+            <p>{{ audit_section.narrative }}</p>
+        </div>
+        {% endif %}
+
+        {% if data %}
+            {% set evidence_sources = data.get('evidence_sources', {}) %}
+            {% if evidence_sources %}
+            <h3>Evidence Sources</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Source</th>
+                        <th>Confidence</th>
+                        <th>Fallback</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for source_name, source_info in evidence_sources.items() %}
+                    <tr>
+                        <td>{{ source_name | replace('_', ' ') | title }}</td>
+                        <td>{{ source_info.get('confidence', 0) | format_score }}</td>
+                        <td>{{ 'Yes' if source_info.get('is_fallback') else 'No' }}</td>
+                        <td>{{ 'Error' if source_info.get('has_error') else 'OK' }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+
+            {% if data.get('evidence_hash') %}
+            <h3>Reproducibility</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Evidence Hash</td>
+                        <td><code>{{ data.get('evidence_hash', 'N/A') }}</code></td>
+                    </tr>
+                    <tr>
+                        <td>Scored At</td>
+                        <td>{{ data.get('scored_at', 'N/A') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Pipeline Report Available</td>
+                        <td>{{ 'Yes' if data.get('pipeline_report_available') else 'No' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            {% endif %}
+
+            {% set reasoning_provenance = data.get('reasoning_provenance', {}) %}
+            {% if reasoning_provenance %}
+            <h3>AI Reasoning Provenance</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Mode</th>
+                        <th>Created At</th>
+                        <th>Tool Trace</th>
+                        <th>Hallucination Issues</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for mode_name, prov in reasoning_provenance.items() %}
+                    <tr>
+                        <td>{{ mode_name | replace('_', ' ') | title }}</td>
+                        <td>{{ prov.get('created_at', 'N/A') }}</td>
+                        <td>{{ 'Yes' if prov.get('has_tool_trace') else 'No' }}</td>
+                        <td>{{ prov.get('hallucination_issues', 0) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+        {% endif %}
+
+        <p style="color: var(--text-secondary); font-size: 13px; margin-top: 12px;">
+            Generated: {{ dossier.generated_at | default('N/A') }}
+        </p>
+    {% else %}
+        <p>Audit trail data not available.</p>
+    {% endif %}
+</div>

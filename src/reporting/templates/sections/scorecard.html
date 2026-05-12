@@ -1,0 +1,108 @@
+{% set scorecard_section = dossier.sections.get('scorecard') if dossier.sections else None %}
+<div class="section" id="scorecard">
+    <h2>Scorecard</h2>
+
+    {% if scorecard_section %}
+        {% set data = scorecard_section.data %}
+        {% set composite = data.get('composite', {}) if data else {} %}
+        {% set verdict = data.get('verdict', {}) if data else {} %}
+        {% set formula_version = data.get('formula_version', 'v1.0') if data else 'v1.0' %}
+
+        {% if scorecard_section.narrative %}
+        <div class="narrative">
+            <p>{{ scorecard_section.narrative }}</p>
+        </div>
+        {% endif %}
+
+        {% set dimension_scores = composite.get('dimension_scores', []) %}
+        {% if dimension_scores %}
+        <h3>Full Scoring Table</h3>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Dimension</th>
+                    <th>Score</th>
+                    <th>Max</th>
+                    <th>Percentage</th>
+                    <th>Data Coverage</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dim in dimension_scores %}
+                {% set dim_name = dim.get('name', 'unknown') | replace('_', ' ') | title %}
+                {% set score = dim.get('score', 0) %}
+                {% set max_score = dim.get('max_score', 1) %}
+                {% set coverage = dim.get('data_coverage', 0) %}
+                {% set pct = (score / max_score * 100) if max_score > 0 else 0 %}
+                {% set is_violation = dim.get('name', '') in verdict.get('dimension_violations', []) %}
+                <tr {% if is_violation %}style="background-color: #fff0f0;"{% endif %}>
+                    <td>
+                        {{ dim_name }}
+                        {% if is_violation %}<span style="color: #dd0000; font-weight: 600;"> (violation)</span>{% endif %}
+                    </td>
+                    <td>{{ score | format_score }}</td>
+                    <td>{{ max_score | format_score }}</td>
+                    <td>{{ pct | int }}%</td>
+                    <td>{{ coverage | format_pct }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+
+        {% set weights = composite.get('weights', {}) %}
+        {% if weights %}
+        <h3>Composite Score Breakdown</h3>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Dimension</th>
+                    <th>Weight</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dim_name, weight in weights.items() %}
+                <tr>
+                    <td>{{ dim_name | replace('_', ' ') | title }}</td>
+                    <td>{{ weight | format_score }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+
+        {% if verdict %}
+        <h3>Verdict Rationale</h3>
+        <p>
+            <span class="verdict-badge {{ verdict.get('level', '') | lower | replace('-', '-') }}">{{ verdict.get('level', 'N/A') }}</span>
+            <span style="margin-left: 12px;">Score: {{ verdict.get('score', 0) | format_score }}</span>
+        </p>
+        {% if verdict.get('rationale') %}
+        <p>{{ verdict.get('rationale') }}</p>
+        {% endif %}
+        {% set violations = verdict.get('dimension_violations', []) %}
+        {% if violations %}
+        <p style="color: #dd0000;">Dimension violations: {{ violations | join(', ') }}</p>
+        {% endif %}
+        {% if verdict.get('forced_conditional') %}
+        <p style="color: #ff9900; font-weight: 600;">Score exceeds GO threshold but forced to CONDITIONAL due to violations.</p>
+        {% endif %}
+        {% endif %}
+
+        <p style="color: var(--text-secondary); font-size: 13px;">Formula version: {{ formula_version }}</p>
+
+        {% if charts and charts.get('score_breakdown') %}
+        <div class="chart-container">
+            {{ charts.score_breakdown | safe }}
+        </div>
+        {% endif %}
+
+        {% if charts and charts.get('radar_comparative') %}
+        <div class="chart-container">
+            {{ charts.radar_comparative | safe }}
+        </div>
+        {% endif %}
+    {% else %}
+        <p>Scorecard data not available.</p>
+    {% endif %}
+</div>

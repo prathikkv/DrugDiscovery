@@ -1,0 +1,51 @@
+{% set exec_section = dossier.sections.get('executive_summary') if dossier.sections else None %}
+<div class="section" id="executive-summary">
+    <h2>Executive Summary</h2>
+
+    {% if exec_section %}
+        {% set data = exec_section.data %}
+        {% set verdict_level = data.get('verdict_level', '') if data else '' %}
+        {% set composite_score = data.get('composite_score', 0) if data else 0 %}
+
+        {% if verdict_level %}
+        <p>
+            <span class="verdict-badge {{ verdict_level | lower | replace('-', '-') }}">{{ verdict_level }}</span>
+            <span style="margin-left: 16px; font-size: 20px; font-weight: 600;">
+                Composite Score: {{ composite_score | format_score }}
+            </span>
+        </p>
+        {% endif %}
+
+        {% if exec_section.narrative %}
+        <div class="narrative">
+            <p>{{ exec_section.narrative }}</p>
+        </div>
+        {% endif %}
+
+        {% if data %}
+            {% if data.get('forced_conditional') %}
+            <p style="color: #ff9900; font-weight: 600;">
+                Note: Score exceeds GO threshold but was downgraded to CONDITIONAL due to dimension violations.
+            </p>
+            {% endif %}
+
+            {% set violations = data.get('dimension_violations', []) %}
+            {% if violations %}
+            <h3>Dimension Violations</h3>
+            <ul>
+                {% for v in violations %}
+                <li>{{ v }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endif %}
+
+        {% if charts and charts.get('radar_single') %}
+        <div class="chart-container">
+            {{ charts.radar_single | safe }}
+        </div>
+        {% endif %}
+    {% else %}
+        <p>Executive summary data not available.</p>
+    {% endif %}
+</div>

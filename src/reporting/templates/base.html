@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Target Assessment Dossier{% endblock %}</title>
+    {% block plotly_js %}{% endblock %}
+    <style>
+        :root {
+            --brand-primary: #0071e3;
+            --brand-dark: #004ea2;
+            --text-primary: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --bg-light: #f5f5f7;
+            --border: #d2d2d7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background: #ffffff;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .dossier-header {
+            border-bottom: 3px solid var(--brand-primary);
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+        }
+
+        .dossier-header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .dossier-header .subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        .section {
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section h2 {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--brand-primary);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--bg-light);
+        }
+
+        .section h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 16px;
+            margin-bottom: 8px;
+        }
+
+        .section p {
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .section ul, .section ol {
+            margin-left: 24px;
+            margin-bottom: 12px;
+        }
+
+        .section li {
+            margin-bottom: 4px;
+        }
+
+        .narrative {
+            white-space: pre-line;
+            line-height: 1.7;
+        }
+
+        /* Data tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+
+        .data-table thead th {
+            background-color: var(--brand-primary);
+            color: #ffffff;
+            padding: 10px 8px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .data-table tbody td {
+            padding: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table tbody tr:nth-child(even) {
+            background-color: var(--bg-light);
+        }
+
+        .data-table tbody tr:hover {
+            background-color: #e8e8ed;
+        }
+
+        /* Score bar */
+        .score-bar {
+            width: 100%;
+            height: 24px;
+            background-color: var(--bg-light);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .score-bar .fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--brand-primary), var(--brand-dark));
+            border-radius: 12px;
+            transition: width 0.3s ease;
+        }
+
+        .score-bar .label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Verdict badge */
+        .verdict-badge {
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .verdict-badge.go {
+            background-color: #00b300;
+        }
+
+        .verdict-badge.conditional {
+            background-color: #ff9900;
+        }
+
+        .verdict-badge.no-go {
+            background-color: #dd0000;
+        }
+
+        /* Chart container */
+        .chart-container {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 20px;
+            background: #ffffff;
+        }
+
+        /* Coverage indicator */
+        .coverage-indicator {
+            display: inline-block;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-left: 8px;
+        }
+
+        /* Claims table */
+        .claim-confidence {
+            font-weight: 600;
+        }
+
+        .confidence-high { color: #00b300; }
+        .confidence-medium { color: #ff9900; }
+        .confidence-low { color: #dd0000; }
+
+        /* Footer */
+        .dossier-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        /* Print media query */
+        @media print {
+            body {
+                font-size: 11pt;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 20px;
+            }
+
+            .chart-container {
+                page-break-inside: avoid;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+
+            .dossier-header {
+                page-break-after: avoid;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            .js-plotly-plot .plotly .modebar {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% block content %}{% endblock %}
+
+        <div class="dossier-footer">
+            <p>Generated by {{ config.brand_name | default('BioOrchestrator') }} | {{ dossier.generated_at | default('') }}</p>
+        </div>
+    </div>
+</body>
+</html>

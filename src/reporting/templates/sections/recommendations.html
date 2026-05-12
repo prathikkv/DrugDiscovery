@@ -1,0 +1,35 @@
+{% set rec_section = dossier.sections.get('recommendations') if dossier.sections else None %}
+<div class="section" id="recommendations">
+    <h2>Recommendations &amp; Next Steps</h2>
+
+    {% if rec_section %}
+        {% set data = rec_section.data %}
+        {% set verdict_level = data.get('verdict_level', '') if data else '' %}
+
+        {% if verdict_level %}
+        <p>
+            <span class="verdict-badge {{ verdict_level | lower | replace('-', '-') }}">{{ verdict_level }}</span>
+        </p>
+        {% endif %}
+
+        {% if rec_section.narrative %}
+        <div class="narrative">
+            <p>{{ rec_section.narrative }}</p>
+        </div>
+        {% endif %}
+
+        {% if data %}
+            {% set violations = data.get('dimension_violations', []) %}
+            {% if violations %}
+            <h3>Key Risks</h3>
+            <ul>
+                {% for v in violations %}
+                <li><strong>{{ v | replace('_', ' ') | title }}:</strong> Below minimum threshold -- requires additional evidence or mitigation.</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endif %}
+    {% else %}
+        <p>Recommendations data not available.</p>
+    {% endif %}
+</div>

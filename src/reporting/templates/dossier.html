@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Target Assessment Dossier: {{ dossier.gene_symbol }}{% endblock %}
+
+{% block plotly_js %}
+{{ plotly_js_header | safe }}
+{% endblock %}
+
+{% block content %}
+<div class="dossier-header">
+    <h1>Target Assessment Dossier: {{ dossier.gene_symbol }}</h1>
+    <p class="subtitle">
+        {% if dossier.disease_context %}Disease Context: {{ dossier.disease_context }} | {% endif %}
+        Generated: {{ dossier.generated_at | default('N/A') }}
+    </p>
+</div>
+
+{% include "sections/executive_summary.html" %}
+{% include "sections/target_overview.html" %}
+{% include "sections/evidence_dimensions.html" %}
+{% include "sections/ai_synthesis.html" %}
+{% include "sections/scorecard.html" %}
+{% include "sections/recommendations.html" %}
+{% include "sections/audit_trail.html" %}
+{% endblock %}

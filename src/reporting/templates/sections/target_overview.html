@@ -1,0 +1,74 @@
+{% set overview_section = dossier.sections.get('target_overview') if dossier.sections else None %}
+<div class="section" id="target-overview">
+    <h2>Target Overview</h2>
+
+    {% if overview_section %}
+        {% set data = overview_section.data %}
+        {% set gene_ids = data.get('gene_identifiers', {}) if data else {} %}
+
+        {% if gene_ids %}
+        <h3>Gene Identifiers</h3>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Identifier</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Gene Symbol</td>
+                    <td>{{ gene_ids.get('canonical_symbol', 'N/A') }}</td>
+                </tr>
+                <tr>
+                    <td>Ensembl ID</td>
+                    <td>{{ gene_ids.get('ensembl_id') | default('N/A') }}</td>
+                </tr>
+                <tr>
+                    <td>UniProt Accession</td>
+                    <td>{{ gene_ids.get('uniprot_accession') | default('N/A') }}</td>
+                </tr>
+                {% if gene_ids.get('query_symbol') and gene_ids.get('query_symbol') != gene_ids.get('canonical_symbol') %}
+                <tr>
+                    <td>Query Alias</td>
+                    <td>{{ gene_ids.get('query_symbol') }}</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+        {% endif %}
+
+        {% set uniprot_data = data.get('uniprot_data') if data else None %}
+        {% if uniprot_data %}
+            {% if uniprot_data.get('protein_name') %}
+            <h3>Protein Function</h3>
+            <p><strong>{{ uniprot_data.get('protein_name') }}</strong></p>
+            {% endif %}
+
+            {% if uniprot_data.get('function') %}
+            <p class="narrative">{{ uniprot_data.get('function') }}</p>
+            {% endif %}
+
+            {% if uniprot_data.get('subcellular_location') %}
+            <p><strong>Subcellular location:</strong> {{ uniprot_data.get('subcellular_location') }}</p>
+            {% endif %}
+
+            {% if uniprot_data.get('gene_names') %}
+            <p><strong>Known aliases:</strong> {{ uniprot_data.get('gene_names') | join(', ') }}</p>
+            {% endif %}
+        {% endif %}
+
+        {% if dossier.disease_context %}
+        <h3>Disease Context</h3>
+        <p>{{ dossier.disease_context }}</p>
+        {% endif %}
+
+        {% if overview_section.narrative and not uniprot_data %}
+        <div class="narrative">
+            <p>{{ overview_section.narrative }}</p>
+        </div>
+        {% endif %}
+    {% else %}
+        <p>Target overview data not available.</p>
+    {% endif %}
+</div>

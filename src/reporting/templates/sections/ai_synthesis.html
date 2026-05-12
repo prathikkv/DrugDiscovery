@@ -1,0 +1,82 @@
+{% set synthesis_section = dossier.sections.get('ai_synthesis') if dossier.sections else None %}
+<div class="section" id="ai-synthesis">
+    <h2>AI Synthesis &amp; Reasoning</h2>
+
+    {% if synthesis_section %}
+        {% set data = synthesis_section.data %}
+
+        {% if synthesis_section.narrative %}
+        <div class="narrative">
+            <p>{{ synthesis_section.narrative }}</p>
+        </div>
+        {% endif %}
+
+        {% set claims = data.get('claims', []) if data else [] %}
+        {% if claims %}
+        <h3>Claims Analysis</h3>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Claim</th>
+                    <th>Confidence</th>
+                    <th>Mode</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for claim in claims %}
+                <tr>
+                    <td>{{ claim.get('text', claim.get('claim', '')) | default('N/A') }}</td>
+                    <td>
+                        {% set conf = claim.get('confidence', 0) %}
+                        <span class="claim-confidence {% if conf >= 0.7 %}confidence-high{% elif conf >= 0.4 %}confidence-medium{% else %}confidence-low{% endif %}">
+                            {{ conf | format_pct }}
+                        </span>
+                    </td>
+                    <td>{{ claim.get('mode', '') | replace('_', ' ') | title }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+
+        {% set modes_analyzed = data.get('modes_analyzed', []) if data else [] %}
+
+        {% if 'contradiction' in dossier.reasoning %}
+        <h3>Contradiction Analysis</h3>
+        {% set contradiction = dossier.reasoning.get('contradiction', {}) %}
+        {% if contradiction.get('summary') %}
+        <div class="narrative">
+            <p>{{ contradiction.get('summary') }}</p>
+        </div>
+        {% endif %}
+        {% endif %}
+
+        {% if 'gap' in dossier.reasoning %}
+        <h3>Evidence Gaps</h3>
+        {% set gap = dossier.reasoning.get('gap', {}) %}
+        {% if gap.get('summary') %}
+        <div class="narrative">
+            <p>{{ gap.get('summary') }}</p>
+        </div>
+        {% endif %}
+        {% endif %}
+
+        {% if 'hypothesis' in dossier.reasoning %}
+        <h3>Hypothesis Suggestions</h3>
+        {% set hypothesis = dossier.reasoning.get('hypothesis', {}) %}
+        {% if hypothesis.get('summary') %}
+        <div class="narrative">
+            <p>{{ hypothesis.get('summary') }}</p>
+        </div>
+        {% endif %}
+        {% endif %}
+
+        {% if modes_analyzed %}
+        <p style="color: var(--text-secondary); font-size: 13px; margin-top: 12px;">
+            Reasoning modes analyzed: {{ modes_analyzed | join(', ') }}
+        </p>
+        {% endif %}
+    {% else %}
+        <p>AI synthesis data not available.</p>
+    {% endif %}
+</div>
