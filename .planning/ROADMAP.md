@@ -116,11 +116,12 @@ Plans:
   1. A user can generate a complete Target Assessment Dossier in both HTML and PDF (via fpdf2) containing all required sections: Executive Summary, Target Overview, 7 Evidence Dimensions, AI Synthesis, Scorecard, Recommendations, and Audit Trail
   2. The dossier includes embedded interactive visualizations (UMAP plots, expression heatmaps, volcano plots, evidence charts) in HTML, and static renders in PDF
   3. Individual charts can be exported as PNG or SVG from any visualization in the platform
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 06-01: TBD
-- [ ] 06-02: TBD
+- [ ] 06-01-PLAN.md — Dossier data models, data collector, visualization builder, and chart export utilities
+- [ ] 06-02-PLAN.md — HTML dossier renderer with Jinja2 templates and interactive Plotly charts
+- [ ] 06-03-PLAN.md — PDF dossier renderer with fpdf2 and comprehensive reporting test suite
 
 ### Phase 7: UI Integration
 **Goal**: All platform capabilities are accessible through a polished, multi-page Streamlit application with human-in-the-loop gates, mode controls, and a professional design system -- a scientist can run a complete target assessment end-to-end through the UI.
@@ -130,7 +131,7 @@ Plans:
   1. A user can navigate through all seven pages (login, project setup, omics analysis, evidence explorer, AI insights, scorecard, audit trail) in a logical workflow, with each page rendering without errors
   2. All nine HITL gates across three modules (Omics: 3, Evidence: 3, Reasoning: 3) present approval/rejection UI with decision logging -- in Exploration mode, gates auto-approve with a recorded override; in Compliance mode, gates block until explicitly approved with e-signature
   3. The application uses a consistent design system (primary #0071e3, sans-serif font) with consulting-grade aesthetics suitable for a $100K-$500K engagement demo
-  4. A demo project (preloaded data, pre-computed results) can be run through the full workflow in under 30 minutes, showcasing every major capability without requiring live API calls or pipeline execution
+  4. Six pre-built pharma showcase scenarios (EGFR/NSCLC, ESR1/ER+Breast, PIK3CA/HR+Breast, GLP1R/Obesity, PARP1/BRCA+Breast, CD274/Pan-cancer) can each be loaded and run through the full workflow in under 5 minutes with pre-cached evidence -- no live API calls required. Each scenario is drawn from a real top-10 pharma pipeline (AstraZeneca, Roche, Eli Lilly, Merck) and tells a distinct story suitable for a pharma VP demo
 **Plans**: TBD
 
 Plans:
@@ -143,7 +144,7 @@ Plans:
 **Depends on**: Phase 7
 **Requirements**: REQ-801, REQ-802, REQ-803, REQ-804, REQ-806
 **Success Criteria** (what must be TRUE):
-  1. The golden test passes: EGFR scores number one among 8 NSCLC candidates with a score of 75 or above (GO recommendation), and MELK scores below 50 (NO-GO) in breast cancer with specific red flags identified
+  1. The pharma showcase validation suite passes: all 6 real-world targets score within expected ranges -- EGFR (NSCLC, GO ≥75), ESR1 (ER+Breast, GO ≥70), PIK3CA (HR+Breast, GO ≥68), GLP1R (Obesity, GO ≥72), PARP1 (BRCA+Breast, GO ≥70), CD274 (Pan-cancer, CONDITIONAL 55-70) -- demonstrating the platform correctly distinguishes validated drug targets and complex/competitive ones
   2. Three-tier testing is operational: unit tests run in under 30 seconds, integration tests in under 5 minutes, and a GxP validation suite covers all critical path requirements
   3. GxP documentation is complete: Validation Master Plan, User Requirements Specification, Functional Requirements Specification, FMEA, traceability matrix (requirements to tests), and 5 or more priority SOPs
   4. Pre-commit hooks enforce compliance: audit trail integrity check, no hardcoded parameters check, and config change flagging are active on every commit
@@ -170,7 +171,7 @@ Phase 1 (Foundation) --> Phase 2+3 (Omics + Evidence, parallel) --> Phase 4 (AI 
 | 3. Evidence Integration | 4/4 | Complete | 2026-05-11 |
 | 4. AI Reasoning Engine | 0/3 | Not started | - |
 | 5. Target Scoring | 0/2 | Not started | - |
-| 6. Deliverables | 0/2 | Not started | - |
+| 6. Deliverables | 0/3 | Not started | - |
 | 7. UI Integration | 0/3 | Not started | - |
 | 8. Validation + Launch | 0/3 | Not started | - |
 
