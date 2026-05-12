@@ -102,11 +102,11 @@ Plans:
   3. A user can adjust dimension weights at the HITL-009 gate and immediately see how the composite score and recommendation change
   4. For a project with 3-20 target genes, the user can view a side-by-side comparative scorecard with radar charts showing each target's dimension profile
   5. Contradictory evidence in the literature dimension applies a penalty (up to -4 points), visible in the score breakdown
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 05-01: TBD
-- [ ] 05-02: TBD
+- [ ] 05-01-PLAN.md — Scoring models, weight configuration, 24 sub-score extractors, and 7 dimension calculators (TDD)
+- [ ] 05-02-PLAN.md — Framework orchestrator, verdict logic, comparative scorecard, and radar chart visualization (TDD)
 
 ### Phase 6: Deliverables
 **Goal**: The platform generates professional, consulting-grade Target Assessment Dossiers that a scientist can hand directly to a pharma VP -- with structured sections, embedded visualizations, and exportable charts.
