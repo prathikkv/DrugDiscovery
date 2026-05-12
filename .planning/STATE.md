@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-05-09)
 
 **Core value:** Scientists upload omics data and target genes, receive a structured GO/CONDITIONAL/NO-GO recommendation with full audit trail -- replacing 6 months of manual assessment with 2 weeks.
-**Current focus:** Phase 4: AI Reasoning Engine
+**Current focus:** Phase 5: Target Scoring
 
 ## Current Position
 
-Phase: 4 of 8 (AI Reasoning Engine) -- DONE
-Plan: 3 of 3 in current phase -- DONE
-Status: Phase Complete
-Last activity: 2026-05-11 -- Completed 04-03-PLAN.md (Reasoning Engine & Tests)
+Phase: 5 of 8 (Target Scoring)
+Plan: 1 of 2 in current phase -- DONE
+Status: In Progress
+Last activity: 2026-05-12 -- Completed 05-01-PLAN.md (Scoring Models & Dimensions)
 
-Progress: [██████░░░░] 54%
+Progress: [███████░░░] 58%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 13
+- Total plans completed: 14
 - Average duration: 6min
-- Total execution time: 1.21 hours
+- Total execution time: 1.44 hours
 
 **By Phase:**
 
@@ -31,10 +31,11 @@ Progress: [██████░░░░] 54%
 | 02-omics-pipeline | 3 | 23min | 8min |
 | 03-evidence-integration | 4 | 19min | 5min |
 | 04-ai-reasoning-engine | 3 | 16min | 5min |
+| 05-target-scoring | 1 | 14min | 14min |
 
 **Recent Trend:**
-- Last 5 plans: 03-04 (5min), 04-01 (5min), 04-02 (6min), 04-03 (5min)
-- Trend: Consistent 5-6min baseline throughout reasoning phase
+- Last 5 plans: 04-01 (5min), 04-02 (6min), 04-03 (5min), 05-01 (14min)
+- Trend: Scoring plan larger due to 24 sub-score extractors + 31 tests
 
 *Updated after each plan completion*
 
@@ -108,6 +109,10 @@ Recent decisions affecting current work:
 - [04-03]: Default confidence 0.5 for parsed claims unless LLM explicitly states a value
 - [04-03]: Evidence summary appended to user message with TokenManager truncation if over budget
 - [04-03]: reason_all_modes() isolates exceptions per mode (one failure does not block others)
+- [05-01]: model_validator(mode='after') for DimensionScore cross-field validation (Pydantic v2 field order)
+- [05-01]: data_coverage as simple fraction of non-None inputs to dimension calculator
+- [05-01]: Contradiction penalty applied within literature_consensus dimension (not globally) per REQ-406
+- [05-01]: essential_gene_risk returns neutral 2.0 when no essentiality data (avoids penalizing data gaps)
 
 ### Pending Todos
 
@@ -124,6 +129,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-05-11
-Stopped at: Completed 04-03-PLAN.md (Reasoning Engine & Tests) -- Phase 4 complete, ready for Phase 5
+Last session: 2026-05-12
+Stopped at: Completed 05-01-PLAN.md (Scoring Models & Dimensions) -- ready for 05-02-PLAN.md
 Resume file: None
