@@ -73,7 +73,11 @@ def _make_mock_evidence(
     gene_symbol: str = "EGFR",
     disease_context: str | None = "lung cancer",
 ) -> AggregatedEvidence:
-    """Build a mock AggregatedEvidence with plausible data dicts for all 6 sources."""
+    """Build a mock AggregatedEvidence with plausible data dicts for all 6 sources.
+
+    Data structures match what each sub-score extractor expects from its
+    respective evidence source parser.
+    """
     gene = GeneIdentifiers(canonical_symbol=gene_symbol, query_symbol=gene_symbol)
 
     results = {
@@ -85,14 +89,20 @@ def _make_mock_evidence(
                     {
                         "disease_name": "lung carcinoma",
                         "overall_score": 0.85,
-                        "datatypeScores": {"genetic_association": 0.7, "known_drug": 0.5},
+                        "datatypeScores": [
+                            {"id": "genetic_association", "score": 0.7},
+                            {"id": "affected_pathway", "score": 0.5},
+                            {"id": "rna_expression", "score": 0.4},
+                        ],
                     }
                 ],
                 "tractability": {
-                    "smallmolecule": True,
-                    "antibody": True,
+                    "small_molecule": {"top_category": 4},
+                    "antibody": {"top_category": 3},
                 },
                 "known_drugs": [{"drug_name": "Erlotinib", "phase": 4}],
+                "has_approved_drug": True,
+                "max_phase": 4,
             },
         ),
         "dgidb": EvidenceResult(
@@ -110,35 +120,31 @@ def _make_mock_evidence(
             source_name="pubmed",
             confidence=0.7,
             data={
-                "papers": [
-                    {"title": f"EGFR paper {i}", "year": 2020 + i % 5, "is_review": i < 3}
-                    for i in range(25)
-                ],
-                "total_count": 25,
+                "paper_count": 25,
+                "review_count": 3,
+                "yearly_counts": [3, 5, 7, 10],
             },
         ),
         "clinicaltrials": EvidenceResult(
             source_name="clinicaltrials",
             confidence=0.8,
             data={
-                "studies": [
-                    {
-                        "nctId": f"NCT0000000{i}",
-                        "phase": f"PHASE{min(i+1, 3)}",
-                        "status": "RECRUITING",
-                        "sponsor": f"Sponsor{i % 3}",
-                        "conditions": ["Non-Small Cell Lung Cancer"],
-                    }
-                    for i in range(5)
-                ],
+                "active_count": 5,
+                "max_phase": 3,
+                "unique_sponsors": 3,
+                "biomarker_level": 2,
+                "patient_selection_level": 1,
             },
         ),
         "uniprot": EvidenceResult(
             source_name="uniprot",
             confidence=0.9,
             data={
-                "subcellular_location": ["Cell membrane", "Cytoplasm"],
-                "tissue_expression": ["Lung", "Liver", "Brain"],
+                "subcellular_location": "Cell membrane",
+                "tissue_expression": {
+                    "tissues": ["Lung", "Liver", "Brain"],
+                    "disease_relevant": True,
+                },
                 "domains": ["Protein kinase", "Receptor L domain"],
             },
         ),
@@ -146,7 +152,7 @@ def _make_mock_evidence(
             source_name="chembl",
             confidence=0.8,
             data={
-                "activities": [{"pchembl_value": 7.5}, {"pchembl_value": 8.2}],
+                "activity_count": 15,
                 "max_pchembl": 8.2,
                 "mechanisms": [{"action_type": "INHIBITOR", "target_type": "SINGLE PROTEIN"}],
             },
