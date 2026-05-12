@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-05-09)
 
 **Core value:** Scientists upload omics data and target genes, receive a structured GO/CONDITIONAL/NO-GO recommendation with full audit trail -- replacing 6 months of manual assessment with 2 weeks.
-**Current focus:** Phase 6: Deliverables -- COMPLETE
+**Current focus:** Phase 7: UI Integration -- IN PROGRESS
 
 ## Current Position
 
-Phase: 6 of 8 (Deliverables) -- COMPLETE
-Plan: 3 of 3 in current phase -- DONE
-Status: Phase 6 complete, ready for Phase 7
-Last activity: 2026-05-12 -- Completed 06-03-PLAN.md (PDF Dossier Renderer & Test Suite)
+Phase: 7 of 8 (UI Integration)
+Plan: 1 of 4 in current phase -- DONE
+Status: Completed 07-01, ready for 07-02
+Last activity: 2026-05-12 -- Completed 07-01-PLAN.md (Shared UI Infrastructure)
 
-Progress: [████████░░] 75%
+Progress: [████████░░] 79%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 18
+- Total plans completed: 19
 - Average duration: 7min
-- Total execution time: 1.87 hours
+- Total execution time: 2.09 hours
 
 **By Phase:**
 
@@ -33,10 +33,11 @@ Progress: [████████░░] 75%
 | 04-ai-reasoning-engine | 3 | 16min | 5min |
 | 05-target-scoring | 2 | 23min | 12min |
 | 06-deliverables | 3 | 23min | 8min |
+| 07-ui-integration | 1 | 13min | 13min |
 
 **Recent Trend:**
-- Last 5 plans: 05-02 (9min), 06-01 (8min), 06-02 (6min), 06-03 (9min)
-- Trend: Phase 6 complete; PDF renderer + 22 tests in 9min
+- Last 5 plans: 06-01 (8min), 06-02 (6min), 06-03 (9min), 07-01 (13min)
+- Trend: Phase 7 started; shared UI infrastructure (CSS, HITL gate, showcase, app shell) in 13min
 
 *Updated after each plan completion*
 
@@ -131,6 +132,10 @@ Recent decisions affecting current work:
 - [06-03]: Fresh io.BytesIO per pdf.image() call to avoid stream closure (fpdf2 pitfall #3)
 - [06-03]: generate_dossier() wires collect_dossier_data -> dual renderers in single convenience call
 - [06-03]: Tests use real upstream model instances (ScorecardResult, AggregatedEvidence) for realistic integration coverage
+- [07-01]: TaskManager singleton in components/__init__.py (not app.py) to avoid import side effects
+- [07-01]: HITL dialog trigger uses session_state flags (not button returns) to survive st.rerun()
+- [07-01]: Verdict badges use GO/CONDITIONAL/NO-GO naming matching scoring engine output
+- [07-01]: CSS includes --teal custom property for future data flow bar components
 
 ### Pending Todos
 
@@ -148,5 +153,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-05-12
-Stopped at: Completed 06-03-PLAN.md (PDF Dossier Renderer & Test Suite) -- Phase 6 complete, ready for Phase 7
+Stopped at: Completed 07-01-PLAN.md (Shared UI Infrastructure) -- ready for 07-02
 Resume file: None
