@@ -1,0 +1,224 @@
+{
+  "hypothesis": {
+    "mode": "hypothesis",
+    "gene_symbol": "EGFR",
+    "disease_context": "Non-Small Cell Lung Cancer",
+    "claims": [
+      {
+        "text": "EGFR inhibition may be synergistic with immune checkpoint blockade in Non-Small Cell Lung Cancer due to shared downstream signaling pathways.",
+        "confidence": 0.75,
+        "sources": [
+          "PubMed",
+          "OpenTargets"
+        ]
+      },
+      {
+        "text": "Patients with EGFR alterations may respond differentially to combination therapies based on co-mutation status.",
+        "confidence": 0.82,
+        "sources": [
+          "ClinicalTrials",
+          "PubMed"
+        ]
+      },
+      {
+        "text": "Resistance to EGFR-targeted therapy may be overcome by targeting compensatory pathway activation.",
+        "confidence": 0.68,
+        "sources": [
+          "PubMed",
+          "ChEMBL"
+        ]
+      },
+      {
+        "text": "Liquid biopsy monitoring of EGFR status could enable adaptive treatment strategies.",
+        "confidence": 0.71,
+        "sources": [
+          "PubMed",
+          "ClinicalTrials"
+        ]
+      }
+    ],
+    "summary": "Generated 4 testable hypotheses for EGFR in Non-Small Cell Lung Cancer, focusing on combination strategies, resistance mechanisms, and biomarker-driven treatment adaptation.",
+    "raw_output": "[AI Reasoning Output for EGFR/Non-Small Cell Lung Cancer - hypothesis mode]\n\nGenerated 4 testable hypotheses for EGFR in Non-Small Cell Lung Cancer, focusing on combination strategies, resistance mechanisms, and biomarker-driven treatment adaptation.\n\nKey findings:\n- EGFR inhibition may be synergistic with immune checkpoint blockade in Non-Small Cell Lung Cancer due to shared downstream signaling pathways.\n- Patients with EGFR alterations may respond differentially to combination therapies based on co-mutation status.\n- Resistance to EGFR-targeted therapy may be overcome by targeting compensatory pathway activation.\n- Liquid biopsy monitoring of EGFR status could enable adaptive treatment strategies.",
+    "tool_trace": {
+      "rounds": [],
+      "tool_calls": [],
+      "total_rounds": 0,
+      "final_text": "Generated 4 testable hypotheses for EGFR in Non-Small Cell Lung Cancer, focusing on combination strategies, resistance mechanisms, and biomarker-driven treatment adaptation."
+    },
+    "hallucination_issues": [],
+    "created_at": "2026-05-13T11:54:11.812741+00:00"
+  },
+  "synthesis": {
+    "mode": "synthesis",
+    "gene_symbol": "EGFR",
+    "disease_context": "Non-Small Cell Lung Cancer",
+    "claims": [
+      {
+        "text": "Across 6 evidence sources, EGFR demonstrates strong target validation in Non-Small Cell Lung Cancer with convergent genetic, pharmacological, and clinical evidence.",
+        "confidence": 0.9,
+        "sources": [
+          "OpenTargets",
+          "DGIdb",
+          "PubMed",
+          "ClinicalTrials"
+        ]
+      },
+      {
+        "text": "Drug-gene interaction data confirms multiple approved agents targeting EGFR, with established dose-response relationships.",
+        "confidence": 0.88,
+        "sources": [
+          "DGIdb",
+          "ChEMBL"
+        ]
+      },
+      {
+        "text": "Clinical trial landscape shows active investigation across multiple disease settings beyond Non-Small Cell Lung Cancer.",
+        "confidence": 0.85,
+        "sources": [
+          "ClinicalTrials",
+          "PubMed"
+        ]
+      }
+    ],
+    "summary": "Synthesized evidence from 6 sources confirming strong target validation for EGFR in Non-Small Cell Lung Cancer. Convergent genetic, pharmacological, and clinical data support therapeutic development.",
+    "raw_output": "[AI Reasoning Output for EGFR/Non-Small Cell Lung Cancer - synthesis mode]\n\nSynthesized evidence from 6 sources confirming strong target validation for EGFR in Non-Small Cell Lung Cancer. Convergent genetic, pharmacological, and clinical data support therapeutic development.\n\nKey findings:\n- Across 6 evidence sources, EGFR demonstrates strong target validation in Non-Small Cell Lung Cancer with convergent genetic, pharmacological, and clinical evidence.\n- Drug-gene interaction data confirms multiple approved agents targeting EGFR, with established dose-response relationships.\n- Clinical trial landscape shows active investigation across multiple disease settings beyond Non-Small Cell Lung Cancer.",
+    "tool_trace": {
+      "rounds": [],
+      "tool_calls": [],
+      "total_rounds": 0,
+      "final_text": "Synthesized evidence from 6 sources confirming strong target validation for EGFR in Non-Small Cell Lung Cancer. Convergent genetic, pharmacological, and clinical data support therapeutic development."
+    },
+    "hallucination_issues": [],
+    "created_at": "2026-05-13T11:54:11.812741+00:00"
+  },
+  "contradiction": {
+    "mode": "contradiction",
+    "gene_symbol": "EGFR",
+    "disease_context": "Non-Small Cell Lung Cancer",
+    "claims": [
+      {
+        "text": "While EGFR shows strong efficacy signals, safety data reveals dose-limiting toxicities in some patient subgroups.",
+        "confidence": 0.72,
+        "sources": [
+          "ClinicalTrials",
+          "PubMed"
+        ]
+      },
+      {
+        "text": "Preclinical models overestimate EGFR inhibitor efficacy compared to clinical response rates, suggesting incomplete target biology understanding.",
+        "confidence": 0.65,
+        "sources": [
+          "PubMed",
+          "ChEMBL"
+        ]
+      },
+      {
+        "text": "Some literature reports conflicting results on EGFR expression as a predictive biomarker versus prognostic marker.",
+        "confidence": 0.6,
+        "sources": [
+          "PubMed",
+          "OpenTargets"
+        ]
+      }
+    ],
+    "summary": "Identified 3 areas of conflicting evidence regarding EGFR efficacy predictions, safety profiles, and biomarker utility in Non-Small Cell Lung Cancer.",
+    "raw_output": "[AI Reasoning Output for EGFR/Non-Small Cell Lung Cancer - contradiction mode]\n\nIdentified 3 areas of conflicting evidence regarding EGFR efficacy predictions, safety profiles, and biomarker utility in Non-Small Cell Lung Cancer.\n\nKey findings:\n- While EGFR shows strong efficacy signals, safety data reveals dose-limiting toxicities in some patient subgroups.\n- Preclinical models overestimate EGFR inhibitor efficacy compared to clinical response rates, suggesting incomplete target biology understanding.\n- Some literature reports conflicting results on EGFR expression as a predictive biomarker versus prognostic marker.",
+    "tool_trace": {
+      "rounds": [],
+      "tool_calls": [],
+      "total_rounds": 0,
+      "final_text": "Identified 3 areas of conflicting evidence regarding EGFR efficacy predictions, safety profiles, and biomarker utility in Non-Small Cell Lung Cancer."
+    },
+    "hallucination_issues": [],
+    "created_at": "2026-05-13T11:54:11.812741+00:00"
+  },
+  "gap": {
+    "mode": "gap",
+    "gene_symbol": "EGFR",
+    "disease_context": "Non-Small Cell Lung Cancer",
+    "claims": [
+      {
+        "text": "Limited data on EGFR target engagement biomarkers for real-time monitoring of drug efficacy.",
+        "confidence": 0.78,
+        "sources": [
+          "ClinicalTrials",
+          "PubMed"
+        ]
+      },
+      {
+        "text": "Insufficient long-term safety data beyond 3-year follow-up for newer EGFR-targeted agents.",
+        "confidence": 0.7,
+        "sources": [
+          "ClinicalTrials"
+        ]
+      },
+      {
+        "text": "Pediatric population data for EGFR inhibitors is notably absent.",
+        "confidence": 0.82,
+        "sources": [
+          "ClinicalTrials",
+          "PubMed"
+        ]
+      }
+    ],
+    "summary": "Flagged 3 key evidence gaps for EGFR in Non-Small Cell Lung Cancer: target engagement biomarkers, long-term safety data, and pediatric population coverage.",
+    "raw_output": "[AI Reasoning Output for EGFR/Non-Small Cell Lung Cancer - gap mode]\n\nFlagged 3 key evidence gaps for EGFR in Non-Small Cell Lung Cancer: target engagement biomarkers, long-term safety data, and pediatric population coverage.\n\nKey findings:\n- Limited data on EGFR target engagement biomarkers for real-time monitoring of drug efficacy.\n- Insufficient long-term safety data beyond 3-year follow-up for newer EGFR-targeted agents.\n- Pediatric population data for EGFR inhibitors is notably absent.",
+    "tool_trace": {
+      "rounds": [],
+      "tool_calls": [],
+      "total_rounds": 0,
+      "final_text": "Flagged 3 key evidence gaps for EGFR in Non-Small Cell Lung Cancer: target engagement biomarkers, long-term safety data, and pediatric population coverage."
+    },
+    "hallucination_issues": [],
+    "created_at": "2026-05-13T11:54:11.812741+00:00"
+  },
+  "confidence": {
+    "mode": "confidence",
+    "gene_symbol": "EGFR",
+    "disease_context": "Non-Small Cell Lung Cancer",
+    "claims": [
+      {
+        "text": "High confidence in EGFR as a validated target based on convergent multi-source evidence and clinical success.",
+        "confidence": 0.88,
+        "sources": [
+          "OpenTargets",
+          "DGIdb",
+          "PubMed",
+          "ClinicalTrials",
+          "UniProt",
+          "ChEMBL"
+        ]
+      },
+      {
+        "text": "Moderate confidence in differentiation opportunity given competitive landscape complexity.",
+        "confidence": 0.65,
+        "sources": [
+          "ClinicalTrials",
+          "ChEMBL"
+        ]
+      },
+      {
+        "text": "Data coverage is strong across all 6 evidence sources, supporting robust assessment.",
+        "confidence": 0.85,
+        "sources": [
+          "OpenTargets",
+          "DGIdb",
+          "PubMed",
+          "ClinicalTrials",
+          "UniProt",
+          "ChEMBL"
+        ]
+      }
+    ],
+    "summary": "Overall confidence assessment for EGFR in Non-Small Cell Lung Cancer is high. Multi-source convergence is strong with no significant dimension violations.",
+    "raw_output": "[AI Reasoning Output for EGFR/Non-Small Cell Lung Cancer - confidence mode]\n\nOverall confidence assessment for EGFR in Non-Small Cell Lung Cancer is high. Multi-source convergence is strong with no significant dimension violations.\n\nKey findings:\n- High confidence in EGFR as a validated target based on convergent multi-source evidence and clinical success.\n- Moderate confidence in differentiation opportunity given competitive landscape complexity.\n- Data coverage is strong across all 6 evidence sources, supporting robust assessment.",
+    "tool_trace": {
+      "rounds": [],
+      "tool_calls": [],
+      "total_rounds": 0,
+      "final_text": "Overall confidence assessment for EGFR in Non-Small Cell Lung Cancer is high. Multi-source convergence is strong with no significant dimension violations."
+    },
+    "hallucination_issues": [],
+    "created_at": "2026-05-13T11:54:11.812741+00:00"
+  }
+}

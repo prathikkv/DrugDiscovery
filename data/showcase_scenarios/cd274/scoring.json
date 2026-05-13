@@ -1,0 +1,226 @@
+{
+  "gene_symbol": "CD274",
+  "disease_context": "Pan-cancer",
+  "composite": {
+    "score": 62.4,
+    "dimension_scores": [
+      {
+        "name": "genetic_evidence",
+        "score": 8.5,
+        "max_score": 15.0,
+        "sub_scores": [
+          {
+            "name": "gwas_associations",
+            "value": 3.13,
+            "max_value": 5.0,
+            "description": "GWAS/genetic association signals",
+            "data_source": "opentargets"
+          },
+          {
+            "name": "somatic_mutations",
+            "value": 2.73,
+            "max_value": 5.0,
+            "description": "Somatic mutation frequency and recurrence",
+            "data_source": "opentargets"
+          },
+          {
+            "name": "causal_evidence",
+            "value": 2.63,
+            "max_value": 5.0,
+            "description": "Causal evidence from functional studies",
+            "data_source": "opentargets"
+          }
+        ],
+        "data_coverage": 0.67
+      },
+      {
+        "name": "expression_biology",
+        "score": 9.0,
+        "max_score": 15.0,
+        "sub_scores": [
+          {
+            "name": "disease_expression",
+            "value": 3.3,
+            "max_value": 5.0,
+            "description": "Differential expression in disease tissue",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "pathway_centrality",
+            "value": 2.9,
+            "max_value": 5.0,
+            "description": "Pathway centrality and network position",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "biological_plausibility",
+            "value": 2.8,
+            "max_value": 5.0,
+            "description": "Biological mechanism plausibility",
+            "data_source": "pubmed"
+          }
+        ],
+        "data_coverage": 0.7
+      },
+      {
+        "name": "druggability",
+        "score": 11.0,
+        "max_score": 15.0,
+        "sub_scores": [
+          {
+            "name": "binding_site_quality",
+            "value": 3.97,
+            "max_value": 5.0,
+            "description": "Drug binding site accessibility and quality",
+            "data_source": "dgidb"
+          },
+          {
+            "name": "existing_compounds",
+            "value": 3.57,
+            "max_value": 5.0,
+            "description": "Number and quality of existing drug compounds",
+            "data_source": "dgidb"
+          },
+          {
+            "name": "modality_options",
+            "value": 3.47,
+            "max_value": 5.0,
+            "description": "Available therapeutic modality options",
+            "data_source": "dgidb"
+          }
+        ],
+        "data_coverage": 0.83
+      },
+      {
+        "name": "safety_selectivity",
+        "score": 9.5,
+        "max_score": 15.0,
+        "sub_scores": [
+          {
+            "name": "off_target_risk",
+            "value": 3.47,
+            "max_value": 5.0,
+            "description": "Off-target binding risk assessment",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "essential_gene_risk",
+            "value": 3.07,
+            "max_value": 5.0,
+            "description": "Essential gene/viability risk",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "therapeutic_window",
+            "value": 2.97,
+            "max_value": 5.0,
+            "description": "Predicted therapeutic window",
+            "data_source": "pubmed"
+          }
+        ],
+        "data_coverage": 0.73
+      },
+      {
+        "name": "competitive_landscape",
+        "score": 5.5,
+        "max_score": 15.0,
+        "sub_scores": [
+          {
+            "name": "market_exclusivity",
+            "value": 2.13,
+            "max_value": 5.0,
+            "description": "Market exclusivity and IP position",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "competitor_count",
+            "value": 1.73,
+            "max_value": 5.0,
+            "description": "Number of competing programs",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "differentiation_potential",
+            "value": 1.63,
+            "max_value": 5.0,
+            "description": "Differentiation potential",
+            "data_source": "pubmed"
+          }
+        ],
+        "data_coverage": 0.47
+      },
+      {
+        "name": "clinical_translational",
+        "score": 12.5,
+        "max_score": 15.0,
+        "sub_scores": [
+          {
+            "name": "clinical_precedent",
+            "value": 4.47,
+            "max_value": 5.0,
+            "description": "Clinical precedent and trial success rates",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "biomarker_availability",
+            "value": 4.07,
+            "max_value": 5.0,
+            "description": "Biomarker availability for patient selection",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "regulatory_path",
+            "value": 3.97,
+            "max_value": 5.0,
+            "description": "Regulatory pathway clarity",
+            "data_source": "pubmed"
+          }
+        ],
+        "data_coverage": 0.93
+      },
+      {
+        "name": "literature_consensus",
+        "score": 6.4,
+        "max_score": 10.0,
+        "sub_scores": [
+          {
+            "name": "publication_volume",
+            "value": 3.5,
+            "max_value": 5.0,
+            "description": "Publication volume and citation impact",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "expert_consensus",
+            "value": 3.1,
+            "max_value": 5.0,
+            "description": "Expert consensus and review articles",
+            "data_source": "pubmed"
+          }
+        ],
+        "data_coverage": 0.74
+      }
+    ],
+    "weights": {
+      "genetic_evidence": 15.0,
+      "expression_biology": 15.0,
+      "druggability": 15.0,
+      "safety_selectivity": 15.0,
+      "competitive_landscape": 15.0,
+      "clinical_translational": 15.0,
+      "literature_consensus": 10.0
+    },
+    "formula_version": "v1.0"
+  },
+  "verdict": {
+    "level": "CONDITIONAL",
+    "score": 62.4,
+    "dimension_violations": [
+      "competitive_landscape"
+    ],
+    "forced_conditional": false,
+    "rationale": "PD-L1/CD274 is a validated immuno-oncology target but faces extreme competitive pressure with 5+ approved agents. Biomarker complexity (TPS vs CPS vs IC scoring), variable response rates across tumor types, and the crowded checkpoint inhibitor landscape drive a CONDITIONAL recommendation. Differentiation strategy required."
+  },
+  "evidence_hash": "bbfb5f5d422b51a4b85415bc03b6e442c2d0e5874d5889cf70a0979c90ce8c7a",
+  "scored_at": "2026-05-13T11:54:11.812741+00:00"
+}

@@ -1,0 +1,390 @@
+{
+  "gene": {
+    "canonical_symbol": "PIK3CA",
+    "ensembl_id": "ENSG00000121879",
+    "uniprot_accession": "P42336",
+    "query_symbol": "PIK3CA"
+  },
+  "disease_context": "HR-positive Breast Cancer",
+  "results": {
+    "opentargets": {
+      "confidence": 0.95,
+      "data": {
+        "associations": [
+          {
+            "disease_name": "HR-positive Breast Cancer",
+            "score": 0.92,
+            "data_types": [
+              "genetic_association",
+              "known_drug",
+              "literature"
+            ]
+          },
+          {
+            "disease_name": "HR-positive Breast Cancer (subtype)",
+            "score": 0.78,
+            "data_types": [
+              "genetic_association",
+              "somatic_mutation"
+            ]
+          },
+          {
+            "disease_name": "Cancer (general)",
+            "score": 0.65,
+            "data_types": [
+              "literature",
+              "rna_expression"
+            ]
+          },
+          {
+            "disease_name": "Neoplasm",
+            "score": 0.55,
+            "data_types": [
+              "genetic_association"
+            ]
+          }
+        ],
+        "overall_score": 0.92,
+        "target_id": "ENSG000000000121879",
+        "approved_symbol": "PIK3CA"
+      },
+      "error": null,
+      "is_fallback": false
+    },
+    "dgidb": {
+      "confidence": 1.0,
+      "data": {
+        "gene_name": "PIK3CA",
+        "interactions": [
+          {
+            "drug_name": "Alpelisib",
+            "interaction_types": [
+              "inhibitor"
+            ],
+            "score": 0.95,
+            "pmids": [
+              "30000000",
+              "30000001",
+              "30000002"
+            ]
+          },
+          {
+            "drug_name": "Inavolisib",
+            "interaction_types": [
+              "antagonist"
+            ],
+            "score": 0.87,
+            "pmids": [
+              "30001000",
+              "30001001",
+              "30001002"
+            ]
+          },
+          {
+            "drug_name": "Taselisib",
+            "interaction_types": [
+              "inhibitor"
+            ],
+            "score": 0.79,
+            "pmids": [
+              "30002000",
+              "30002001",
+              "30002002"
+            ]
+          },
+          {
+            "drug_name": "Copanlisib",
+            "interaction_types": [
+              "antagonist"
+            ],
+            "score": 0.71,
+            "pmids": [
+              "30003000",
+              "30003001",
+              "30003002"
+            ]
+          }
+        ],
+        "interaction_count": 4,
+        "categories": [
+          "DRUGGABLE GENOME",
+          "CLINICALLY ACTIONABLE"
+        ]
+      },
+      "error": null,
+      "is_fallback": false
+    },
+    "pubmed": {
+      "confidence": 0.85,
+      "data": {
+        "papers": [
+          {
+            "pmid": "35000001",
+            "title": "Molecular mechanisms of PIK3CA in HR-positive Breast Cancer: a comprehensive review",
+            "journal": "Nature Reviews Cancer",
+            "year": 2024,
+            "citations": 156
+          },
+          {
+            "pmid": "35000002",
+            "title": "Clinical outcomes of PIK3CA-targeted therapy in advanced HR-positive Breast Cancer",
+            "journal": "Journal of Clinical Oncology",
+            "year": 2023,
+            "citations": 89
+          },
+          {
+            "pmid": "35000003",
+            "title": "Biomarker-driven patient selection for PIK3CA inhibitors",
+            "journal": "The Lancet Oncology",
+            "year": 2024,
+            "citations": 72
+          },
+          {
+            "pmid": "35000004",
+            "title": "Resistance mechanisms to PIK3CA-directed therapies: current understanding and future directions",
+            "journal": "Cancer Discovery",
+            "year": 2023,
+            "citations": 145
+          },
+          {
+            "pmid": "35000005",
+            "title": "Next-generation PIK3CA modulators: structure-activity relationships and selectivity profiles",
+            "journal": "Journal of Medicinal Chemistry",
+            "year": 2024,
+            "citations": 48
+          },
+          {
+            "pmid": "35000006",
+            "title": "Real-world evidence for PIK3CA inhibitor efficacy in HR-positive Breast Cancer",
+            "journal": "Annals of Oncology",
+            "year": 2023,
+            "citations": 67
+          },
+          {
+            "pmid": "35000007",
+            "title": "Combination strategies targeting PIK3CA and immune checkpoint pathways",
+            "journal": "Nature Medicine",
+            "year": 2024,
+            "citations": 112
+          }
+        ],
+        "total_count": 85,
+        "query": "PIK3CA AND HR-positive Breast Cancer",
+        "ai_summary": "PIK3CA is extensively studied in the context of HR-positive Breast Cancer. The literature supports strong target validation with 85+ publications spanning mechanistic studies, clinical trials, and resistance biology."
+      },
+      "error": null,
+      "is_fallback": false
+    },
+    "clinicaltrials": {
+      "confidence": 0.9,
+      "data": {
+        "trials": [
+          {
+            "nct_id": "NCT05000000",
+            "title": "A Phase 1 Study of Alpelisib in Patients with HR-positive Breast Cancer",
+            "phase": "Phase 1",
+            "status": "RECRUITING",
+            "enrollment": 150,
+            "start_date": "2022-01-01",
+            "sponsor": "Roche"
+          },
+          {
+            "nct_id": "NCT05000001",
+            "title": "A Phase 1/Phase 2 Study of Alpelisib in Patients with HR-positive Breast Cancer",
+            "phase": "Phase 1/Phase 2",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 200,
+            "start_date": "2023-02-01",
+            "sponsor": "Roche"
+          },
+          {
+            "nct_id": "NCT05000002",
+            "title": "A Phase 2 Study of Alpelisib in Patients with HR-positive Breast Cancer",
+            "phase": "Phase 2",
+            "status": "NOT_YET_RECRUITING",
+            "enrollment": 250,
+            "start_date": "2024-03-01",
+            "sponsor": "Roche"
+          },
+          {
+            "nct_id": "NCT05000003",
+            "title": "A Phase 3 Study of Alpelisib in Patients with HR-positive Breast Cancer",
+            "phase": "Phase 3",
+            "status": "RECRUITING",
+            "enrollment": 300,
+            "start_date": "2025-04-01",
+            "sponsor": "Roche"
+          },
+          {
+            "nct_id": "NCT05000100",
+            "title": "A Phase 1 Study of Inavolisib in Patients with HR-positive Breast Cancer",
+            "phase": "Phase 1",
+            "status": "RECRUITING",
+            "enrollment": 230,
+            "start_date": "2022-02-01",
+            "sponsor": "Roche"
+          },
+          {
+            "nct_id": "NCT05000101",
+            "title": "A Phase 1/Phase 2 Study of Inavolisib in Patients with HR-positive Breast Cancer",
+            "phase": "Phase 1/Phase 2",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 280,
+            "start_date": "2023-03-01",
+            "sponsor": "Roche"
+          },
+          {
+            "nct_id": "NCT05000102",
+            "title": "A Phase 2 Study of Inavolisib in Patients with HR-positive Breast Cancer",
+            "phase": "Phase 2",
+            "status": "NOT_YET_RECRUITING",
+            "enrollment": 330,
+            "start_date": "2024-04-01",
+            "sponsor": "Roche"
+          },
+          {
+            "nct_id": "NCT05000200",
+            "title": "A Phase 1 Study of Taselisib in Patients with HR-positive Breast Cancer",
+            "phase": "Phase 1",
+            "status": "RECRUITING",
+            "enrollment": 310,
+            "start_date": "2022-03-01",
+            "sponsor": "Roche"
+          },
+          {
+            "nct_id": "NCT05000201",
+            "title": "A Phase 1/Phase 2 Study of Taselisib in Patients with HR-positive Breast Cancer",
+            "phase": "Phase 1/Phase 2",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 360,
+            "start_date": "2023-04-01",
+            "sponsor": "Roche"
+          },
+          {
+            "nct_id": "NCT05000202",
+            "title": "A Phase 2 Study of Taselisib in Patients with HR-positive Breast Cancer",
+            "phase": "Phase 2",
+            "status": "NOT_YET_RECRUITING",
+            "enrollment": 410,
+            "start_date": "2024-05-01",
+            "sponsor": "Roche"
+          },
+          {
+            "nct_id": "NCT05000300",
+            "title": "A Phase 1 Study of Copanlisib in Patients with HR-positive Breast Cancer",
+            "phase": "Phase 1",
+            "status": "RECRUITING",
+            "enrollment": 390,
+            "start_date": "2022-04-01",
+            "sponsor": "Roche"
+          },
+          {
+            "nct_id": "NCT05000301",
+            "title": "A Phase 1/Phase 2 Study of Copanlisib in Patients with HR-positive Breast Cancer",
+            "phase": "Phase 1/Phase 2",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 440,
+            "start_date": "2023-05-01",
+            "sponsor": "Roche"
+          },
+          {
+            "nct_id": "NCT05000302",
+            "title": "A Phase 2 Study of Copanlisib in Patients with HR-positive Breast Cancer",
+            "phase": "Phase 2",
+            "status": "NOT_YET_RECRUITING",
+            "enrollment": 490,
+            "start_date": "2024-06-01",
+            "sponsor": "Roche"
+          }
+        ],
+        "total_count": 20,
+        "query_terms": [
+          "PIK3CA",
+          "alpelisib",
+          "inavolisib"
+        ]
+      },
+      "error": null,
+      "is_fallback": false
+    },
+    "uniprot": {
+      "confidence": 0.95,
+      "data": {
+        "accession": "P42336",
+        "protein_name": "Phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit alpha isoform",
+        "gene_name": "PIK3CA",
+        "organism": "Homo sapiens (Human)",
+        "length": 1068,
+        "function": "Catalytic subunit of PI3K that phosphorylates PtdIns(4,5)P2 to generate PtdIns(3,4,5)P3. Hotspot mutations (H1047R, E545K) constitutively activate AKT-mTOR signaling.",
+        "subcellular_location": [
+          "Cytoplasm",
+          "Cell membrane"
+        ],
+        "pdb_structures": [],
+        "sequence_status": "Complete"
+      },
+      "error": null,
+      "is_fallback": false
+    },
+    "chembl": {
+      "confidence": 0.9,
+      "data": {
+        "target_chembl_id": "CHEMBL990",
+        "target_name": "PIK3CA",
+        "compounds": [
+          {
+            "molecule_chembl_id": "CHEMBL100000",
+            "pref_name": "ALPELISIB",
+            "max_phase": 4,
+            "molecule_type": "Small molecule",
+            "first_approval": 2003,
+            "oral_bioavailability": true,
+            "target_type": "SINGLE PROTEIN",
+            "activity_type": "IC50",
+            "activity_value_nm": 0.5
+          },
+          {
+            "molecule_chembl_id": "CHEMBL101000",
+            "pref_name": "INAVOLISIB",
+            "max_phase": 4,
+            "molecule_type": "Small molecule",
+            "first_approval": 2007,
+            "oral_bioavailability": true,
+            "target_type": "SINGLE PROTEIN",
+            "activity_type": "IC50",
+            "activity_value_nm": 2.8
+          },
+          {
+            "molecule_chembl_id": "CHEMBL102000",
+            "pref_name": "TASELISIB",
+            "max_phase": 3,
+            "molecule_type": "Small molecule",
+            "first_approval": null,
+            "oral_bioavailability": true,
+            "target_type": "SINGLE PROTEIN",
+            "activity_type": "IC50",
+            "activity_value_nm": 5.1
+          },
+          {
+            "molecule_chembl_id": "CHEMBL103000",
+            "pref_name": "COPANLISIB",
+            "max_phase": 3,
+            "molecule_type": "Small molecule",
+            "first_approval": null,
+            "oral_bioavailability": true,
+            "target_type": "SINGLE PROTEIN",
+            "activity_type": "IC50",
+            "activity_value_nm": 7.4
+          }
+        ],
+        "compound_count": 4,
+        "max_phase_reached": 4
+      },
+      "error": null,
+      "is_fallback": false
+    }
+  },
+  "fetched_at": 1778673251.813083,
+  "sources_available": 6,
+  "sources_failed": 0
+}

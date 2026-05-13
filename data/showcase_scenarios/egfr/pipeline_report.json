@@ -1,0 +1,63 @@
+{
+  "gene_symbol": "EGFR",
+  "tissue_type": "lung",
+  "qc_metrics": {
+    "n_cells_pre_qc": 6400,
+    "n_cells_post_qc": 5200,
+    "n_genes_detected": 22000,
+    "median_genes_per_cell": 3300,
+    "median_counts_per_cell": 17600,
+    "pct_mito_mean": 8.2,
+    "pct_mito_threshold": 20.0,
+    "doublet_rate": 4.2
+  },
+  "cell_type_annotations": {
+    "method": "CellTypist",
+    "model": "Human_Lung_Atlas",
+    "n_cell_types": 6,
+    "top_cell_types": [
+      {
+        "name": "Epithelial cells",
+        "count": 1819,
+        "fraction": 0.35
+      },
+      {
+        "name": "T cells",
+        "count": 1040,
+        "fraction": 0.2
+      },
+      {
+        "name": "Macrophages",
+        "count": 780,
+        "fraction": 0.15
+      },
+      {
+        "name": "Fibroblasts",
+        "count": 624,
+        "fraction": 0.12
+      },
+      {
+        "name": "Endothelial cells",
+        "count": 416,
+        "fraction": 0.08
+      }
+    ]
+  },
+  "differential_expression": {
+    "method": "Wilcoxon rank-sum",
+    "n_comparisons": 5,
+    "significant_genes": {
+      "total": 450,
+      "upregulated": 280,
+      "downregulated": 170
+    },
+    "target_gene_de": {
+      "gene": "EGFR",
+      "log2fc": 2.8,
+      "pval_adj": 1.5e-12,
+      "in_top_50": true
+    }
+  },
+  "pipeline_version": "v1.0",
+  "completed_at": "2026-05-13T11:54:11.812741+00:00"
+}

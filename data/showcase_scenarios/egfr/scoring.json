@@ -1,0 +1,224 @@
+{
+  "gene_symbol": "EGFR",
+  "disease_context": "Non-Small Cell Lung Cancer",
+  "composite": {
+    "score": 82.5,
+    "dimension_scores": [
+      {
+        "name": "genetic_evidence",
+        "score": 13.5,
+        "max_score": 15.0,
+        "sub_scores": [
+          {
+            "name": "gwas_associations",
+            "value": 4.8,
+            "max_value": 5.0,
+            "description": "GWAS/genetic association signals",
+            "data_source": "opentargets"
+          },
+          {
+            "name": "somatic_mutations",
+            "value": 4.4,
+            "max_value": 5.0,
+            "description": "Somatic mutation frequency and recurrence",
+            "data_source": "opentargets"
+          },
+          {
+            "name": "causal_evidence",
+            "value": 4.3,
+            "max_value": 5.0,
+            "description": "Causal evidence from functional studies",
+            "data_source": "opentargets"
+          }
+        ],
+        "data_coverage": 1.0
+      },
+      {
+        "name": "expression_biology",
+        "score": 12.8,
+        "max_score": 15.0,
+        "sub_scores": [
+          {
+            "name": "disease_expression",
+            "value": 4.57,
+            "max_value": 5.0,
+            "description": "Differential expression in disease tissue",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "pathway_centrality",
+            "value": 4.17,
+            "max_value": 5.0,
+            "description": "Pathway centrality and network position",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "biological_plausibility",
+            "value": 4.07,
+            "max_value": 5.0,
+            "description": "Biological mechanism plausibility",
+            "data_source": "pubmed"
+          }
+        ],
+        "data_coverage": 0.95
+      },
+      {
+        "name": "druggability",
+        "score": 14.0,
+        "max_score": 15.0,
+        "sub_scores": [
+          {
+            "name": "binding_site_quality",
+            "value": 4.97,
+            "max_value": 5.0,
+            "description": "Drug binding site accessibility and quality",
+            "data_source": "dgidb"
+          },
+          {
+            "name": "existing_compounds",
+            "value": 4.57,
+            "max_value": 5.0,
+            "description": "Number and quality of existing drug compounds",
+            "data_source": "dgidb"
+          },
+          {
+            "name": "modality_options",
+            "value": 4.47,
+            "max_value": 5.0,
+            "description": "Available therapeutic modality options",
+            "data_source": "dgidb"
+          }
+        ],
+        "data_coverage": 1.0
+      },
+      {
+        "name": "safety_selectivity",
+        "score": 11.5,
+        "max_score": 15.0,
+        "sub_scores": [
+          {
+            "name": "off_target_risk",
+            "value": 4.13,
+            "max_value": 5.0,
+            "description": "Off-target binding risk assessment",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "essential_gene_risk",
+            "value": 3.73,
+            "max_value": 5.0,
+            "description": "Essential gene/viability risk",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "therapeutic_window",
+            "value": 3.63,
+            "max_value": 5.0,
+            "description": "Predicted therapeutic window",
+            "data_source": "pubmed"
+          }
+        ],
+        "data_coverage": 0.87
+      },
+      {
+        "name": "competitive_landscape",
+        "score": 10.0,
+        "max_score": 15.0,
+        "sub_scores": [
+          {
+            "name": "market_exclusivity",
+            "value": 3.63,
+            "max_value": 5.0,
+            "description": "Market exclusivity and IP position",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "competitor_count",
+            "value": 3.23,
+            "max_value": 5.0,
+            "description": "Number of competing programs",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "differentiation_potential",
+            "value": 3.13,
+            "max_value": 5.0,
+            "description": "Differentiation potential",
+            "data_source": "pubmed"
+          }
+        ],
+        "data_coverage": 0.77
+      },
+      {
+        "name": "clinical_translational",
+        "score": 13.5,
+        "max_score": 15.0,
+        "sub_scores": [
+          {
+            "name": "clinical_precedent",
+            "value": 4.8,
+            "max_value": 5.0,
+            "description": "Clinical precedent and trial success rates",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "biomarker_availability",
+            "value": 4.4,
+            "max_value": 5.0,
+            "description": "Biomarker availability for patient selection",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "regulatory_path",
+            "value": 4.3,
+            "max_value": 5.0,
+            "description": "Regulatory pathway clarity",
+            "data_source": "pubmed"
+          }
+        ],
+        "data_coverage": 1.0
+      },
+      {
+        "name": "literature_consensus",
+        "score": 8.5,
+        "max_score": 10.0,
+        "sub_scores": [
+          {
+            "name": "publication_volume",
+            "value": 4.55,
+            "max_value": 5.0,
+            "description": "Publication volume and citation impact",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "expert_consensus",
+            "value": 4.15,
+            "max_value": 5.0,
+            "description": "Expert consensus and review articles",
+            "data_source": "pubmed"
+          }
+        ],
+        "data_coverage": 0.95
+      }
+    ],
+    "weights": {
+      "genetic_evidence": 15.0,
+      "expression_biology": 15.0,
+      "druggability": 15.0,
+      "safety_selectivity": 15.0,
+      "competitive_landscape": 15.0,
+      "clinical_translational": 15.0,
+      "literature_consensus": 10.0
+    },
+    "formula_version": "v1.0"
+  },
+  "verdict": {
+    "level": "GO",
+    "score": 82.5,
+    "dimension_violations": [],
+    "forced_conditional": false,
+    "rationale": "EGFR is a gold-standard oncology target with extensive clinical validation across multiple NSCLC subtypes. Strong genetic evidence from activating mutations (L858R, exon 19 deletions), four FDA-approved TKIs, and robust clinical trial data support a GO recommendation."
+  },
+  "evidence_hash": "96c689bc77b8a320704bac7a0807b356ada9b8a06a80453a4e4c7d76c59fdc29",
+  "scored_at": "2026-05-13T11:54:11.812741+00:00"
+}

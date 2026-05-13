@@ -1,0 +1,517 @@
+{
+  "gene": {
+    "canonical_symbol": "EGFR",
+    "ensembl_id": "ENSG00000146648",
+    "uniprot_accession": "P00533",
+    "query_symbol": "EGFR"
+  },
+  "disease_context": "Non-Small Cell Lung Cancer",
+  "results": {
+    "opentargets": {
+      "confidence": 1.0,
+      "data": {
+        "associations": [
+          {
+            "disease_name": "Non-Small Cell Lung Cancer",
+            "score": 0.92,
+            "data_types": [
+              "genetic_association",
+              "known_drug",
+              "literature"
+            ]
+          },
+          {
+            "disease_name": "Non-Small Cell Lung Cancer (subtype)",
+            "score": 0.78,
+            "data_types": [
+              "genetic_association",
+              "somatic_mutation"
+            ]
+          },
+          {
+            "disease_name": "Cancer (general)",
+            "score": 0.65,
+            "data_types": [
+              "literature",
+              "rna_expression"
+            ]
+          },
+          {
+            "disease_name": "Neoplasm",
+            "score": 0.55,
+            "data_types": [
+              "genetic_association"
+            ]
+          },
+          {
+            "disease_name": "Glioblastoma multiforme",
+            "score": 0.85,
+            "data_types": [
+              "genetic_association",
+              "known_drug"
+            ]
+          },
+          {
+            "disease_name": "Colorectal carcinoma",
+            "score": 0.72,
+            "data_types": [
+              "known_drug",
+              "literature"
+            ]
+          },
+          {
+            "disease_name": "Head and neck squamous cell carcinoma",
+            "score": 0.68,
+            "data_types": [
+              "known_drug"
+            ]
+          },
+          {
+            "disease_name": "Pancreatic carcinoma",
+            "score": 0.45,
+            "data_types": [
+              "literature"
+            ]
+          }
+        ],
+        "overall_score": 0.92,
+        "target_id": "ENSG000000000146648",
+        "approved_symbol": "EGFR"
+      },
+      "error": null,
+      "is_fallback": false
+    },
+    "dgidb": {
+      "confidence": 1.0,
+      "data": {
+        "gene_name": "EGFR",
+        "interactions": [
+          {
+            "drug_name": "Erlotinib",
+            "interaction_types": [
+              "inhibitor"
+            ],
+            "score": 0.95,
+            "pmids": [
+              "30000000",
+              "30000001",
+              "30000002"
+            ]
+          },
+          {
+            "drug_name": "Gefitinib",
+            "interaction_types": [
+              "antagonist"
+            ],
+            "score": 0.87,
+            "pmids": [
+              "30001000",
+              "30001001",
+              "30001002"
+            ]
+          },
+          {
+            "drug_name": "Osimertinib",
+            "interaction_types": [
+              "inhibitor"
+            ],
+            "score": 0.79,
+            "pmids": [
+              "30002000",
+              "30002001",
+              "30002002"
+            ]
+          },
+          {
+            "drug_name": "Afatinib",
+            "interaction_types": [
+              "antagonist"
+            ],
+            "score": 0.71,
+            "pmids": [
+              "30003000",
+              "30003001",
+              "30003002"
+            ]
+          }
+        ],
+        "interaction_count": 4,
+        "categories": [
+          "DRUGGABLE GENOME",
+          "CLINICALLY ACTIONABLE"
+        ]
+      },
+      "error": null,
+      "is_fallback": false
+    },
+    "pubmed": {
+      "confidence": 0.95,
+      "data": {
+        "papers": [
+          {
+            "pmid": "35000001",
+            "title": "Molecular mechanisms of EGFR in Non-Small Cell Lung Cancer: a comprehensive review",
+            "journal": "Nature Reviews Cancer",
+            "year": 2024,
+            "citations": 156
+          },
+          {
+            "pmid": "35000002",
+            "title": "Clinical outcomes of EGFR-targeted therapy in advanced Non-Small Cell Lung Cancer",
+            "journal": "Journal of Clinical Oncology",
+            "year": 2023,
+            "citations": 89
+          },
+          {
+            "pmid": "35000003",
+            "title": "Biomarker-driven patient selection for EGFR inhibitors",
+            "journal": "The Lancet Oncology",
+            "year": 2024,
+            "citations": 72
+          },
+          {
+            "pmid": "35000004",
+            "title": "Resistance mechanisms to EGFR-directed therapies: current understanding and future directions",
+            "journal": "Cancer Discovery",
+            "year": 2023,
+            "citations": 145
+          },
+          {
+            "pmid": "35000005",
+            "title": "Next-generation EGFR modulators: structure-activity relationships and selectivity profiles",
+            "journal": "Journal of Medicinal Chemistry",
+            "year": 2024,
+            "citations": 48
+          },
+          {
+            "pmid": "35000006",
+            "title": "Real-world evidence for EGFR inhibitor efficacy in Non-Small Cell Lung Cancer",
+            "journal": "Annals of Oncology",
+            "year": 2023,
+            "citations": 67
+          },
+          {
+            "pmid": "35000007",
+            "title": "Combination strategies targeting EGFR and immune checkpoint pathways",
+            "journal": "Nature Medicine",
+            "year": 2024,
+            "citations": 112
+          },
+          {
+            "pmid": "35000008",
+            "title": "Osimertinib in T790M-positive NSCLC: 5-year follow-up of AURA3",
+            "journal": "New England Journal of Medicine",
+            "year": 2024,
+            "citations": 234
+          },
+          {
+            "pmid": "35000009",
+            "title": "EGFR exon 20 insertion mutations: emerging therapeutic landscape",
+            "journal": "Clinical Cancer Research",
+            "year": 2023,
+            "citations": 98
+          },
+          {
+            "pmid": "35000010",
+            "title": "Liquid biopsy for EGFR mutation detection in NSCLC: systematic review",
+            "journal": "JAMA Oncology",
+            "year": 2024,
+            "citations": 187
+          }
+        ],
+        "total_count": 250,
+        "query": "EGFR AND Non-Small Cell Lung Cancer",
+        "ai_summary": "EGFR is extensively studied in the context of Non-Small Cell Lung Cancer. The literature supports strong target validation with 250+ publications spanning mechanistic studies, clinical trials, and resistance biology."
+      },
+      "error": null,
+      "is_fallback": false
+    },
+    "clinicaltrials": {
+      "confidence": 0.9,
+      "data": {
+        "trials": [
+          {
+            "nct_id": "NCT05000000",
+            "title": "A Phase 1 Study of Erlotinib in Patients with Non-Small Cell Lung Cancer",
+            "phase": "Phase 1",
+            "status": "RECRUITING",
+            "enrollment": 150,
+            "start_date": "2022-01-01",
+            "sponsor": "AstraZeneca"
+          },
+          {
+            "nct_id": "NCT05000001",
+            "title": "A Phase 1/Phase 2 Study of Erlotinib in Patients with Non-Small Cell Lung Cancer",
+            "phase": "Phase 1/Phase 2",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 200,
+            "start_date": "2023-02-01",
+            "sponsor": "AstraZeneca"
+          },
+          {
+            "nct_id": "NCT05000002",
+            "title": "A Phase 2 Study of Erlotinib in Patients with Non-Small Cell Lung Cancer",
+            "phase": "Phase 2",
+            "status": "NOT_YET_RECRUITING",
+            "enrollment": 250,
+            "start_date": "2024-03-01",
+            "sponsor": "AstraZeneca"
+          },
+          {
+            "nct_id": "NCT05000003",
+            "title": "A Phase 3 Study of Erlotinib in Patients with Non-Small Cell Lung Cancer",
+            "phase": "Phase 3",
+            "status": "RECRUITING",
+            "enrollment": 300,
+            "start_date": "2025-04-01",
+            "sponsor": "AstraZeneca"
+          },
+          {
+            "nct_id": "NCT05000100",
+            "title": "A Phase 1 Study of Gefitinib in Patients with Non-Small Cell Lung Cancer",
+            "phase": "Phase 1",
+            "status": "RECRUITING",
+            "enrollment": 230,
+            "start_date": "2022-02-01",
+            "sponsor": "AstraZeneca"
+          },
+          {
+            "nct_id": "NCT05000101",
+            "title": "A Phase 1/Phase 2 Study of Gefitinib in Patients with Non-Small Cell Lung Cancer",
+            "phase": "Phase 1/Phase 2",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 280,
+            "start_date": "2023-03-01",
+            "sponsor": "AstraZeneca"
+          },
+          {
+            "nct_id": "NCT05000102",
+            "title": "A Phase 2 Study of Gefitinib in Patients with Non-Small Cell Lung Cancer",
+            "phase": "Phase 2",
+            "status": "NOT_YET_RECRUITING",
+            "enrollment": 330,
+            "start_date": "2024-04-01",
+            "sponsor": "AstraZeneca"
+          },
+          {
+            "nct_id": "NCT05000200",
+            "title": "A Phase 1 Study of Osimertinib in Patients with Non-Small Cell Lung Cancer",
+            "phase": "Phase 1",
+            "status": "RECRUITING",
+            "enrollment": 310,
+            "start_date": "2022-03-01",
+            "sponsor": "AstraZeneca"
+          },
+          {
+            "nct_id": "NCT05000201",
+            "title": "A Phase 1/Phase 2 Study of Osimertinib in Patients with Non-Small Cell Lung Cancer",
+            "phase": "Phase 1/Phase 2",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 360,
+            "start_date": "2023-04-01",
+            "sponsor": "AstraZeneca"
+          },
+          {
+            "nct_id": "NCT05000202",
+            "title": "A Phase 2 Study of Osimertinib in Patients with Non-Small Cell Lung Cancer",
+            "phase": "Phase 2",
+            "status": "NOT_YET_RECRUITING",
+            "enrollment": 410,
+            "start_date": "2024-05-01",
+            "sponsor": "AstraZeneca"
+          },
+          {
+            "nct_id": "NCT05000300",
+            "title": "A Phase 1 Study of Afatinib in Patients with Non-Small Cell Lung Cancer",
+            "phase": "Phase 1",
+            "status": "RECRUITING",
+            "enrollment": 390,
+            "start_date": "2022-04-01",
+            "sponsor": "AstraZeneca"
+          },
+          {
+            "nct_id": "NCT05000301",
+            "title": "A Phase 1/Phase 2 Study of Afatinib in Patients with Non-Small Cell Lung Cancer",
+            "phase": "Phase 1/Phase 2",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 440,
+            "start_date": "2023-05-01",
+            "sponsor": "AstraZeneca"
+          },
+          {
+            "nct_id": "NCT05000302",
+            "title": "A Phase 2 Study of Afatinib in Patients with Non-Small Cell Lung Cancer",
+            "phase": "Phase 2",
+            "status": "NOT_YET_RECRUITING",
+            "enrollment": 490,
+            "start_date": "2024-06-01",
+            "sponsor": "AstraZeneca"
+          },
+          {
+            "nct_id": "NCT06000000",
+            "title": "Combination Erlotinib with immunotherapy in EGFR-mutant NSCLC (Study 1)",
+            "phase": "Phase 1",
+            "status": "RECRUITING",
+            "enrollment": 200,
+            "start_date": "2024-01-15",
+            "sponsor": "AstraZeneca"
+          },
+          {
+            "nct_id": "NCT06000001",
+            "title": "Combination Erlotinib with immunotherapy in EGFR-mutant NSCLC (Study 2)",
+            "phase": "Phase 1/Phase 2",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 260,
+            "start_date": "2024-02-15",
+            "sponsor": "AstraZeneca"
+          },
+          {
+            "nct_id": "NCT06000002",
+            "title": "Combination Erlotinib with immunotherapy in EGFR-mutant NSCLC (Study 3)",
+            "phase": "Phase 2",
+            "status": "NOT_YET_RECRUITING",
+            "enrollment": 320,
+            "start_date": "2024-03-15",
+            "sponsor": "AstraZeneca"
+          },
+          {
+            "nct_id": "NCT06000003",
+            "title": "Combination Erlotinib with immunotherapy in EGFR-mutant NSCLC (Study 4)",
+            "phase": "Phase 3",
+            "status": "RECRUITING",
+            "enrollment": 380,
+            "start_date": "2024-04-15",
+            "sponsor": "AstraZeneca"
+          },
+          {
+            "nct_id": "NCT06000004",
+            "title": "Combination Erlotinib with immunotherapy in EGFR-mutant NSCLC (Study 5)",
+            "phase": "Phase 1",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 440,
+            "start_date": "2024-05-15",
+            "sponsor": "AstraZeneca"
+          },
+          {
+            "nct_id": "NCT06000005",
+            "title": "Combination Erlotinib with immunotherapy in EGFR-mutant NSCLC (Study 6)",
+            "phase": "Phase 1/Phase 2",
+            "status": "NOT_YET_RECRUITING",
+            "enrollment": 500,
+            "start_date": "2024-06-15",
+            "sponsor": "AstraZeneca"
+          },
+          {
+            "nct_id": "NCT06000006",
+            "title": "Combination Erlotinib with immunotherapy in EGFR-mutant NSCLC (Study 7)",
+            "phase": "Phase 2",
+            "status": "RECRUITING",
+            "enrollment": 560,
+            "start_date": "2024-07-15",
+            "sponsor": "AstraZeneca"
+          },
+          {
+            "nct_id": "NCT06000007",
+            "title": "Combination Erlotinib with immunotherapy in EGFR-mutant NSCLC (Study 8)",
+            "phase": "Phase 3",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 620,
+            "start_date": "2024-08-15",
+            "sponsor": "AstraZeneca"
+          }
+        ],
+        "total_count": 55,
+        "query_terms": [
+          "EGFR",
+          "erlotinib",
+          "gefitinib"
+        ]
+      },
+      "error": null,
+      "is_fallback": false
+    },
+    "uniprot": {
+      "confidence": 0.95,
+      "data": {
+        "accession": "P00533",
+        "protein_name": "Epidermal growth factor receptor",
+        "gene_name": "EGFR",
+        "organism": "Homo sapiens (Human)",
+        "length": 1210,
+        "function": "Receptor tyrosine kinase that activates downstream RAS-MAPK and PI3K-AKT signaling. Essential for cell proliferation, differentiation, and survival. Activating mutations drive oncogenesis in NSCLC.",
+        "subcellular_location": [
+          "Cell membrane",
+          "Cytoplasm",
+          "Nucleus"
+        ],
+        "pdb_structures": [
+          "6JXT",
+          "5UG9"
+        ],
+        "sequence_status": "Complete"
+      },
+      "error": null,
+      "is_fallback": false
+    },
+    "chembl": {
+      "confidence": 0.9,
+      "data": {
+        "target_chembl_id": "CHEMBL718",
+        "target_name": "EGFR",
+        "compounds": [
+          {
+            "molecule_chembl_id": "CHEMBL100000",
+            "pref_name": "ERLOTINIB",
+            "max_phase": 4,
+            "molecule_type": "Small molecule",
+            "first_approval": 2003,
+            "oral_bioavailability": true,
+            "target_type": "SINGLE PROTEIN",
+            "activity_type": "IC50",
+            "activity_value_nm": 0.5
+          },
+          {
+            "molecule_chembl_id": "CHEMBL101000",
+            "pref_name": "GEFITINIB",
+            "max_phase": 4,
+            "molecule_type": "Small molecule",
+            "first_approval": 2007,
+            "oral_bioavailability": true,
+            "target_type": "SINGLE PROTEIN",
+            "activity_type": "IC50",
+            "activity_value_nm": 2.8
+          },
+          {
+            "molecule_chembl_id": "CHEMBL102000",
+            "pref_name": "OSIMERTINIB",
+            "max_phase": 3,
+            "molecule_type": "Small molecule",
+            "first_approval": null,
+            "oral_bioavailability": true,
+            "target_type": "SINGLE PROTEIN",
+            "activity_type": "IC50",
+            "activity_value_nm": 5.1
+          },
+          {
+            "molecule_chembl_id": "CHEMBL103000",
+            "pref_name": "AFATINIB",
+            "max_phase": 3,
+            "molecule_type": "Small molecule",
+            "first_approval": null,
+            "oral_bioavailability": true,
+            "target_type": "SINGLE PROTEIN",
+            "activity_type": "IC50",
+            "activity_value_nm": 7.4
+          }
+        ],
+        "compound_count": 4,
+        "max_phase_reached": 4
+      },
+      "error": null,
+      "is_fallback": false
+    }
+  },
+  "fetched_at": 1778673251.813083,
+  "sources_available": 6,
+  "sources_failed": 0
+}

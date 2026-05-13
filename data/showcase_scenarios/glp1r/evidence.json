@@ -1,0 +1,389 @@
+{
+  "gene": {
+    "canonical_symbol": "GLP1R",
+    "ensembl_id": "ENSG00000112164",
+    "uniprot_accession": "P43220",
+    "query_symbol": "GLP1R"
+  },
+  "disease_context": "Obesity",
+  "results": {
+    "opentargets": {
+      "confidence": 1.0,
+      "data": {
+        "associations": [
+          {
+            "disease_name": "Obesity",
+            "score": 0.95,
+            "data_types": [
+              "genetic_association",
+              "known_drug",
+              "literature"
+            ]
+          },
+          {
+            "disease_name": "Type 2 Diabetes Mellitus",
+            "score": 0.92,
+            "data_types": [
+              "genetic_association",
+              "known_drug"
+            ]
+          },
+          {
+            "disease_name": "Non-alcoholic fatty liver disease",
+            "score": 0.58,
+            "data_types": [
+              "literature"
+            ]
+          },
+          {
+            "disease_name": "Cardiovascular disease",
+            "score": 0.52,
+            "data_types": [
+              "literature",
+              "known_drug"
+            ]
+          }
+        ],
+        "overall_score": 0.95,
+        "target_id": "ENSG000000000112164",
+        "approved_symbol": "GLP1R"
+      },
+      "error": null,
+      "is_fallback": false
+    },
+    "dgidb": {
+      "confidence": 1.0,
+      "data": {
+        "gene_name": "GLP1R",
+        "interactions": [
+          {
+            "drug_name": "Semaglutide",
+            "interaction_types": [
+              "inhibitor"
+            ],
+            "score": 0.95,
+            "pmids": [
+              "30000000",
+              "30000001",
+              "30000002"
+            ]
+          },
+          {
+            "drug_name": "Tirzepatide",
+            "interaction_types": [
+              "antagonist"
+            ],
+            "score": 0.87,
+            "pmids": [
+              "30001000",
+              "30001001",
+              "30001002"
+            ]
+          },
+          {
+            "drug_name": "Liraglutide",
+            "interaction_types": [
+              "inhibitor"
+            ],
+            "score": 0.79,
+            "pmids": [
+              "30002000",
+              "30002001",
+              "30002002"
+            ]
+          },
+          {
+            "drug_name": "Exenatide",
+            "interaction_types": [
+              "antagonist"
+            ],
+            "score": 0.71,
+            "pmids": [
+              "30003000",
+              "30003001",
+              "30003002"
+            ]
+          }
+        ],
+        "interaction_count": 4,
+        "categories": [
+          "DRUGGABLE GENOME",
+          "CLINICALLY ACTIONABLE"
+        ]
+      },
+      "error": null,
+      "is_fallback": false
+    },
+    "pubmed": {
+      "confidence": 0.85,
+      "data": {
+        "papers": [
+          {
+            "pmid": "35000001",
+            "title": "Molecular mechanisms of GLP1R in Obesity: a comprehensive review",
+            "journal": "Nature Reviews Cancer",
+            "year": 2024,
+            "citations": 156
+          },
+          {
+            "pmid": "35000002",
+            "title": "Clinical outcomes of GLP1R-targeted therapy in advanced Obesity",
+            "journal": "Journal of Clinical Oncology",
+            "year": 2023,
+            "citations": 89
+          },
+          {
+            "pmid": "35000003",
+            "title": "Biomarker-driven patient selection for GLP1R inhibitors",
+            "journal": "The Lancet Oncology",
+            "year": 2024,
+            "citations": 72
+          },
+          {
+            "pmid": "35000004",
+            "title": "Resistance mechanisms to GLP1R-directed therapies: current understanding and future directions",
+            "journal": "Cancer Discovery",
+            "year": 2023,
+            "citations": 145
+          },
+          {
+            "pmid": "35000005",
+            "title": "Next-generation GLP1R modulators: structure-activity relationships and selectivity profiles",
+            "journal": "Journal of Medicinal Chemistry",
+            "year": 2024,
+            "citations": 48
+          },
+          {
+            "pmid": "35000006",
+            "title": "Real-world evidence for GLP1R inhibitor efficacy in Obesity",
+            "journal": "Annals of Oncology",
+            "year": 2023,
+            "citations": 67
+          },
+          {
+            "pmid": "35000007",
+            "title": "Combination strategies targeting GLP1R and immune checkpoint pathways",
+            "journal": "Nature Medicine",
+            "year": 2024,
+            "citations": 112
+          }
+        ],
+        "total_count": 85,
+        "query": "GLP1R AND Obesity",
+        "ai_summary": "GLP1R is extensively studied in the context of Obesity. The literature supports strong target validation with 85+ publications spanning mechanistic studies, clinical trials, and resistance biology."
+      },
+      "error": null,
+      "is_fallback": false
+    },
+    "clinicaltrials": {
+      "confidence": 0.9,
+      "data": {
+        "trials": [
+          {
+            "nct_id": "NCT05000000",
+            "title": "A Phase 1 Study of Semaglutide in Patients with Obesity",
+            "phase": "Phase 1",
+            "status": "RECRUITING",
+            "enrollment": 150,
+            "start_date": "2022-01-01",
+            "sponsor": "Eli Lilly"
+          },
+          {
+            "nct_id": "NCT05000001",
+            "title": "A Phase 1/Phase 2 Study of Semaglutide in Patients with Obesity",
+            "phase": "Phase 1/Phase 2",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 200,
+            "start_date": "2023-02-01",
+            "sponsor": "Eli Lilly"
+          },
+          {
+            "nct_id": "NCT05000002",
+            "title": "A Phase 2 Study of Semaglutide in Patients with Obesity",
+            "phase": "Phase 2",
+            "status": "NOT_YET_RECRUITING",
+            "enrollment": 250,
+            "start_date": "2024-03-01",
+            "sponsor": "Eli Lilly"
+          },
+          {
+            "nct_id": "NCT05000003",
+            "title": "A Phase 3 Study of Semaglutide in Patients with Obesity",
+            "phase": "Phase 3",
+            "status": "RECRUITING",
+            "enrollment": 300,
+            "start_date": "2025-04-01",
+            "sponsor": "Eli Lilly"
+          },
+          {
+            "nct_id": "NCT05000100",
+            "title": "A Phase 1 Study of Tirzepatide in Patients with Obesity",
+            "phase": "Phase 1",
+            "status": "RECRUITING",
+            "enrollment": 230,
+            "start_date": "2022-02-01",
+            "sponsor": "Eli Lilly"
+          },
+          {
+            "nct_id": "NCT05000101",
+            "title": "A Phase 1/Phase 2 Study of Tirzepatide in Patients with Obesity",
+            "phase": "Phase 1/Phase 2",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 280,
+            "start_date": "2023-03-01",
+            "sponsor": "Eli Lilly"
+          },
+          {
+            "nct_id": "NCT05000102",
+            "title": "A Phase 2 Study of Tirzepatide in Patients with Obesity",
+            "phase": "Phase 2",
+            "status": "NOT_YET_RECRUITING",
+            "enrollment": 330,
+            "start_date": "2024-04-01",
+            "sponsor": "Eli Lilly"
+          },
+          {
+            "nct_id": "NCT05000200",
+            "title": "A Phase 1 Study of Liraglutide in Patients with Obesity",
+            "phase": "Phase 1",
+            "status": "RECRUITING",
+            "enrollment": 310,
+            "start_date": "2022-03-01",
+            "sponsor": "Eli Lilly"
+          },
+          {
+            "nct_id": "NCT05000201",
+            "title": "A Phase 1/Phase 2 Study of Liraglutide in Patients with Obesity",
+            "phase": "Phase 1/Phase 2",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 360,
+            "start_date": "2023-04-01",
+            "sponsor": "Eli Lilly"
+          },
+          {
+            "nct_id": "NCT05000202",
+            "title": "A Phase 2 Study of Liraglutide in Patients with Obesity",
+            "phase": "Phase 2",
+            "status": "NOT_YET_RECRUITING",
+            "enrollment": 410,
+            "start_date": "2024-05-01",
+            "sponsor": "Eli Lilly"
+          },
+          {
+            "nct_id": "NCT05000300",
+            "title": "A Phase 1 Study of Exenatide in Patients with Obesity",
+            "phase": "Phase 1",
+            "status": "RECRUITING",
+            "enrollment": 390,
+            "start_date": "2022-04-01",
+            "sponsor": "Eli Lilly"
+          },
+          {
+            "nct_id": "NCT05000301",
+            "title": "A Phase 1/Phase 2 Study of Exenatide in Patients with Obesity",
+            "phase": "Phase 1/Phase 2",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 440,
+            "start_date": "2023-05-01",
+            "sponsor": "Eli Lilly"
+          },
+          {
+            "nct_id": "NCT05000302",
+            "title": "A Phase 2 Study of Exenatide in Patients with Obesity",
+            "phase": "Phase 2",
+            "status": "NOT_YET_RECRUITING",
+            "enrollment": 490,
+            "start_date": "2024-06-01",
+            "sponsor": "Eli Lilly"
+          }
+        ],
+        "total_count": 35,
+        "query_terms": [
+          "GLP1R",
+          "semaglutide",
+          "tirzepatide"
+        ]
+      },
+      "error": null,
+      "is_fallback": false
+    },
+    "uniprot": {
+      "confidence": 0.95,
+      "data": {
+        "accession": "P43220",
+        "protein_name": "Glucagon-like peptide 1 receptor",
+        "gene_name": "GLP1R",
+        "organism": "Homo sapiens (Human)",
+        "length": 463,
+        "function": "G protein-coupled receptor for glucagon-like peptide-1. Stimulates insulin secretion, inhibits glucagon release, slows gastric emptying, and promotes satiety.",
+        "subcellular_location": [
+          "Cell membrane"
+        ],
+        "pdb_structures": [],
+        "sequence_status": "Complete"
+      },
+      "error": null,
+      "is_fallback": false
+    },
+    "chembl": {
+      "confidence": 0.9,
+      "data": {
+        "target_chembl_id": "CHEMBL1027",
+        "target_name": "GLP1R",
+        "compounds": [
+          {
+            "molecule_chembl_id": "CHEMBL100000",
+            "pref_name": "SEMAGLUTIDE",
+            "max_phase": 4,
+            "molecule_type": "Peptide",
+            "first_approval": 2003,
+            "oral_bioavailability": false,
+            "target_type": "SINGLE PROTEIN",
+            "activity_type": "EC50",
+            "activity_value_nm": 0.5
+          },
+          {
+            "molecule_chembl_id": "CHEMBL101000",
+            "pref_name": "TIRZEPATIDE",
+            "max_phase": 4,
+            "molecule_type": "Peptide",
+            "first_approval": 2007,
+            "oral_bioavailability": false,
+            "target_type": "SINGLE PROTEIN",
+            "activity_type": "EC50",
+            "activity_value_nm": 2.8
+          },
+          {
+            "molecule_chembl_id": "CHEMBL102000",
+            "pref_name": "LIRAGLUTIDE",
+            "max_phase": 3,
+            "molecule_type": "Peptide",
+            "first_approval": null,
+            "oral_bioavailability": false,
+            "target_type": "SINGLE PROTEIN",
+            "activity_type": "EC50",
+            "activity_value_nm": 5.1
+          },
+          {
+            "molecule_chembl_id": "CHEMBL103000",
+            "pref_name": "EXENATIDE",
+            "max_phase": 3,
+            "molecule_type": "Peptide",
+            "first_approval": null,
+            "oral_bioavailability": false,
+            "target_type": "SINGLE PROTEIN",
+            "activity_type": "EC50",
+            "activity_value_nm": 7.4
+          }
+        ],
+        "compound_count": 4,
+        "max_phase_reached": 4
+      },
+      "error": null,
+      "is_fallback": false
+    }
+  },
+  "fetched_at": 1778673251.813083,
+  "sources_available": 6,
+  "sources_failed": 0
+}

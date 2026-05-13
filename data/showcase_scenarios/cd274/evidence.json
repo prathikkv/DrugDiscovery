@@ -1,0 +1,439 @@
+{
+  "gene": {
+    "canonical_symbol": "CD274",
+    "ensembl_id": "ENSG00000120217",
+    "uniprot_accession": "Q9NZQ7",
+    "query_symbol": "CD274"
+  },
+  "disease_context": "Pan-cancer",
+  "results": {
+    "opentargets": {
+      "confidence": 0.95,
+      "data": {
+        "associations": [
+          {
+            "disease_name": "Pan-cancer",
+            "score": 0.92,
+            "data_types": [
+              "genetic_association",
+              "known_drug",
+              "literature"
+            ]
+          },
+          {
+            "disease_name": "Pan-cancer (subtype)",
+            "score": 0.78,
+            "data_types": [
+              "genetic_association",
+              "somatic_mutation"
+            ]
+          },
+          {
+            "disease_name": "Cancer (general)",
+            "score": 0.65,
+            "data_types": [
+              "literature",
+              "rna_expression"
+            ]
+          },
+          {
+            "disease_name": "Neoplasm",
+            "score": 0.55,
+            "data_types": [
+              "genetic_association"
+            ]
+          }
+        ],
+        "overall_score": 0.92,
+        "target_id": "ENSG000000000120217",
+        "approved_symbol": "CD274"
+      },
+      "error": null,
+      "is_fallback": false
+    },
+    "dgidb": {
+      "confidence": 1.0,
+      "data": {
+        "gene_name": "CD274",
+        "interactions": [
+          {
+            "drug_name": "Pembrolizumab",
+            "interaction_types": [
+              "inhibitor"
+            ],
+            "score": 0.95,
+            "pmids": [
+              "30000000",
+              "30000001",
+              "30000002"
+            ]
+          },
+          {
+            "drug_name": "Atezolizumab",
+            "interaction_types": [
+              "antagonist"
+            ],
+            "score": 0.87,
+            "pmids": [
+              "30001000",
+              "30001001",
+              "30001002"
+            ]
+          },
+          {
+            "drug_name": "Durvalumab",
+            "interaction_types": [
+              "inhibitor"
+            ],
+            "score": 0.79,
+            "pmids": [
+              "30002000",
+              "30002001",
+              "30002002"
+            ]
+          },
+          {
+            "drug_name": "Avelumab",
+            "interaction_types": [
+              "antagonist"
+            ],
+            "score": 0.71,
+            "pmids": [
+              "30003000",
+              "30003001",
+              "30003002"
+            ]
+          },
+          {
+            "drug_name": "Nivolumab",
+            "interaction_types": [
+              "inhibitor"
+            ],
+            "score": 0.63,
+            "pmids": [
+              "30004000",
+              "30004001",
+              "30004002"
+            ]
+          }
+        ],
+        "interaction_count": 5,
+        "categories": [
+          "DRUGGABLE GENOME",
+          "CLINICALLY ACTIONABLE"
+        ]
+      },
+      "error": null,
+      "is_fallback": false
+    },
+    "pubmed": {
+      "confidence": 0.85,
+      "data": {
+        "papers": [
+          {
+            "pmid": "35000001",
+            "title": "Molecular mechanisms of CD274 in Pan-cancer: a comprehensive review",
+            "journal": "Nature Reviews Cancer",
+            "year": 2024,
+            "citations": 156
+          },
+          {
+            "pmid": "35000002",
+            "title": "Clinical outcomes of CD274-targeted therapy in advanced Pan-cancer",
+            "journal": "Journal of Clinical Oncology",
+            "year": 2023,
+            "citations": 89
+          },
+          {
+            "pmid": "35000003",
+            "title": "Biomarker-driven patient selection for CD274 inhibitors",
+            "journal": "The Lancet Oncology",
+            "year": 2024,
+            "citations": 72
+          },
+          {
+            "pmid": "35000004",
+            "title": "Resistance mechanisms to CD274-directed therapies: current understanding and future directions",
+            "journal": "Cancer Discovery",
+            "year": 2023,
+            "citations": 145
+          },
+          {
+            "pmid": "35000005",
+            "title": "Next-generation CD274 modulators: structure-activity relationships and selectivity profiles",
+            "journal": "Journal of Medicinal Chemistry",
+            "year": 2024,
+            "citations": 48
+          },
+          {
+            "pmid": "35000006",
+            "title": "Real-world evidence for CD274 inhibitor efficacy in Pan-cancer",
+            "journal": "Annals of Oncology",
+            "year": 2023,
+            "citations": 67
+          },
+          {
+            "pmid": "35000007",
+            "title": "Combination strategies targeting CD274 and immune checkpoint pathways",
+            "journal": "Nature Medicine",
+            "year": 2024,
+            "citations": 112
+          }
+        ],
+        "total_count": 85,
+        "query": "CD274 AND Pan-cancer",
+        "ai_summary": "CD274 is extensively studied in the context of Pan-cancer. The literature supports strong target validation with 85+ publications spanning mechanistic studies, clinical trials, and resistance biology."
+      },
+      "error": null,
+      "is_fallback": false
+    },
+    "clinicaltrials": {
+      "confidence": 0.9,
+      "data": {
+        "trials": [
+          {
+            "nct_id": "NCT05000000",
+            "title": "A Phase 1 Study of Pembrolizumab in Patients with Pan-cancer",
+            "phase": "Phase 1",
+            "status": "RECRUITING",
+            "enrollment": 150,
+            "start_date": "2022-01-01",
+            "sponsor": "Merck"
+          },
+          {
+            "nct_id": "NCT05000001",
+            "title": "A Phase 1/Phase 2 Study of Pembrolizumab in Patients with Pan-cancer",
+            "phase": "Phase 1/Phase 2",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 200,
+            "start_date": "2023-02-01",
+            "sponsor": "Merck"
+          },
+          {
+            "nct_id": "NCT05000002",
+            "title": "A Phase 2 Study of Pembrolizumab in Patients with Pan-cancer",
+            "phase": "Phase 2",
+            "status": "NOT_YET_RECRUITING",
+            "enrollment": 250,
+            "start_date": "2024-03-01",
+            "sponsor": "Merck"
+          },
+          {
+            "nct_id": "NCT05000003",
+            "title": "A Phase 3 Study of Pembrolizumab in Patients with Pan-cancer",
+            "phase": "Phase 3",
+            "status": "RECRUITING",
+            "enrollment": 300,
+            "start_date": "2025-04-01",
+            "sponsor": "Merck"
+          },
+          {
+            "nct_id": "NCT05000100",
+            "title": "A Phase 1 Study of Atezolizumab in Patients with Pan-cancer",
+            "phase": "Phase 1",
+            "status": "RECRUITING",
+            "enrollment": 230,
+            "start_date": "2022-02-01",
+            "sponsor": "Merck"
+          },
+          {
+            "nct_id": "NCT05000101",
+            "title": "A Phase 1/Phase 2 Study of Atezolizumab in Patients with Pan-cancer",
+            "phase": "Phase 1/Phase 2",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 280,
+            "start_date": "2023-03-01",
+            "sponsor": "Merck"
+          },
+          {
+            "nct_id": "NCT05000102",
+            "title": "A Phase 2 Study of Atezolizumab in Patients with Pan-cancer",
+            "phase": "Phase 2",
+            "status": "NOT_YET_RECRUITING",
+            "enrollment": 330,
+            "start_date": "2024-04-01",
+            "sponsor": "Merck"
+          },
+          {
+            "nct_id": "NCT05000200",
+            "title": "A Phase 1 Study of Durvalumab in Patients with Pan-cancer",
+            "phase": "Phase 1",
+            "status": "RECRUITING",
+            "enrollment": 310,
+            "start_date": "2022-03-01",
+            "sponsor": "Merck"
+          },
+          {
+            "nct_id": "NCT05000201",
+            "title": "A Phase 1/Phase 2 Study of Durvalumab in Patients with Pan-cancer",
+            "phase": "Phase 1/Phase 2",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 360,
+            "start_date": "2023-04-01",
+            "sponsor": "Merck"
+          },
+          {
+            "nct_id": "NCT05000202",
+            "title": "A Phase 2 Study of Durvalumab in Patients with Pan-cancer",
+            "phase": "Phase 2",
+            "status": "NOT_YET_RECRUITING",
+            "enrollment": 410,
+            "start_date": "2024-05-01",
+            "sponsor": "Merck"
+          },
+          {
+            "nct_id": "NCT05000300",
+            "title": "A Phase 1 Study of Avelumab in Patients with Pan-cancer",
+            "phase": "Phase 1",
+            "status": "RECRUITING",
+            "enrollment": 390,
+            "start_date": "2022-04-01",
+            "sponsor": "Merck"
+          },
+          {
+            "nct_id": "NCT05000301",
+            "title": "A Phase 1/Phase 2 Study of Avelumab in Patients with Pan-cancer",
+            "phase": "Phase 1/Phase 2",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 440,
+            "start_date": "2023-05-01",
+            "sponsor": "Merck"
+          },
+          {
+            "nct_id": "NCT05000302",
+            "title": "A Phase 2 Study of Avelumab in Patients with Pan-cancer",
+            "phase": "Phase 2",
+            "status": "NOT_YET_RECRUITING",
+            "enrollment": 490,
+            "start_date": "2024-06-01",
+            "sponsor": "Merck"
+          },
+          {
+            "nct_id": "NCT05000400",
+            "title": "A Phase 1 Study of Nivolumab in Patients with Pan-cancer",
+            "phase": "Phase 1",
+            "status": "RECRUITING",
+            "enrollment": 470,
+            "start_date": "2022-05-01",
+            "sponsor": "Merck"
+          },
+          {
+            "nct_id": "NCT05000401",
+            "title": "A Phase 1/Phase 2 Study of Nivolumab in Patients with Pan-cancer",
+            "phase": "Phase 1/Phase 2",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 520,
+            "start_date": "2023-06-01",
+            "sponsor": "Merck"
+          },
+          {
+            "nct_id": "NCT05000402",
+            "title": "A Phase 2 Study of Nivolumab in Patients with Pan-cancer",
+            "phase": "Phase 2",
+            "status": "NOT_YET_RECRUITING",
+            "enrollment": 570,
+            "start_date": "2024-07-01",
+            "sponsor": "Merck"
+          }
+        ],
+        "total_count": 20,
+        "query_terms": [
+          "CD274",
+          "pembrolizumab",
+          "atezolizumab"
+        ]
+      },
+      "error": null,
+      "is_fallback": false
+    },
+    "uniprot": {
+      "confidence": 0.95,
+      "data": {
+        "accession": "Q9NZQ7",
+        "protein_name": "Programmed cell death 1 ligand 1",
+        "gene_name": "CD274",
+        "organism": "Homo sapiens (Human)",
+        "length": 290,
+        "function": "Type I transmembrane protein that binds PD-1 receptor on T cells. Engagement delivers inhibitory signal suppressing T cell activation. Tumor expression enables immune evasion.",
+        "subcellular_location": [
+          "Cell membrane"
+        ],
+        "pdb_structures": [],
+        "sequence_status": "Complete"
+      },
+      "error": null,
+      "is_fallback": false
+    },
+    "chembl": {
+      "confidence": 0.9,
+      "data": {
+        "target_chembl_id": "CHEMBL1024",
+        "target_name": "CD274",
+        "compounds": [
+          {
+            "molecule_chembl_id": "CHEMBL100000",
+            "pref_name": "PEMBROLIZUMAB",
+            "max_phase": 4,
+            "molecule_type": "Small molecule",
+            "first_approval": 2003,
+            "oral_bioavailability": true,
+            "target_type": "SINGLE PROTEIN",
+            "activity_type": "IC50",
+            "activity_value_nm": 0.5
+          },
+          {
+            "molecule_chembl_id": "CHEMBL101000",
+            "pref_name": "ATEZOLIZUMAB",
+            "max_phase": 4,
+            "molecule_type": "Small molecule",
+            "first_approval": 2007,
+            "oral_bioavailability": true,
+            "target_type": "SINGLE PROTEIN",
+            "activity_type": "IC50",
+            "activity_value_nm": 2.8
+          },
+          {
+            "molecule_chembl_id": "CHEMBL102000",
+            "pref_name": "DURVALUMAB",
+            "max_phase": 3,
+            "molecule_type": "Small molecule",
+            "first_approval": null,
+            "oral_bioavailability": true,
+            "target_type": "SINGLE PROTEIN",
+            "activity_type": "IC50",
+            "activity_value_nm": 5.1
+          },
+          {
+            "molecule_chembl_id": "CHEMBL103000",
+            "pref_name": "AVELUMAB",
+            "max_phase": 3,
+            "molecule_type": "Small molecule",
+            "first_approval": null,
+            "oral_bioavailability": true,
+            "target_type": "SINGLE PROTEIN",
+            "activity_type": "IC50",
+            "activity_value_nm": 7.4
+          },
+          {
+            "molecule_chembl_id": "CHEMBL104000",
+            "pref_name": "NIVOLUMAB",
+            "max_phase": 3,
+            "molecule_type": "Small molecule",
+            "first_approval": null,
+            "oral_bioavailability": true,
+            "target_type": "SINGLE PROTEIN",
+            "activity_type": "IC50",
+            "activity_value_nm": 9.7
+          }
+        ],
+        "compound_count": 5,
+        "max_phase_reached": 4
+      },
+      "error": null,
+      "is_fallback": false
+    }
+  },
+  "fetched_at": 1778673251.813083,
+  "sources_available": 6,
+  "sources_failed": 0
+}

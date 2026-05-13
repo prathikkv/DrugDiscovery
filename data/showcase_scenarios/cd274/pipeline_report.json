@@ -1,0 +1,63 @@
+{
+  "gene_symbol": "CD274",
+  "tissue_type": "tumor",
+  "qc_metrics": {
+    "n_cells_pre_qc": 6000,
+    "n_cells_post_qc": 4800,
+    "n_genes_detected": 20500,
+    "median_genes_per_cell": 3075,
+    "median_counts_per_cell": 16400,
+    "pct_mito_mean": 12.5,
+    "pct_mito_threshold": 20.0,
+    "doublet_rate": 4.2
+  },
+  "cell_type_annotations": {
+    "method": "CellTypist",
+    "model": "Human_Tumor_Atlas",
+    "n_cell_types": 8,
+    "top_cell_types": [
+      {
+        "name": "Epithelial cells",
+        "count": 1680,
+        "fraction": 0.35
+      },
+      {
+        "name": "T cells",
+        "count": 960,
+        "fraction": 0.2
+      },
+      {
+        "name": "Macrophages",
+        "count": 720,
+        "fraction": 0.15
+      },
+      {
+        "name": "Fibroblasts",
+        "count": 576,
+        "fraction": 0.12
+      },
+      {
+        "name": "Endothelial cells",
+        "count": 384,
+        "fraction": 0.08
+      }
+    ]
+  },
+  "differential_expression": {
+    "method": "Wilcoxon rank-sum",
+    "n_comparisons": 5,
+    "significant_genes": {
+      "total": 450,
+      "upregulated": 280,
+      "downregulated": 170
+    },
+    "target_gene_de": {
+      "gene": "CD274",
+      "log2fc": 1.2,
+      "pval_adj": 0.00032,
+      "in_top_50": false
+    }
+  },
+  "pipeline_version": "v1.0",
+  "completed_at": "2026-05-13T11:54:11.812741+00:00"
+}
