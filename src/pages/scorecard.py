@@ -58,26 +58,52 @@ if not scorecard_data:
     # Attempt auto-compute from evidence data
     evidence_key = f"project_{pid}_evidence"
     evidence_data = st.session_state.get(evidence_key)
-    if evidence_data:
-        st.info("Computing scorecard from evidence data...")
-        try:
-            from src.scoring import ScoringFramework
+    if evidence_data and isinstance(evidence_data, dict):
+        with st.spinner("Computing scorecard from evidence data..."):
+            try:
+                from src.scoring import ScoringFramework
+                from src.evidence.models import AggregatedEvidence, GeneIdentifiers, EvidenceResult
 
-            framework = ScoringFramework()
-            # Evidence data is a serialized dict from showcase -- cannot reconstruct
-            # AggregatedEvidence without the full model chain. Store as-is for display.
-            # Scorecard must be pre-computed or loaded from showcase.
-            st.warning(
-                "Scorecard auto-computation requires full AggregatedEvidence model. "
-                "Please use a showcase scenario or run the full pipeline."
-            )
-            st.stop()
-        except Exception as e:
-            st.error(f"Failed to compute scorecard: {e}")
-            st.stop()
+                # Reconstruct AggregatedEvidence from serialized dict
+                gene_info = evidence_data.get("gene", {})
+                gene = GeneIdentifiers(
+                    canonical_symbol=gene_info.get("canonical_symbol", "Unknown"),
+                    ensembl_id=gene_info.get("ensembl_id"),
+                    uniprot_accession=gene_info.get("uniprot_accession"),
+                    query_symbol=gene_info.get("query_symbol", ""),
+                )
+                results = {}
+                for src_name, src_data in evidence_data.get("results", {}).items():
+                    results[src_name] = EvidenceResult(
+                        source_name=src_name,
+                        confidence=src_data.get("confidence", 0.0),
+                        data=src_data.get("data"),
+                        error=src_data.get("error"),
+                        is_fallback=src_data.get("is_fallback", False),
+                    )
+                available = sum(1 for r in results.values() if r.confidence > 0)
+                failed = sum(1 for r in results.values() if r.error)
+                evidence_obj = AggregatedEvidence(
+                    gene=gene,
+                    disease_context=evidence_data.get("disease_context"),
+                    results=results,
+                    sources_available=available,
+                    sources_failed=failed,
+                )
+
+                # Score the target
+                framework = ScoringFramework()
+                scorecard_result = framework.score_target(evidence_obj)
+
+                # Store in session_state and rerun to display
+                st.session_state[scorecard_key] = scorecard_result.model_dump()
+                st.rerun()
+            except Exception as e:
+                st.error(f"Failed to compute scorecard: {e}")
+                st.stop()
     else:
         st.info(
-            "No scorecard data available. Run the scoring pipeline or load a showcase scenario."
+            "No evidence data available. Run the evidence pipeline or load a showcase scenario."
         )
         st.stop()
 
