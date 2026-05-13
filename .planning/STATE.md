@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-05-09)
 
 **Core value:** Scientists upload omics data and target genes, receive a structured GO/CONDITIONAL/NO-GO recommendation with full audit trail -- replacing 6 months of manual assessment with 2 weeks.
-**Current focus:** Phase 7: UI Integration -- IN PROGRESS
+**Current focus:** Phase 7: UI Integration -- COMPLETE
 
 ## Current Position
 
-Phase: 7 of 8 (UI Integration)
-Plan: 1 of 4 in current phase -- DONE
-Status: Completed 07-01, ready for 07-02
-Last activity: 2026-05-12 -- Completed 07-01-PLAN.md (Shared UI Infrastructure)
+Phase: 7 of 8 (UI Integration) -- COMPLETE
+Plan: 4 of 4 in current phase -- DONE
+Status: Phase 7 complete, ready for Phase 8
+Last activity: 2026-05-13 -- Completed 07-04-PLAN.md (Showcase Data & Integration Tests)
 
-Progress: [████████░░] 79%
+Progress: [█████████░] 92%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 19
-- Average duration: 7min
-- Total execution time: 2.09 hours
+- Total plans completed: 22
+- Average duration: 8min
+- Total execution time: 2.85 hours
 
 **By Phase:**
 
@@ -33,11 +33,11 @@ Progress: [████████░░] 79%
 | 04-ai-reasoning-engine | 3 | 16min | 5min |
 | 05-target-scoring | 2 | 23min | 12min |
 | 06-deliverables | 3 | 23min | 8min |
-| 07-ui-integration | 1 | 13min | 13min |
+| 07-ui-integration | 4 | 54min | 14min |
 
 **Recent Trend:**
-- Last 5 plans: 06-01 (8min), 06-02 (6min), 06-03 (9min), 07-01 (13min)
-- Trend: Phase 7 started; shared UI infrastructure (CSS, HITL gate, showcase, app shell) in 13min
+- Last 5 plans: 06-03 (9min), 07-01 (13min), 07-02 (10min), 07-03 (10min), 07-04 (21min)
+- Trend: Phase 7 complete with 4 plans in 54min. Full UI with 7 pages, 24 showcase files, 194 tests
 
 *Updated after each plan completion*
 
@@ -136,6 +136,17 @@ Recent decisions affecting current work:
 - [07-01]: HITL dialog trigger uses session_state flags (not button returns) to survive st.rerun()
 - [07-01]: Verdict badges use GO/CONDITIONAL/NO-GO naming matching scoring engine output
 - [07-01]: CSS includes --teal custom property for future data flow bar components
+- [07-02]: get_task_manager() imported from src.pages.components (not src.app) per plan-checker fix
+- [07-02]: st.rerun(scope="app") used in fragment polling for full-page transition on task completion
+- [07-02]: Evidence gathering uses st.spinner (not TaskManager) since it completes in ~30-60s
+- [07-02]: All widget keys page-prefixed (omics_, evidence_, insights_) to avoid DuplicateWidgetID
+- [07-03]: Scorecard page reconstructs ScorecardResult from dict for radar chart reuse
+- [07-03]: Dossier export uses st.download_button for both HTML and PDF formats
+- [07-03]: Audit page creates fresh AuditTrail instance per render (per-operation connection pattern)
+- [07-03]: Projects page stores showcase data in project-scoped session_state keys
+- [07-04]: Pre-populated st.session_state["user"] in test to handle projects.py module-level auth guard in bare mode
+- [07-04]: CD274 competitive_landscape dimension set to 5.5/15.0 to drive CONDITIONAL verdict via dimension violation
+- [07-04]: Generation script uses fixed timestamps for deterministic reproducible output
 
 ### Pending Todos
 
@@ -152,6 +163,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-05-12
-Stopped at: Completed 07-01-PLAN.md (Shared UI Infrastructure) -- ready for 07-02
+Last session: 2026-05-13
+Stopped at: Completed 07-04-PLAN.md (Showcase Data & Integration Tests) -- Phase 7 complete, ready for Phase 8
 Resume file: None
