@@ -153,9 +153,15 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 08-01-PLAN.md — pytest marker registration (unit/integration/validation), tier classification of 194 existing tests, GxP validation suite (6 showcase targets + MELK negative control), MELK fixture data
-- [ ] 08-02-PLAN.md — GxP documentation suite: VMP, URS, FRS, FMEA, traceability.yaml, and 5 SOPs (system operation, data backup, change control, incident response, user management)
+- [ ] 08-01-PLAN.md — pytest marker registration (unit/integration/validation), tier classification of existing tests, GxP validation suite (6 showcase targets + MELK negative control), MELK fixture data, pre-commit structural tests
+  - Wave 1 (autonomous)
+  - Files: pyproject.toml, tests/conftest.py, 13 existing test files (markers), tests/test_validation/ (3 new files), data/showcase_scenarios/melk/ (2 JSON files)
+- [ ] 08-02-PLAN.md — GxP documentation suite: VMP, URS, FRS, FMEA, traceability.yaml with real test function names, and 5 SOPs (system operation, data backup, change control, incident response, user management)
+  - Wave 1 (autonomous, parallel with 08-01)
+  - Files: docs/gxp/ (10 files: 5 docs + 5 SOPs + traceability.yaml)
 - [ ] 08-03-PLAN.md — Updated Dockerfile (v2 src/ layout, port 8501, HEALTHCHECK), docker-compose.yml (app + test services), and three pre-commit compliance hooks
+  - Wave 2 (after 08-01 + 08-02, has human checkpoint)
+  - Files: Dockerfile, docker-compose.yml, .pre-commit-config.yaml, scripts/hooks/ (3 hook scripts), requirements.txt
 
 ## Progress
 
@@ -170,11 +176,11 @@ Phase 1 (Foundation) --> Phase 2+3 (Omics + Evidence, parallel) --> Phase 4 (AI 
 | 1. Foundation | 3/3 | Complete | 2026-05-10 |
 | 2. Omics Pipeline | 3/3 | Complete | 2026-05-10 |
 | 3. Evidence Integration | 4/4 | Complete | 2026-05-11 |
-| 4. AI Reasoning Engine | 0/3 | Not started | - |
-| 5. Target Scoring | 0/2 | Not started | - |
-| 6. Deliverables | 0/3 | Not started | - |
-| 7. UI Integration | 0/4 | Not started | - |
-| 8. Validation + Launch | 0/3 | Not started | - |
+| 4. AI Reasoning Engine | 3/3 | Complete | 2026-05-11 |
+| 5. Target Scoring | 2/2 | Complete | 2026-05-12 |
+| 6. Deliverables | 3/3 | Complete | 2026-05-12 |
+| 7. UI Integration | 5/5 | Complete | 2026-05-13 |
+| 8. Validation + Launch | 0/3 | Planned | - |
 
 ## Coverage
 
