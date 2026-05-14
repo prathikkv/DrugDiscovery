@@ -150,12 +150,12 @@ Plans:
   3. GxP documentation is complete: Validation Master Plan, User Requirements Specification, Functional Requirements Specification, FMEA, traceability matrix (requirements to tests), and 5 or more priority SOPs
   4. Pre-commit hooks enforce compliance: audit trail integrity check, no hardcoded parameters check, and config change flagging are active on every commit
   5. The application runs in Docker with a single `docker compose up` command and all tests pass in the containerized environment
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 08-01: TBD
-- [ ] 08-02: TBD
-- [ ] 08-03: TBD
+- [ ] 08-01-PLAN.md — pytest marker registration (unit/integration/validation), tier classification of 194 existing tests, GxP validation suite (6 showcase targets + MELK negative control), MELK fixture data
+- [ ] 08-02-PLAN.md — GxP documentation suite: VMP, URS, FRS, FMEA, traceability.yaml, and 5 SOPs (system operation, data backup, change control, incident response, user management)
+- [ ] 08-03-PLAN.md — Updated Dockerfile (v2 src/ layout, port 8501, HEALTHCHECK), docker-compose.yml (app + test services), and three pre-commit compliance hooks
 
 ## Progress
 
