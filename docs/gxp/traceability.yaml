@@ -1,0 +1,153 @@
+# Requirements Traceability Matrix
+# BioOrchestrator v2 — Drug Target Intelligence Platform
+# Format: REQ-xxx -> tests list (verifiable file paths)
+# Updated: 2026-05-13
+
+traceability:
+
+  # Phase 1: Foundation
+  REQ-501:
+    description: "User registration with email, password (bcrypt), and role"
+    phase: 1
+    priority: P0
+    module: src/auth/service.py
+    tests:
+      - tests/test_auth.py::test_register_success
+      - tests/test_auth.py::test_register_duplicate_email
+    status: implemented
+
+  REQ-502:
+    description: "Account lockout after 5 failed login attempts"
+    phase: 1
+    priority: P0
+    module: src/auth/service.py
+    tests:
+      - tests/test_auth.py::test_lockout_after_5_failures
+    status: implemented
+
+  REQ-503:
+    description: "Append-only audit trail with SHA-256 hash chain integrity"
+    phase: 1
+    priority: P0
+    module: src/compliance/audit_trail.py
+    tests:
+      - tests/test_audit_trail.py::test_append_record
+      - tests/test_audit_trail.py::test_hash_chain_valid
+      - tests/test_audit_trail.py::test_hash_chain_detects_tamper
+    status: implemented
+
+  REQ-504:
+    description: "Background task execution with progress tracking"
+    phase: 1
+    priority: P1
+    module: src/execution/task_manager.py
+    tests:
+      - tests/test_task_manager.py::test_submit_and_complete
+      - tests/test_task_manager.py::test_status_survives_reconnect
+    status: implemented
+
+  # Phase 2: Omics Pipeline
+  REQ-101:
+    description: "Disease-agnostic scRNA-seq pipeline with configurable QC"
+    phase: 2
+    priority: P0
+    module: src/pipeline/orchestrator.py
+    tests:
+      - tests/test_pipeline.py::TestQC::test_qc_applies_config_thresholds
+      - tests/test_pipeline.py::TestQC::test_qc_report_structure
+    status: implemented
+
+  # Phase 3: Evidence Integration
+  REQ-201:
+    description: "OpenTargets evidence source (GraphQL)"
+    phase: 3
+    priority: P0
+    module: src/evidence/sources/opentargets.py
+    tests:
+      - tests/test_evidence/test_aggregator.py::TestAggregatorParallelFetch::test_gather_all_sources_succeed
+    status: implemented
+
+  REQ-210:
+    description: "Stale cache fallback when live fetch fails"
+    phase: 3
+    priority: P1
+    module: src/evidence/cache.py
+    tests:
+      - tests/test_evidence/test_aggregator.py::TestAggregatorCacheIntegration::test_gather_serves_stale_cache_on_failure
+    status: implemented
+
+  # Phase 5: Target Scoring
+  REQ-401:
+    description: "7-dimension composite scoring framework (0-100)"
+    phase: 5
+    priority: P0
+    module: src/scoring/framework.py
+    tests:
+      - tests/test_scoring/test_framework.py::TestScoringFramework::test_score_target_returns_scorecard_result
+      - tests/test_scoring/test_framework.py::TestComputeComposite::test_composite_all_perfect
+    status: implemented
+
+  REQ-402:
+    description: "GO/CONDITIONAL/NO-GO verdict thresholds with dimension minimums"
+    phase: 5
+    priority: P0
+    module: src/scoring/verdict.py
+    tests:
+      - tests/test_scoring/test_framework.py::TestDetermineVerdict::test_verdict_threshold_boundary_75
+      - tests/test_scoring/test_framework.py::TestDetermineVerdict::test_verdict_threshold_boundary_49_9
+      - tests/test_scoring/test_framework.py::TestDetermineVerdict::test_verdict_forced_conditional
+    status: implemented
+
+  # Phase 8: Validation + Launch
+  REQ-801:
+    description: "Golden test: EGFR ranks #1 among showcase targets in NSCLC"
+    phase: 8
+    priority: P0
+    module: data/showcase_scenarios/egfr/scoring.json
+    tests:
+      - tests/test_validation/test_pharma_showcase.py::test_egfr_scores_highest_among_showcase
+      - tests/test_validation/test_pharma_showcase.py::test_showcase_score_in_range[egfr]
+      - tests/test_validation/test_pharma_showcase.py::test_showcase_verdict[egfr-GO]
+    status: implemented
+
+  REQ-802:
+    description: "Negative control: MELK scores NO-GO (discredited target)"
+    phase: 8
+    priority: P1
+    module: data/showcase_scenarios/melk/scoring.json
+    tests:
+      - tests/test_validation/test_negative_control.py::test_melk_no_go
+      - tests/test_validation/test_negative_control.py::test_melk_score_in_expected_range
+      - tests/test_validation/test_negative_control.py::test_melk_safety_red_flags
+      - tests/test_validation/test_negative_control.py::test_melk_scores_below_all_showcase_targets
+    status: implemented
+
+  REQ-803:
+    description: "Three-tier testing: unit <30s, integration <5min, GxP validation suite"
+    phase: 8
+    priority: P0
+    module: pyproject.toml
+    tests:
+      - tests/test_validation/test_critical_path.py::test_traceability_yaml_exists
+      - tests/test_validation/test_critical_path.py::test_showcase_scenarios_complete
+    status: implemented
+
+  REQ-804:
+    description: "GxP documentation: VMP, URS, FRS, FMEA, traceability, 5 SOPs"
+    phase: 8
+    priority: P0
+    module: docs/gxp/
+    tests:
+      - tests/test_validation/test_critical_path.py::test_traceability_yaml_exists
+      - tests/test_validation/test_critical_path.py::test_traceability_yaml_has_req801
+    status: implemented
+
+  REQ-806:
+    description: "Pre-commit hooks: audit trail integrity, no hardcoded params, config change flag"
+    phase: 8
+    priority: P1
+    module: .pre-commit-config.yaml
+    tests:
+      - tests/test_validation/test_critical_path.py::test_precommit_config_exists
+      - tests/test_validation/test_critical_path.py::test_hook_scripts_exist
+    status: implemented
