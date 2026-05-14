@@ -6,6 +6,10 @@ Covers 10 sub-score boundary tests + 8 dimension calculator tests = 18 total.
 
 import pytest
 
+pytestmark = pytest.mark.unit
+
+import pytest
+
 
 # ---------------------------------------------------------------------------
 # Sub-score extractor tests (boundary cases)

@@ -4,6 +4,8 @@ import time
 
 import pytest
 
+pytestmark = pytest.mark.integration
+
 from src.execution.models import TaskStatus
 from src.execution.task_manager import TaskManager
 

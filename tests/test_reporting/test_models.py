@@ -12,6 +12,8 @@ from datetime import datetime, timezone
 
 import pytest
 
+pytestmark = pytest.mark.unit
+
 from src.reporting.models import DossierConfig, DossierData, SectionContent
 from src.reporting.data_collector import collect_dossier_data
 from src.evidence.models import (

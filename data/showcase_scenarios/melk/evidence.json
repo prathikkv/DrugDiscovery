@@ -1,0 +1,71 @@
+{
+  "gene_symbol": "MELK",
+  "gene_id": "ENSG00000165304",
+  "disease_context": "Triple-Negative Breast Cancer",
+  "sources": {
+    "opentargets": {
+      "confidence": 0.42,
+      "associations": [
+        {
+          "disease": "breast carcinoma",
+          "score": 0.18,
+          "genetic_associations": 0.05,
+          "somatic_mutations": 0.12,
+          "known_drugs": 0.01
+        }
+      ],
+      "genetic_portal_score": 0.05
+    },
+    "dgidb": {
+      "confidence": 0.35,
+      "interactions": [
+        {
+          "drug_name": "OTSSP167",
+          "interaction_type": "inhibitor",
+          "pmid": "23954397",
+          "sources": ["DGIdb"],
+          "score": 0.3
+        }
+      ],
+      "druggability_score": 0.22
+    },
+    "pubmed": {
+      "confidence": 0.51,
+      "publication_count": 187,
+      "recent_publications": 12,
+      "contradiction_signal": true,
+      "contradiction_reason": "CRISPR knockout (eLife 2017) showed no proliferation effect across 13 cancer cell lines, contradicting 30+ prior studies. OTSSP167 off-target effects explain apparent activity.",
+      "expert_consensus_score": 0.31
+    },
+    "clinicaltrials": {
+      "confidence": 0.38,
+      "trials": [
+        {
+          "nct_id": "NCT02795325",
+          "phase": "Phase 1",
+          "status": "Terminated",
+          "drug": "OTSSP167"
+        }
+      ],
+      "active_trial_count": 0,
+      "terminated_trial_count": 1
+    },
+    "uniprot": {
+      "confidence": 0.62,
+      "protein_class": "KINASE",
+      "subcellular_location": "Cytoplasm",
+      "tissue_specificity": "Broadly expressed in proliferating cells",
+      "essentiality_flag": true,
+      "essentiality_note": "DepMap shows broad essentiality across cancer cell lines"
+    },
+    "chembl": {
+      "confidence": 0.33,
+      "target_id": "CHEMBL4128",
+      "bioactivity_count": 23,
+      "max_phase": 1,
+      "approved_drugs": 0,
+      "selectivity_score": 0.18
+    }
+  },
+  "fetched_at": "2026-05-13T11:54:11.812741+00:00"
+}

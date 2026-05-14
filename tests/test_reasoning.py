@@ -20,6 +20,8 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
+pytestmark = pytest.mark.integration
+
 from src.reasoning.fallback import FallbackChain
 from src.reasoning.hallucination import (
     check_citations,

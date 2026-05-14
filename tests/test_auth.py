@@ -2,6 +2,8 @@
 
 import pytest
 
+pytestmark = pytest.mark.integration
+
 from src.auth.models import Role
 from src.db import get_connection
 

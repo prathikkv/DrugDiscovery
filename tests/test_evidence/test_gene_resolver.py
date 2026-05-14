@@ -8,6 +8,10 @@ from __future__ import annotations
 
 from unittest.mock import MagicMock, patch
 
+import pytest
+
+pytestmark = pytest.mark.integration
+
 from src.evidence.gene_resolver import GeneResolver, LOCAL_ALIASES
 from src.evidence.models import GeneIdentifiers
 

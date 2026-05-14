@@ -1,0 +1,8 @@
+[tool.pytest.ini_options]
+markers = [
+    "unit: Fast unit tests, no I/O or DB access (target: all unit tests in <30s)",
+    "integration: Integration tests with DB, file I/O, or multi-component flows (target: <5min total)",
+    "validation: GxP validation/qualification tests using real pre-cached data (no mocking)",
+]
+testpaths = ["tests"]
+addopts = "--strict-markers"

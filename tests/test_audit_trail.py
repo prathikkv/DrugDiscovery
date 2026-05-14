@@ -2,6 +2,8 @@
 
 import pytest
 
+pytestmark = pytest.mark.integration
+
 from src.compliance.audit_trail import AuditTrail
 from src.compliance.electronic_signature import ElectronicSignature
 from src.auth.service import AuthService

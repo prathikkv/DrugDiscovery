@@ -4,6 +4,10 @@ TDD RED tests: written before implementation. All should fail initially.
 """
 
 import pytest
+
+pytestmark = pytest.mark.unit
+
+import pytest
 from pydantic import ValidationError
 
 

@@ -2,6 +2,8 @@
 
 import pytest
 
+pytestmark = pytest.mark.integration
+
 from src import config
 from src.project.service import ProjectService
 

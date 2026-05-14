@@ -8,6 +8,8 @@ from __future__ import annotations
 
 import pytest
 
+pytestmark = pytest.mark.unit
+
 from src.evidence.models import AggregatedEvidence, EvidenceResult, GeneIdentifiers
 from src.scoring.models import (
     ComparativeScorecard,

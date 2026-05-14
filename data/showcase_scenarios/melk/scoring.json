@@ -1,0 +1,224 @@
+{
+  "gene_symbol": "MELK",
+  "disease_context": "Triple-Negative Breast Cancer",
+  "composite": {
+    "score": 39.3,
+    "dimension_scores": [
+      {
+        "name": "genetic_evidence",
+        "score": 5.5,
+        "max_score": 15.0,
+        "sub_scores": [
+          {
+            "name": "gwas_associations",
+            "value": 2.0,
+            "max_value": 5.0,
+            "description": "GWAS/genetic association signals",
+            "data_source": "opentargets"
+          },
+          {
+            "name": "somatic_mutations",
+            "value": 2.1,
+            "max_value": 5.0,
+            "description": "Somatic mutation frequency and recurrence",
+            "data_source": "opentargets"
+          },
+          {
+            "name": "causal_evidence",
+            "value": 1.4,
+            "max_value": 5.0,
+            "description": "Causal evidence from functional studies -- CRISPR contradicts prior claims",
+            "data_source": "opentargets"
+          }
+        ],
+        "data_coverage": 0.42
+      },
+      {
+        "name": "expression_biology",
+        "score": 8.0,
+        "max_score": 15.0,
+        "sub_scores": [
+          {
+            "name": "disease_expression",
+            "value": 2.8,
+            "max_value": 5.0,
+            "description": "Differential expression in disease tissue -- upregulated but non-specific",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "pathway_centrality",
+            "value": 2.7,
+            "max_value": 5.0,
+            "description": "Pathway centrality -- cell cycle kinase, non-specific role",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "biological_plausibility",
+            "value": 2.5,
+            "max_value": 5.0,
+            "description": "Biological mechanism plausibility -- contradicted by CRISPR",
+            "data_source": "pubmed"
+          }
+        ],
+        "data_coverage": 0.55
+      },
+      {
+        "name": "druggability",
+        "score": 6.0,
+        "max_score": 15.0,
+        "sub_scores": [
+          {
+            "name": "binding_site_quality",
+            "value": 2.2,
+            "max_value": 5.0,
+            "description": "Drug binding site -- kinase domain but no selective compounds",
+            "data_source": "dgidb"
+          },
+          {
+            "name": "existing_compounds",
+            "value": 1.9,
+            "max_value": 5.0,
+            "description": "OTSSP167 only compound, off-target mechanism",
+            "data_source": "dgidb"
+          },
+          {
+            "name": "modality_options",
+            "value": 1.9,
+            "max_value": 5.0,
+            "description": "Limited modality options given selectivity concerns",
+            "data_source": "dgidb"
+          }
+        ],
+        "data_coverage": 0.38
+      },
+      {
+        "name": "safety_selectivity",
+        "score": 2.8,
+        "max_score": 15.0,
+        "sub_scores": [
+          {
+            "name": "off_target_risk",
+            "value": 1.1,
+            "max_value": 5.0,
+            "description": "High off-target risk -- OTSSP167 inhibits 30+ kinases",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "essential_gene_risk",
+            "value": 0.9,
+            "max_value": 5.0,
+            "description": "Broad DepMap essentiality across cancer lines -- toxicity risk",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "therapeutic_window",
+            "value": 0.8,
+            "max_value": 5.0,
+            "description": "No viable therapeutic window identified",
+            "data_source": "pubmed"
+          }
+        ],
+        "data_coverage": 0.45
+      },
+      {
+        "name": "competitive_landscape",
+        "score": 6.5,
+        "max_score": 15.0,
+        "sub_scores": [
+          {
+            "name": "market_exclusivity",
+            "value": 2.4,
+            "max_value": 5.0,
+            "description": "Low competition but no active programs",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "competitor_count",
+            "value": 2.2,
+            "max_value": 5.0,
+            "description": "Few competitors due to discredited target status",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "differentiation_potential",
+            "value": 1.9,
+            "max_value": 5.0,
+            "description": "Low differentiation potential",
+            "data_source": "pubmed"
+          }
+        ],
+        "data_coverage": 0.33
+      },
+      {
+        "name": "clinical_translational",
+        "score": 5.5,
+        "max_score": 15.0,
+        "sub_scores": [
+          {
+            "name": "clinical_precedent",
+            "value": 1.9,
+            "max_value": 5.0,
+            "description": "One terminated Phase 1 trial (NCT02795325)",
+            "data_source": "clinicaltrials"
+          },
+          {
+            "name": "biomarker_availability",
+            "value": 1.8,
+            "max_value": 5.0,
+            "description": "No validated patient selection biomarker",
+            "data_source": "clinicaltrials"
+          },
+          {
+            "name": "regulatory_path",
+            "value": 1.8,
+            "max_value": 5.0,
+            "description": "Unclear regulatory path given CRISPR contradictions",
+            "data_source": "clinicaltrials"
+          }
+        ],
+        "data_coverage": 0.41
+      },
+      {
+        "name": "literature_consensus",
+        "score": 5.0,
+        "max_score": 10.0,
+        "sub_scores": [
+          {
+            "name": "publication_volume",
+            "value": 3.1,
+            "max_value": 5.0,
+            "description": "187 publications but majority pre-CRISPR refutation",
+            "data_source": "pubmed"
+          },
+          {
+            "name": "expert_consensus",
+            "value": 1.9,
+            "max_value": 5.0,
+            "description": "Expert consensus shifted negative after eLife 2017 CRISPR study",
+            "data_source": "pubmed"
+          }
+        ],
+        "data_coverage": 0.62
+      }
+    ],
+    "weights": {
+      "genetic_evidence": 15.0,
+      "expression_biology": 15.0,
+      "druggability": 15.0,
+      "safety_selectivity": 15.0,
+      "competitive_landscape": 15.0,
+      "clinical_translational": 15.0,
+      "literature_consensus": 10.0
+    },
+    "formula_version": "v1.0"
+  },
+  "verdict": {
+    "level": "NO-GO",
+    "score": 39.3,
+    "dimension_violations": ["safety_selectivity"],
+    "forced_conditional": false,
+    "rationale": "MELK is a textbook discredited drug target. A 2017 CRISPR study (eLife) demonstrated no proliferation effect after MELK knockout in 13 cancer cell lines, directly contradicting 30+ prior publications. The sole clinical compound, OTSSP167, achieves its anti-proliferative effects through off-target kinase inhibition rather than MELK inhibition. Broad DepMap essentiality signals and no validated therapeutic window result in a safety_selectivity dimension score of 2.8/15.0 (18.7%), which violates the 20% minimum threshold. NO-GO verdict."
+  },
+  "evidence_hash": "a3f8c2e11b94d7f6e2a3c5b8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8",
+  "scored_at": "2026-05-13T11:54:11.812741+00:00"
+}

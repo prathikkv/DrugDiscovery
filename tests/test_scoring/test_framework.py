@@ -12,6 +12,8 @@ import json
 
 import pytest
 
+pytestmark = pytest.mark.unit
+
 from src.evidence.models import AggregatedEvidence, EvidenceResult, GeneIdentifiers
 from src.reasoning.models import Claim, ReasoningMode, ReasoningResult
 from src.scoring.models import (

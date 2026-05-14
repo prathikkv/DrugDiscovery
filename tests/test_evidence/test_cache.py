@@ -8,6 +8,10 @@ from __future__ import annotations
 
 import time
 
+import pytest
+
+pytestmark = pytest.mark.integration
+
 from src.evidence.models import EvidenceResult
 
 

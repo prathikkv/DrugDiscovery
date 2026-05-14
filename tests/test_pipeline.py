@@ -13,6 +13,8 @@ import anndata as ad
 import numpy as np
 import pytest
 
+pytestmark = pytest.mark.integration
+
 from src.pipeline.config import PipelineConfig, TISSUE_DEFAULTS
 from src.pipeline.ingestion import ingest_data
 from src.pipeline.qc import run_qc

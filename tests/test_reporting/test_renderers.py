@@ -11,6 +11,9 @@ import tempfile
 from pathlib import Path
 
 import pytest
+
+pytestmark = pytest.mark.integration
+
 import plotly.graph_objects as go
 
 from src.reporting.models import DossierConfig, DossierData, SectionContent

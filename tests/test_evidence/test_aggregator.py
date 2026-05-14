@@ -13,6 +13,10 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
+pytestmark = pytest.mark.integration
+
+import pytest
+
 from src.evidence.aggregator import EvidenceAggregator
 from src.evidence.cache import EvidenceCache
 from src.evidence.models import AggregatedEvidence, EvidenceResult, GeneIdentifiers
