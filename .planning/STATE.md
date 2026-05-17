@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-05-09)
 
 **Core value:** Scientists upload omics data and target genes, receive a structured GO/CONDITIONAL/NO-GO recommendation with full audit trail -- replacing 6 months of manual assessment with 2 weeks.
-**Current focus:** Phase 7: UI Integration -- COMPLETE
+**Current focus:** Phase 8: Validation + Launch -- COMPLETE
 
 ## Current Position
 
-Phase: 7 of 8 (UI Integration) -- COMPLETE (gap closed)
-Plan: 5 of 5 in current phase -- DONE (07-05 was gap closure)
-Status: Phase 7 fully verified, ready for Phase 8
-Last activity: 2026-05-13 -- Completed 07-05-PLAN.md (Scorecard auto-compute gap closure)
+Phase: 8 of 8 (Validation + Launch) -- COMPLETE
+Plan: 3 of 3 in current phase -- DONE
+Status: All 8 phases complete. 219 tests passing. Pre-commit hooks active. Docker deployment ready.
+Last activity: 2026-05-13 -- Completed 08-03 (Docker + pre-commit hooks), 25/25 validation tests pass
 
-Progress: [█████████░] 92%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 22
+- Total plans completed: 25
 - Average duration: 8min
-- Total execution time: 2.85 hours
+- Total execution time: ~3.2 hours
 
 **By Phase:**
 
@@ -34,10 +34,11 @@ Progress: [█████████░] 92%
 | 05-target-scoring | 2 | 23min | 12min |
 | 06-deliverables | 3 | 23min | 8min |
 | 07-ui-integration | 5 | 57min | 11min |
+| 08-validation-launch | 3 | ~20min | 7min |
 
 **Recent Trend:**
-- Last 5 plans: 07-01 (13min), 07-02 (10min), 07-03 (10min), 07-04 (21min), 07-05 (3min)
-- Trend: Phase 7 fully verified with 5 plans in 57min. Gap closure fixed scorecard auto-compute
+- Last 3 plans: 08-01 (markers+validation suite), 08-02 (GxP docs), 08-03 (Docker+hooks)
+- Final state: 219 tests, 25 validation tests, 3 compliance hooks, Docker ready
 
 *Updated after each plan completion*
 
@@ -164,5 +165,6 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-05-13
-Stopped at: Completed 07-04-PLAN.md (Showcase Data & Integration Tests) -- Phase 7 complete, ready for Phase 8
+Stopped at: Phase 8 complete -- all 3 plans done, 219 tests passing, pre-commit hooks active
 Resume file: None
+Next: Docker human checkpoint (docker compose up → verify health check passes)
