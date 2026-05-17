@@ -1,0 +1,40 @@
+# BioOrchestrator v2 -- Single-command deployment (SC#5)
+# Usage:
+#   Start app:        docker compose up
+#   Run tests:        docker compose run --rm test
+#   Unit tests:       docker compose run --rm test pytest -m unit
+#   Validation tests: docker compose run --rm test pytest -m validation -v
+
+services:
+  app:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      # Mount data dir so DB and cache persist across container restarts
+      - ./data:/app/data
+    environment:
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+      - STREAMLIT_SERVER_HEADLESS=true
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    restart: unless-stopped
+
+  test:
+    build: .
+    # Override CMD: run pytest instead of streamlit
+    command: pytest tests/ -m "not validation" --timeout=300 -q
+    volumes:
+      # Mount data so tests can access showcase scenarios and write temp DBs
+      - ./data:/app/data
+      - ./tests:/app/tests
+    environment:
+      - PYTHONPATH=/app
+    # Only runs when explicitly invoked: docker compose run --rm test [args]
+    profiles:
+      - test

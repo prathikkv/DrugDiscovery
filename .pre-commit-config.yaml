@@ -1,0 +1,39 @@
+# Pre-commit compliance hooks for BioOrchestrator v2 (REQ-806)
+# Install: pre-commit install
+# Run on all files: pre-commit run --all-files
+# Documentation: docs/gxp/FRS.md FR-806
+
+repos:
+  - repo: local
+    hooks:
+
+      # Hook 1: Audit trail integrity
+      # Blocks commits that contain direct SQL manipulation of audit_records
+      # (DELETE, UPDATE, DROP TABLE). Does NOT connect to the database.
+      - id: audit-trail-integrity
+        name: Audit trail integrity check (REQ-503, REQ-806)
+        language: python
+        entry: python scripts/hooks/check_audit_trail.py
+        types: [python]
+        pass_filenames: true
+
+      # Hook 2: No hardcoded parameters
+      # Blocks commits with hardcoded credentials or authorization headers
+      # in src/ Python files. Tests and scripts are excluded in the hook script.
+      - id: no-hardcoded-params
+        name: No hardcoded credentials or parameters (REQ-806)
+        language: python
+        entry: python scripts/hooks/check_hardcoded_params.py
+        types: [python]
+        pass_filenames: true
+
+      # Hook 3: Config change flagging (warning only, exit 0)
+      # Prints a warning when scoring weights or pipeline config files are staged.
+      # Does NOT block the commit.
+      - id: config-change-flag
+        name: Flag configuration file changes (SOP-003)
+        language: python
+        entry: python scripts/hooks/check_config_changes.py
+        files: >-
+          ^(src/config\.py|src/scoring/weights\.py|src/pipeline/config\.py|\.streamlit/config\.toml|\.streamlit/secrets\.toml)$
+        pass_filenames: true
