@@ -16,7 +16,7 @@ import logging
 import os
 from typing import Any, Callable, Optional
 
-from bioorchestrator_real.utils.llm_provider import (
+from src.reasoning.llm_provider import (
     AnthropicProvider,
     GroqProvider,
     OllamaProvider,

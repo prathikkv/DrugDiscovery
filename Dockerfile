@@ -9,8 +9,9 @@ RUN apt-get update && \
 WORKDIR /app
 
 # Install Python dependencies first (maximizes layer caching)
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# requirements.docker.txt excludes rpy2 (requires R on host; ambient_rna.py has graceful fallback)
+COPY requirements.docker.txt .
+RUN pip install --no-cache-dir -r requirements.docker.txt
 
 # Copy application source and tests
 COPY src/ ./src/
