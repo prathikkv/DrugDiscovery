@@ -309,6 +309,16 @@ footer { display: none !important; }
 }
 </style>""", unsafe_allow_html=True)
 
+# ── AUTH MESSAGES — before hero so visible at scroll-top after rerun ──
+if st.session_state.pop("session_expired", False):
+    st.toast("Your session expired. Please sign in again.", icon="⏱️")
+if msg := st.session_state.pop("_login_error", None):
+    st.toast(msg, icon="⚠️")
+if msg := st.session_state.pop("_register_error", None):
+    st.toast(msg, icon="⚠️")
+if msg := st.session_state.pop("_register_success", None):
+    st.toast(msg, icon="✅")
+
 # ── WORDMARK + HERO ───────────────────────────────────────────────────
 
 st.markdown("""
@@ -341,16 +351,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ── FORM ─────────────────────────────────────────────────────────────
-
-# Show persistent messages ABOVE the form so they're visible after rerun
-if st.session_state.pop("session_expired", False):
-    st.warning("Your session expired due to inactivity.")
-if msg := st.session_state.pop("_login_error", None):
-    st.error(msg)
-if msg := st.session_state.pop("_register_error", None):
-    st.error(msg)
-if msg := st.session_state.pop("_register_success", None):
-    st.success(msg)
 
 st.markdown("""
 <div class="form-hd">

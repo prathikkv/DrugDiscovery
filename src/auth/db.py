@@ -49,7 +49,7 @@ def get_user_by_email(
 ) -> sqlite3.Row | None:
     """Look up a user by email. Returns Row or None."""
     cursor = conn.execute(
-        "SELECT * FROM users WHERE email = ?",
+        "SELECT * FROM users WHERE email = ? COLLATE NOCASE",
         (email,),
     )
     return cursor.fetchone()
