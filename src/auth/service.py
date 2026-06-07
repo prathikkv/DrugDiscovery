@@ -45,11 +45,13 @@ class AuthService:
         self._maybe_seed_admin()
 
     def _maybe_seed_admin(self) -> None:
-        """Create a default admin account on first run if no users exist.
+        """Ensure the seed admin account exists on startup.
 
         Reads SEED_ADMIN_EMAIL and SEED_ADMIN_PASSWORD from environment.
-        No-op if either var is missing or if any user already exists.
-        Prevents lock-out on fresh Render deployments without persistent disk.
+        Creates the account if that specific email is not already registered.
+        This is idempotent — safe to call on every startup.
+        Prevents lock-out on Render deployments regardless of whether other
+        users were registered manually before the env vars were set.
         """
         email = os.getenv("SEED_ADMIN_EMAIL", "").strip()
         password = os.getenv("SEED_ADMIN_PASSWORD", "").strip()
@@ -57,7 +59,8 @@ class AuthService:
             return
         conn = get_connection(self.db_path)
         try:
-            if count_users(conn) == 0:
+            existing = get_user_by_email(conn, email)
+            if existing is None:
                 self.register(email, password, "admin")
         finally:
             conn.close()

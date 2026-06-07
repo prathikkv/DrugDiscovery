@@ -4,6 +4,8 @@ Apple-inspired light mode. Single-column centered, naturally scrollable.
 Hero → Form → Product proof (dark scorecard) → Compliance → Footer.
 """
 
+import os
+
 import streamlit as st
 
 from src import config
@@ -372,6 +374,24 @@ if _no_users:
         "**No accounts exist yet.** "
         "Switch to the **Create Account** tab to register your first user."
     )
+
+# ── Deployment diagnostics (always visible — helps debug Render issues) ──
+with st.expander("⚙ System status", expanded=False):
+    import pathlib
+    _resolved_db = pathlib.Path(config.AUTH_DB).resolve()
+    st.write(f"**DB path:** `{_resolved_db}`")
+    st.write(f"**DB exists:** {_resolved_db.exists()}")
+    _diag_conn = get_connection(config.AUTH_DB)
+    try:
+        _user_count = count_users(_diag_conn)
+    finally:
+        _diag_conn.close()
+    st.write(f"**Users in DB:** {_user_count}")
+    _seed_email = os.getenv("SEED_ADMIN_EMAIL", "")
+    _seed_set = bool(_seed_email and os.getenv("SEED_ADMIN_PASSWORD", ""))
+    st.write(f"**Seed admin env vars:** {'✓ configured' if _seed_set else '✗ not set'}")
+    if _seed_email:
+        st.write(f"**Seed admin email:** `{_seed_email}`")
 
 login_tab, register_tab = st.tabs(["Sign In", "Create Account"])
 
