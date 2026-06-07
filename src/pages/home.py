@@ -540,8 +540,6 @@ st.markdown("""
 
 cta1, cta2, cta3 = st.columns([1, 1, 2])
 with cta1:
-    if st.button("New Project", type="primary", use_container_width=True):
-        st.switch_page("pages/projects.py")
+    st.page_link("src/pages/projects.py", label="New Project", icon=":material/folder_open:", use_container_width=True)
 with cta2:
-    if st.button("Load Showcase", type="secondary", use_container_width=True):
-        st.switch_page("pages/projects.py")
+    st.page_link("src/pages/projects.py", label="Load Showcase", icon=":material/science:", use_container_width=True)

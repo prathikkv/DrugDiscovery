@@ -22,7 +22,11 @@ if "user" not in st.session_state:
     st.stop()
 
 user = st.session_state["user"]
-ps = ProjectService()
+try:
+    ps = ProjectService()
+except Exception as _svc_err:
+    st.error(f"Could not initialise project storage: {_svc_err}")
+    st.stop()
 
 st.title("Projects")
 
@@ -128,7 +132,11 @@ for row_start in range(0, len(scenario_names), 3):
 st.divider()
 st.subheader("Active Projects")
 
-projects = ps.list()
+try:
+    projects = ps.list()
+except Exception as _list_err:
+    st.error(f"Could not load projects: {_list_err}")
+    projects = []
 active_project_id = st.session_state.get("active_project_id")
 
 if not projects:

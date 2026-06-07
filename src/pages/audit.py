@@ -35,25 +35,27 @@ st.caption(
 st.subheader("Chain Integrity")
 
 if st.button("Verify Chain Integrity", key="audit_verify_chain", type="primary"):
-    audit = AuditTrail()
-    result = audit.verify_chain()
-
-    if result["valid"]:
-        st.success(
-            f"Chain integrity verified. {result['records_checked']} records checked."
-        )
-        st.markdown(
-            insight_panel(
-                f"<strong>Integrity Status: VALID</strong><br>"
-                f"All {result['records_checked']} audit records have valid "
-                f"SHA-256 hash chain linkage. No tampering detected."
-            ),
-            unsafe_allow_html=True,
-        )
-    else:
-        st.error(
-            f"Chain broken at record {result['first_broken']}: {result['error']}"
-        )
+    try:
+        _audit_verify = AuditTrail()
+        result = _audit_verify.verify_chain()
+        if result["valid"]:
+            st.success(
+                f"Chain integrity verified. {result['records_checked']} records checked."
+            )
+            st.markdown(
+                insight_panel(
+                    f"<strong>Integrity Status: VALID</strong><br>"
+                    f"All {result['records_checked']} audit records have valid "
+                    f"SHA-256 hash chain linkage. No tampering detected."
+                ),
+                unsafe_allow_html=True,
+            )
+        else:
+            st.error(
+                f"Chain broken at record {result['first_broken']}: {result['error']}"
+            )
+    except Exception as _verify_err:
+        st.error(f"Chain verification failed: {_verify_err}")
 
 
 # ── Filters ──────────────────────────────────────────────────────────
@@ -81,7 +83,11 @@ with filter_col2:
 
 # ── Records Display ──────────────────────────────────────────────────
 
-audit = AuditTrail()
+try:
+    audit = AuditTrail()
+except Exception as _audit_err:
+    st.error(f"Audit trail unavailable: {_audit_err}")
+    st.stop()
 
 # Apply filters
 filter_kwargs = {"limit": record_limit}
