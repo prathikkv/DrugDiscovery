@@ -19,7 +19,7 @@ from src.pages.components.styles import inject_design_system
 setup_logging()
 
 st.set_page_config(
-    page_title="BioOrchestrator v2",
+    page_title="TargetSight",
     page_icon=":material/biotech:",
     layout="wide",
 )

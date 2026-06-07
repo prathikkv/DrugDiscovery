@@ -1,7 +1,7 @@
-"""Login page — Apple-grade pharma premium design.
+"""TargetSight — Login page.
 
 Full-page dark immersive layout:
-- Left: Big bold brand statement + animated glassmorphism scorecard
+- Left: TargetSight wordmark + brand statement + animated EGFR scorecard
 - Right: Clean dark form card
 - Animated radial glow, floating scorecard, electric blue CTAs
 """
@@ -47,35 +47,39 @@ footer { display: none !important; }
     z-index: 0;
 }
 
+/* ── TARGETSIGHT WORDMARK ── */
+.ts-wordmark {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 32px;
+}
+.ts-wordmark svg { flex-shrink: 0; }
+.ts-wordname {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    line-height: 1;
+}
+.ts-wordname span { color: #38bdf8; }
+.ts-tagline-sm {
+    font-size: 0.58rem;
+    color: rgba(255,255,255,0.32);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
 /* ── BRAND PANEL ── */
 .brand-panel {
     padding: 80px 40px 60px 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 90vh;
     position: relative;
     z-index: 1;
-}
-.bp-eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.62rem;
-    color: #38bdf8;
-    text-transform: uppercase;
-    letter-spacing: 0.24em;
-    font-weight: 700;
-    margin-bottom: 28px;
-}
-.bp-eyebrow::before {
-    content: '';
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: linear-gradient(90deg, #1a6fe0, #38bdf8);
-    border-radius: 2px;
-    flex-shrink: 0;
 }
 .bp-headline {
     font-size: 4.4rem !important;
@@ -205,7 +209,6 @@ footer { display: none !important; }
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 90vh;
     padding: 80px 8px 60px 24px;
     position: relative;
     z-index: 1;
@@ -334,17 +337,32 @@ with col_brand:
     st.markdown("""
 <div class="brand-panel">
 
-  <div class="bp-eyebrow">Pharmaceutical AI Platform</div>
+  <!-- TargetSight wordmark -->
+  <div class="ts-wordmark">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none" width="44" height="44">
+      <circle cx="22" cy="22" r="18" stroke="#38bdf8" stroke-width="1.5" opacity="0.55"/>
+      <circle cx="22" cy="22" r="10" stroke="#1a6fe0" stroke-width="1.8"/>
+      <circle cx="22" cy="22" r="3.5" fill="#38bdf8"/>
+      <line x1="4"  y1="22" x2="12" y2="22" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="32" y1="22" x2="40" y2="22" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="22" y1="4"  x2="22" y2="12" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="22" y1="32" x2="22" y2="40" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+    <div>
+      <div class="ts-wordname">Target<span>Sight</span></div>
+      <div class="ts-tagline-sm">Target Intelligence &middot; Redefined</div>
+    </div>
+  </div>
 
   <div class="bp-headline">
-    Drug Discovery.<br>
-    <span class="bp-grad">Reimagined.</span>
+    From Gene to<br>
+    <span class="bp-grad">GO&thinsp;/&thinsp;NO-GO.</span>
   </div>
 
   <div class="bp-sub">
-    AI-powered target intelligence that compresses weeks of manual
-    research into <em>15 minutes</em>. From gene symbol to
-    GO/NO-GO verdict with a complete audit trail.
+    AI-powered target intelligence that compresses
+    <em>weeks of manual research into 15 minutes</em> — with a fully
+    auditable evidence trail your regulatory team will trust.
   </div>
 
   <!-- Animated scorecard -->
@@ -398,7 +416,7 @@ with col_form:
 <div class="form-panel">
   <div class="form-hd">
     <h2>Welcome back</h2>
-    <p>Sign in to your BioOrchestrator account</p>
+    <p>Sign in to your TargetSight account</p>
   </div>
 </div>
 """, unsafe_allow_html=True)
@@ -473,8 +491,8 @@ with col_form:
 
 st.markdown(
     "<div class='login-footer'>"
-    "BioOrchestrator v2 &nbsp;·&nbsp; 21 CFR Part 11 Compliant &nbsp;·&nbsp; "
-    "For authorized pharmaceutical research use only."
+    "TargetSight &nbsp;·&nbsp; 21 CFR Part 11 Compliant &nbsp;·&nbsp; "
+    "SHA-256 Audit Chain &nbsp;·&nbsp; For authorized pharmaceutical research use only."
     "</div>",
     unsafe_allow_html=True,
 )

@@ -1,4 +1,6 @@
-"""Central configuration constants for BioOrchestrator v2."""
+"""Central configuration constants for TargetSight."""
+
+APP_NAME = "TargetSight"
 
 from pathlib import Path
 

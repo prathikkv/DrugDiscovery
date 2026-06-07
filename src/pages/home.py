@@ -12,7 +12,7 @@ import streamlit as st
 st.markdown("""
 <div class="hero-section">
   <div class="hero-eyebrow">Pharmaceutical R&amp;D Intelligence</div>
-  <div class="hero-title">BioOrchestrator v2</div>
+  <div class="hero-title">TargetSight</div>
   <div class="hero-subtitle">
     AI-powered drug target identification and triage platform — from raw omics data
     to a GO / NO-GO verdict with a fully auditable evidence trail.
