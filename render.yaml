@@ -18,6 +18,10 @@ services:
         value: "8501"
       - key: SENTRY_DSN
         sync: false        # Optional — set in Render dashboard if using Sentry
+      - key: SEED_ADMIN_EMAIL
+        sync: false        # First-run admin account — set in Render dashboard
+      - key: SEED_ADMIN_PASSWORD
+        sync: false        # First-run admin password — set in Render dashboard
     disk:
       name: bioorchestrator-data
       mountPath: /app/data

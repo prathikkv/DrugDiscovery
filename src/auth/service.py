@@ -1,5 +1,6 @@
 """Authentication service with register, login, and account lockout."""
 
+import os
 import threading
 import uuid
 from datetime import datetime, timedelta, timezone
@@ -10,6 +11,7 @@ import bcrypt
 
 from src import config
 from src.auth.db import (
+    count_users,
     get_user_by_email,
     get_user_by_id,
     init_auth_db,
@@ -36,6 +38,27 @@ class AuthService:
         conn = get_connection(self.db_path)
         try:
             init_auth_db(conn)
+        finally:
+            conn.close()
+
+        # Seed a default admin on first startup (no users + env vars set)
+        self._maybe_seed_admin()
+
+    def _maybe_seed_admin(self) -> None:
+        """Create a default admin account on first run if no users exist.
+
+        Reads SEED_ADMIN_EMAIL and SEED_ADMIN_PASSWORD from environment.
+        No-op if either var is missing or if any user already exists.
+        Prevents lock-out on fresh Render deployments without persistent disk.
+        """
+        email = os.getenv("SEED_ADMIN_EMAIL", "").strip()
+        password = os.getenv("SEED_ADMIN_PASSWORD", "").strip()
+        if not email or not password:
+            return
+        conn = get_connection(self.db_path)
+        try:
+            if count_users(conn) == 0:
+                self.register(email, password, "admin")
         finally:
             conn.close()
 

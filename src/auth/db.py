@@ -91,6 +91,11 @@ def update_failed_attempts(
         raise
 
 
+def count_users(conn: sqlite3.Connection) -> int:
+    """Return the total number of registered users."""
+    return conn.execute("SELECT COUNT(*) FROM users").fetchone()[0]
+
+
 def reset_failed_attempts(
     conn: sqlite3.Connection,
     user_id: str,

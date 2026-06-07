@@ -342,8 +342,15 @@ st.markdown("""
 
 # ── FORM ─────────────────────────────────────────────────────────────
 
+# Show persistent messages ABOVE the form so they're visible after rerun
 if st.session_state.pop("session_expired", False):
     st.warning("Your session expired due to inactivity.")
+if msg := st.session_state.pop("_login_error", None):
+    st.error(msg)
+if msg := st.session_state.pop("_register_error", None):
+    st.error(msg)
+if msg := st.session_state.pop("_register_success", None):
+    st.success(msg)
 
 st.markdown("""
 <div class="form-hd">
@@ -371,7 +378,8 @@ with login_tab:
 
     if submitted:
         if not email or not password:
-            st.error("Please enter both email and password.")
+            st.session_state["_login_error"] = "Please enter both email and password."
+            st.rerun()
         else:
             result = auth.login(email, password)
             if result["success"]:
@@ -382,7 +390,8 @@ with login_tab:
                 }
                 st.rerun()
             else:
-                st.error(result["error"])
+                st.session_state["_login_error"] = result["error"]
+                st.rerun()
 
 # ── Create Account ────────────────────────────────────────────────────
 with register_tab:
@@ -408,15 +417,19 @@ with register_tab:
 
     if reg_submitted:
         if not reg_email or not reg_password:
-            st.error("Please fill in all required fields.")
+            st.session_state["_register_error"] = "Please fill in all required fields."
+            st.rerun()
         elif reg_password != reg_confirm:
-            st.error("Passwords do not match.")
+            st.session_state["_register_error"] = "Passwords do not match."
+            st.rerun()
         else:
             result = auth.register(reg_email, reg_password, reg_role)
             if result["success"]:
-                st.success("Account created. You can now sign in.")
+                st.session_state["_register_success"] = "Account created. Switch to Sign In to log in."
+                st.rerun()
             else:
-                st.error(result["error"])
+                st.session_state["_register_error"] = result["error"]
+                st.rerun()
 
 # ── PRODUCT PROOF — dark scorecard as terminal widget ─────────────────
 
