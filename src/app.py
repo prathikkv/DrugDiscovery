@@ -99,9 +99,16 @@ def _render_sidebar():
 _check_session_timeout()
 
 if "user" not in st.session_state:
+    # If the browser is at /login (old bookmark or direct URL), redirect to root.
+    # /login sets <base href="/login/"> which breaks all _stcore API calls.
+    st.markdown(
+        "<script>"
+        "if(window.location.pathname!=='/'){window.location.replace('/');}"
+        "</script>",
+        unsafe_allow_html=True,
+    )
     # Execute login.py directly — URL stays at / (root).
     # No /login routing → no <base href="/login/"> tag → no _stcore 404s.
-    # This is how Streamlit's own script runner executes page files.
     _login_path = pathlib.Path(__file__).parent / "pages" / "login.py"
     exec(compile(_login_path.read_text(), str(_login_path), "exec"), globals())  # noqa: S102
     st.stop()
