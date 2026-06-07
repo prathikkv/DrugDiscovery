@@ -52,7 +52,7 @@ def _build_navigation():
     if "user" not in st.session_state:
         # Unauthenticated: show only login
         return st.navigation([
-            st.Page("pages/login.py", title="Login", icon=":material/login:"),
+            st.Page("pages/login.py", title="Login", icon=":material/login:", url_path=""),
         ])
 
     # Authenticated: 8 pages in 4 sections (Home + Setup + Analysis + Results)
