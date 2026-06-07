@@ -309,15 +309,9 @@ footer { display: none !important; }
 }
 </style>""", unsafe_allow_html=True)
 
-# ── AUTH MESSAGES — before hero so visible at scroll-top after rerun ──
+# ── AUTH MESSAGES — session expiry only (shown at top after rerun) ──
 if st.session_state.pop("session_expired", False):
-    st.toast("Your session expired. Please sign in again.", icon="⏱️")
-if msg := st.session_state.pop("_login_error", None):
-    st.toast(msg, icon="⚠️")
-if msg := st.session_state.pop("_register_error", None):
-    st.toast(msg, icon="⚠️")
-if msg := st.session_state.pop("_register_success", None):
-    st.toast(msg, icon="✅")
+    st.warning("Your session expired. Please sign in again.")
 
 # ── WORDMARK + HERO ───────────────────────────────────────────────────
 
@@ -378,8 +372,7 @@ with login_tab:
 
     if submitted:
         if not email or not password:
-            st.session_state["_login_error"] = "Please enter both email and password."
-            st.rerun()
+            st.error("Please enter your email and password.")
         else:
             result = auth.login(email, password)
             if result["success"]:
@@ -390,8 +383,7 @@ with login_tab:
                 }
                 st.rerun()
             else:
-                st.session_state["_login_error"] = result["error"]
-                st.rerun()
+                st.error(result["error"])
 
 # ── Create Account ────────────────────────────────────────────────────
 with register_tab:
@@ -417,19 +409,15 @@ with register_tab:
 
     if reg_submitted:
         if not reg_email or not reg_password:
-            st.session_state["_register_error"] = "Please fill in all required fields."
-            st.rerun()
+            st.error("Please fill in all required fields.")
         elif reg_password != reg_confirm:
-            st.session_state["_register_error"] = "Passwords do not match."
-            st.rerun()
+            st.error("Passwords do not match.")
         else:
             result = auth.register(reg_email, reg_password, reg_role)
             if result["success"]:
-                st.session_state["_register_success"] = "Account created. Switch to Sign In to log in."
-                st.rerun()
+                st.success("Account created! Switch to Sign In to log in.")
             else:
-                st.session_state["_register_error"] = result["error"]
-                st.rerun()
+                st.error(result["error"])
 
 # ── PRODUCT PROOF — dark scorecard as terminal widget ─────────────────
 
