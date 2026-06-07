@@ -1,343 +1,424 @@
-"""Login and registration page — pharma-premium design.
+"""Login page — Apple-grade pharma premium design.
 
-Full-width dark hero with branding + EGFR scorecard preview.
-Centered white card for the login/register form.
-Sidebar hidden (no nav clutter before auth).
-
-Password is NEVER stored in session state. Only user_id, email, and
-role are persisted in st.session_state["user"] after successful login.
+Full-page dark immersive layout:
+- Left: Big bold brand statement + animated glassmorphism scorecard
+- Right: Clean dark form card
+- Animated radial glow, floating scorecard, electric blue CTAs
 """
 
 import streamlit as st
 
 from src.auth.service import AuthService
 
-# ── Page-specific CSS ────────────────────────────────────────────────
+# ── Full-page CSS ────────────────────────────────────────────────────
 
-LOGIN_CSS = """<style>
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+st.markdown("""<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-/* Hide sidebar on login page */
+/* ── DARK FULL PAGE ── */
+.stApp { background: #06090f !important; }
+.main, .block-container { background: transparent !important; }
+.block-container { max-width: 1300px !important; padding: 0 2.5rem !important; }
 section[data-testid="stSidebar"] { display: none !important; }
+footer { display: none !important; }
+#MainMenu { display: none !important; }
 
-/* Remove Streamlit container constraints */
-.block-container {
-    max-width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
+/* ── GLOBAL GLOW BACKGROUND ── */
+.stApp::before {
+    content: '';
+    position: fixed;
+    top: -30%;
+    left: -15%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(26,111,224,0.10) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
 }
-.main > div { padding: 0 !important; }
+.stApp::after {
+    content: '';
+    position: fixed;
+    bottom: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(124,58,237,0.07) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+}
 
-/* ── Hero: full-width breakout ── */
-.login-hero {
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    width: 100vw;
-    background: linear-gradient(160deg, #0d1b2a 0%, #162032 45%, #0d1b2a 100%);
-    overflow: hidden;
-}
-.login-hero::before {
-    content: '';
-    position: absolute;
-    top: -80px; right: -80px;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(56,189,248,0.12) 0%, transparent 65%);
-    pointer-events: none;
-}
-.login-hero::after {
-    content: '';
-    position: absolute;
-    bottom: -60px; left: 8%;
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 65%);
-    pointer-events: none;
-}
-.login-hero-inner {
+/* ── BRAND PANEL ── */
+.brand-panel {
+    padding: 80px 40px 60px 8px;
     display: flex;
-    gap: 48px;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 64px 48px 56px;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 90vh;
     position: relative;
     z-index: 1;
 }
-
-/* ── Left: Brand panel ── */
-.login-brand { flex: 1.15; }
-.login-eyebrow {
-    font-size: 0.7rem;
-    color: #38bdf8;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    font-weight: 700;
-    margin-bottom: 16px;
-}
-.login-title {
-    font-size: 3rem;
-    font-weight: 800;
-    color: #ffffff;
-    line-height: 1.05;
-    margin-bottom: 6px;
-    font-family: 'Inter', sans-serif;
-}
-.login-version {
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.38);
-    margin-bottom: 20px;
-    letter-spacing: 0.04em;
-}
-.login-tagline {
-    font-size: 1.05rem;
-    color: rgba(255,255,255,0.72);
-    line-height: 1.7;
-    margin-bottom: 28px;
-    max-width: 430px;
-}
-.login-tagline strong { color: #38bdf8; font-weight: 700; }
-.login-pills {
+.bp-eyebrow {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 22px;
-}
-.lpill {
-    background: rgba(255,255,255,0.09);
-    color: rgba(255,255,255,0.80);
-    border: 1px solid rgba(255,255,255,0.14);
-    border-radius: 20px;
-    padding: 5px 15px;
-    font-size: 0.77rem;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-}
-.lpill.gold {
-    background: rgba(245,158,11,0.18);
-    color: #fcd34d;
-    border-color: rgba(245,158,11,0.35);
-}
-.lpill.green {
-    background: rgba(22,163,74,0.18);
-    color: #86efac;
-    border-color: rgba(22,163,74,0.35);
-}
-.login-compliance {
-    font-size: 0.72rem;
-    color: rgba(255,255,255,0.32);
-    margin-top: 4px;
-    letter-spacing: 0.02em;
-}
-
-/* ── Right: EGFR preview card ── */
-.login-preview {
-    flex: 0.85;
-    min-width: 270px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.11);
-    border-radius: 16px;
-    padding: 28px 26px;
-}
-.lp-eyebrow {
+    align-items: center;
+    gap: 10px;
     font-size: 0.62rem;
     color: #38bdf8;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.24em;
+    font-weight: 700;
+    margin-bottom: 28px;
+}
+.bp-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: linear-gradient(90deg, #1a6fe0, #38bdf8);
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+.bp-headline {
+    font-size: 4.4rem !important;
+    font-weight: 900 !important;
+    color: #ffffff !important;
+    line-height: 1.0 !important;
+    letter-spacing: -0.04em !important;
+    margin: 0 0 20px 0 !important;
+}
+.bp-grad {
+    background: linear-gradient(135deg, #38bdf8 0%, #1a6fe0 50%, #818cf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.bp-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.48);
+    line-height: 1.75;
+    max-width: 400px;
+    margin-bottom: 40px;
+}
+.bp-sub em { color: #38bdf8; font-style: normal; font-weight: 600; }
+
+/* ── SCORECARD CARD (glassmorphism + float) ── */
+.score-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 20px;
+    padding: 26px 24px 22px;
+    max-width: 390px;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+    animation: floatcard 7s ease-in-out infinite;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+}
+.score-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #1a6fe0, #38bdf8, transparent);
+    opacity: 0.7;
+}
+@keyframes floatcard {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33%       { transform: translateY(-6px) rotate(0.2deg); }
+    66%       { transform: translateY(-3px) rotate(-0.1deg); }
+}
+.sc-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.58rem;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
     font-weight: 700;
     margin-bottom: 16px;
 }
-.lp-verdict {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 14px;
-}
-.lp-go {
+.sc-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
     background: #16a34a;
+    box-shadow: 0 0 8px #16a34a;
+    animation: livepulse 2s ease-in-out infinite;
+}
+@keyframes livepulse {
+    0%,100% { box-shadow: 0 0 4px #16a34a; }
+    50%      { box-shadow: 0 0 12px #16a34a, 0 0 20px rgba(22,163,74,0.4); }
+}
+.sc-verdict { display: flex; align-items: baseline; gap: 14px; margin-bottom: 12px; }
+.sc-go {
+    background: linear-gradient(135deg, #16a34a, #15803d);
     color: white;
-    font-size: 0.78rem;
+    font-size: 0.7rem;
     font-weight: 800;
     padding: 4px 16px;
     border-radius: 20px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
+    box-shadow: 0 2px 12px rgba(22,163,74,0.4);
 }
-.lp-score {
-    font-size: 1.65rem;
+.sc-num {
+    font-size: 2.4rem;
     font-weight: 700;
     color: white;
     font-family: 'IBM Plex Mono', monospace;
+    line-height: 1;
 }
-.lp-score-sub {
-    font-size: 0.72rem;
-    color: rgba(255,255,255,0.4);
-    font-family: 'IBM Plex Mono', monospace;
-}
-.lp-bar {
-    background: rgba(255,255,255,0.1);
-    border-radius: 4px;
-    height: 7px;
-    margin-bottom: 22px;
-    overflow: hidden;
-}
-.lp-fill {
-    background: linear-gradient(90deg, #1a6fe0, #38bdf8);
-    border-radius: 4px;
-    height: 7px;
-}
-.lp-dims {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 7px 16px;
-    margin-bottom: 20px;
-}
-.lp-dim-name { font-size: 0.76rem; color: rgba(255,255,255,0.60); }
-.lp-dim-val {
-    font-size: 0.76rem;
-    color: #38bdf8;
-    font-weight: 700;
-    font-family: 'IBM Plex Mono', monospace;
-    text-align: right;
-}
-.lp-divider {
-    border: none;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    margin: 16px 0;
-}
-.lp-sources { display: flex; flex-wrap: wrap; gap: 6px; }
-.lp-src {
-    background: rgba(26,111,224,0.18);
-    color: #93c5fd;
-    border: 1px solid rgba(26,111,224,0.28);
-    border-radius: 6px;
-    padding: 3px 9px;
-    font-size: 0.67rem;
+.sc-denom { font-size: 0.8rem; color: rgba(255,255,255,0.28); font-family: 'IBM Plex Mono', monospace; }
+.sc-bar-bg { background: rgba(255,255,255,0.07); border-radius: 4px; height: 6px; margin-bottom: 22px; overflow: hidden; }
+.sc-bar { background: linear-gradient(90deg, #1a6fe0, #38bdf8); border-radius: 4px; height: 6px;
+          animation: barfill 1.8s ease-out; }
+@keyframes barfill { from { width: 0%; } }
+.sc-grid { display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; margin-bottom: 18px; }
+.sc-dim { font-size: 0.73rem; color: rgba(255,255,255,0.45); }
+.sc-val { font-size: 0.73rem; color: #38bdf8; font-weight: 700; font-family: 'IBM Plex Mono', monospace; text-align: right; }
+.sc-hr { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 12px 0; }
+.sc-srcs { display: flex; flex-wrap: wrap; gap: 5px; }
+.sc-src {
+    background: rgba(26,111,224,0.14);
+    color: rgba(147,197,253,0.9);
+    border: 1px solid rgba(26,111,224,0.22);
+    border-radius: 5px;
+    padding: 2px 8px;
+    font-size: 0.6rem;
     font-weight: 600;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
 }
 
-/* ── Form section ── */
-.login-form-header {
-    text-align: center;
-    margin-bottom: 4px;
-    padding: 0 8px;
+/* Compliance strip */
+.bp-compliance {
+    font-size: 0.67rem;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.04em;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
 }
-.login-form-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #0d1b2a;
-    margin-bottom: 5px;
-}
-.login-form-sub { font-size: 0.83rem; color: #64748b; }
+.bp-compliance span { color: rgba(22,163,74,0.55); }
 
-/* ── Footer ── */
+/* ── FORM PANEL ── */
+.form-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 90vh;
+    padding: 80px 8px 60px 24px;
+    position: relative;
+    z-index: 1;
+}
+.form-hd { margin-bottom: 28px; }
+.form-hd h2 {
+    font-size: 1.55rem !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    margin-bottom: 6px !important;
+    letter-spacing: -0.02em !important;
+}
+.form-hd p { font-size: 0.83rem; color: rgba(255,255,255,0.35); margin: 0; }
+
+/* Dark Streamlit widget overrides */
+.stTabs [data-baseweb="tab-list"] {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+    gap: 0 !important;
+    margin-bottom: 22px !important;
+}
+.stTabs [data-baseweb="tab"] {
+    color: rgba(255,255,255,0.32) !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    padding: 10px 22px !important;
+    background: transparent !important;
+}
+.stTabs [aria-selected="true"] {
+    color: #ffffff !important;
+    background: transparent !important;
+}
+.stTabs [data-baseweb="tab-highlight"] { background: #1a6fe0 !important; height: 2px !important; }
+.stTabs [data-baseweb="tab-border"] { display: none !important; }
+.stTabs [data-baseweb="tab-panel"] { padding: 0 !important; }
+
+/* Inputs */
+.stTextInput > label {
+    color: rgba(255,255,255,0.42) !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+}
+.stTextInput > div > div > input {
+    background: rgba(255,255,255,0.05) !important;
+    border: 1px solid rgba(255,255,255,0.09) !important;
+    color: #f1f5f9 !important;
+    border-radius: 12px !important;
+    padding: 13px 16px !important;
+    font-size: 14px !important;
+    transition: all 0.2s !important;
+    font-family: 'Inter', sans-serif !important;
+}
+.stTextInput > div > div > input:focus {
+    border-color: rgba(26,111,224,0.6) !important;
+    box-shadow: 0 0 0 3px rgba(26,111,224,0.18) !important;
+    background: rgba(26,111,224,0.05) !important;
+}
+.stTextInput > div > div > input::placeholder { color: rgba(255,255,255,0.18) !important; }
+[data-baseweb="base-input"] { background: transparent !important; }
+
+/* Selectbox */
+.stSelectbox > label {
+    color: rgba(255,255,255,0.42) !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+}
+.stSelectbox > div > div {
+    background: rgba(255,255,255,0.05) !important;
+    border: 1px solid rgba(255,255,255,0.09) !important;
+    color: #f1f5f9 !important;
+    border-radius: 12px !important;
+}
+.stSelectbox svg { fill: rgba(255,255,255,0.4) !important; }
+
+/* Submit button */
+.stFormSubmitButton > button {
+    background: linear-gradient(135deg, #1a6fe0 0%, #0d4db8 100%) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    letter-spacing: 0.04em !important;
+    border-radius: 12px !important;
+    padding: 14px !important;
+    box-shadow: 0 4px 24px rgba(26,111,224,0.38) !important;
+    transition: all 0.2s ease !important;
+    margin-top: 4px !important;
+}
+.stFormSubmitButton > button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 36px rgba(26,111,224,0.52) !important;
+}
+.stFormSubmitButton > button:active { transform: translateY(0) !important; }
+
+/* Error / success */
+[data-testid="stAlert"] { border-radius: 12px !important; }
+
+/* Footer */
 .login-footer {
     text-align: center;
-    color: #94a3b8;
-    font-size: 0.7rem;
-    padding: 24px 0 20px;
-    line-height: 1.8;
+    color: rgba(255,255,255,0.14);
+    font-size: 0.67rem;
+    padding: 0 0 32px;
+    letter-spacing: 0.04em;
 }
-.login-footer strong { color: #64748b; }
 
-/* Responsive: stack vertically on small screens */
+/* Responsive */
 @media (max-width: 768px) {
-    .login-hero-inner { flex-direction: column; padding: 40px 24px 36px; gap: 28px; }
-    .login-preview { min-width: unset; }
-    .login-title { font-size: 2.2rem; }
+    .bp-headline { font-size: 2.8rem !important; }
+    .brand-panel, .form-panel { min-height: auto; padding: 40px 8px; }
+    .block-container { padding: 0 1rem !important; }
 }
-</style>"""
+</style>""", unsafe_allow_html=True)
 
-# ── Hero HTML ─────────────────────────────────────────────────────────
+# ── Layout: 2 columns ────────────────────────────────────────────────
 
-HERO_HTML = """
-<div class="login-hero">
-  <div class="login-hero-inner">
+col_brand, col_form = st.columns([1.15, 0.85], gap="large")
 
-    <!-- LEFT: Branding -->
-    <div class="login-brand">
-      <div class="login-eyebrow">Pharmaceutical R&amp;D Intelligence</div>
-      <div class="login-title">BioOrchestrator</div>
-      <div class="login-version">v2 · Enterprise Platform</div>
-      <div class="login-tagline">
-        From gene symbol to GO/NO-GO verdict in <strong>15 minutes</strong>.<br>
-        Replaces 2–4 weeks of manual target triage across 6 databases.
-      </div>
-      <div class="login-pills">
-        <span class="lpill">6 Evidence Sources</span>
-        <span class="lpill">5 AI Reasoning Modes</span>
-        <span class="lpill">7-Dimension Scoring</span>
-        <span class="lpill gold">★ 21 CFR Part 11</span>
-        <span class="lpill green">✓ GxP Compliant</span>
-      </div>
-      <div class="login-compliance">
-        SHA-256 Hash Chain · Electronic Signatures · Tamper-Evident Audit Trail
-      </div>
+# ── LEFT: Brand Panel ────────────────────────────────────────────────
+
+with col_brand:
+    st.markdown("""
+<div class="brand-panel">
+
+  <div class="bp-eyebrow">Pharmaceutical AI Platform</div>
+
+  <div class="bp-headline">
+    Drug Discovery.<br>
+    <span class="bp-grad">Reimagined.</span>
+  </div>
+
+  <div class="bp-sub">
+    AI-powered target intelligence that compresses weeks of manual
+    research into <em>15 minutes</em>. From gene symbol to
+    GO/NO-GO verdict with a complete audit trail.
+  </div>
+
+  <!-- Animated scorecard -->
+  <div class="score-card">
+    <div class="sc-label">
+      <span class="sc-dot"></span>
+      EGFR &nbsp;·&nbsp; Non-Small Cell Lung Cancer
     </div>
-
-    <!-- RIGHT: EGFR Scorecard Preview -->
-    <div class="login-preview">
-      <div class="lp-eyebrow">Live Analysis · EGFR / Non-Small Cell Lung Cancer</div>
-      <div class="lp-verdict">
-        <span class="lp-go">GO</span>
-        <span class="lp-score">82.5<span class="lp-score-sub"> / 100</span></span>
-      </div>
-      <div class="lp-bar"><div class="lp-fill" style="width:82.5%"></div></div>
-      <div class="lp-dims">
-        <span class="lp-dim-name">Genetic Evidence</span><span class="lp-dim-val">88</span>
-        <span class="lp-dim-name">Druggability</span><span class="lp-dim-val">91</span>
-        <span class="lp-dim-name">Safety &amp; Selectivity</span><span class="lp-dim-val">74</span>
-        <span class="lp-dim-name">Clinical Translation</span><span class="lp-dim-val">79</span>
-        <span class="lp-dim-name">Literature Consensus</span><span class="lp-dim-val">76</span>
-      </div>
-      <hr class="lp-divider">
-      <div class="lp-sources">
-        <span class="lp-src">OpenTargets</span>
-        <span class="lp-src">PubMed</span>
-        <span class="lp-src">ChEMBL</span>
-        <span class="lp-src">DGIdb</span>
-        <span class="lp-src">UniProt</span>
-        <span class="lp-src">ClinTrials</span>
-      </div>
+    <div class="sc-verdict">
+      <span class="sc-go">GO</span>
+      <span class="sc-num">82.5</span>
+      <span class="sc-denom">&thinsp;/ 100</span>
     </div>
+    <div class="sc-bar-bg">
+      <div class="sc-bar" style="width:82.5%"></div>
+    </div>
+    <div class="sc-grid">
+      <span class="sc-dim">Genetic Evidence</span>   <span class="sc-val">88</span>
+      <span class="sc-dim">Druggability</span>        <span class="sc-val">91</span>
+      <span class="sc-dim">Clinical Translation</span><span class="sc-val">79</span>
+      <span class="sc-dim">Safety &amp; Selectivity</span><span class="sc-val">74</span>
+      <span class="sc-dim">Literature Consensus</span><span class="sc-val">76</span>
+    </div>
+    <hr class="sc-hr">
+    <div class="sc-srcs">
+      <span class="sc-src">OpenTargets</span>
+      <span class="sc-src">PubMed</span>
+      <span class="sc-src">ChEMBL</span>
+      <span class="sc-src">DGIdb</span>
+      <span class="sc-src">UniProt</span>
+      <span class="sc-src">ClinTrials</span>
+    </div>
+  </div>
 
+  <div class="bp-compliance">
+    <span>✓</span> 21 CFR Part 11
+    <span>✓</span> SHA-256 Audit Chain
+    <span>✓</span> GxP Compliant
+  </div>
+
+</div>
+""", unsafe_allow_html=True)
+
+# ── RIGHT: Form Panel ────────────────────────────────────────────────
+
+with col_form:
+    if st.session_state.pop("session_expired", False):
+        st.warning("Your session expired due to inactivity.")
+
+    st.markdown("""
+<div class="form-panel">
+  <div class="form-hd">
+    <h2>Welcome back</h2>
+    <p>Sign in to your BioOrchestrator account</p>
   </div>
 </div>
-"""
-
-# ── Page ─────────────────────────────────────────────────────────────
-
-st.markdown(LOGIN_CSS, unsafe_allow_html=True)
-st.markdown(HERO_HTML, unsafe_allow_html=True)
-
-if st.session_state.pop("session_expired", False):
-    st.warning("Your session expired due to inactivity. Please log in again.")
-
-st.markdown("<div style='height:28px'></div>", unsafe_allow_html=True)
-
-# Centered form card
-_, center, _ = st.columns([1, 2, 1])
-
-auth = AuthService()
-
-with center:
-    st.markdown(
-        """<div class="login-form-header">
-          <div class="login-form-title">Welcome back</div>
-          <div class="login-form-sub">Sign in to your BioOrchestrator account</div>
-        </div>""",
-        unsafe_allow_html=True,
-    )
+""", unsafe_allow_html=True)
 
     login_tab, register_tab = st.tabs(["Sign In", "Create Account"])
+
+    auth = AuthService()
 
     # ── Sign In ──────────────────────────────────────────────────────
     with login_tab:
         with st.form("login_form"):
-            email = st.text_input("Email address", placeholder="you@company.com", key="login_email")
-            password = st.text_input("Password", type="password", placeholder="••••••••", key="login_password")
-            submitted = st.form_submit_button("Sign In →", use_container_width=True, type="primary")
+            email = st.text_input(
+                "Email", placeholder="you@pharma.com", key="login_email"
+            )
+            password = st.text_input(
+                "Password", type="password", placeholder="••••••••", key="login_password"
+            )
+            submitted = st.form_submit_button(
+                "Sign In  →", use_container_width=True, type="primary"
+            )
 
         if submitted:
             if not email or not password:
@@ -357,16 +438,24 @@ with center:
     # ── Create Account ────────────────────────────────────────────────
     with register_tab:
         with st.form("register_form"):
-            reg_email = st.text_input("Email address", placeholder="you@company.com", key="reg_email")
-            reg_password = st.text_input("Password", type="password", placeholder="Min. 8 characters", key="reg_password")
-            reg_confirm = st.text_input("Confirm password", type="password", placeholder="Repeat password", key="reg_confirm")
+            reg_email = st.text_input(
+                "Email", placeholder="you@pharma.com", key="reg_email"
+            )
+            reg_password = st.text_input(
+                "Password", type="password", placeholder="Min. 8 characters", key="reg_password"
+            )
+            reg_confirm = st.text_input(
+                "Confirm password", type="password", placeholder="Repeat password", key="reg_confirm"
+            )
             reg_role = st.selectbox(
                 "Role",
                 options=["analyst", "reviewer", "admin"],
                 help="analyst: full access · reviewer: read-only · admin: all permissions",
                 key="reg_role",
             )
-            reg_submitted = st.form_submit_button("Create Account", use_container_width=True, type="primary")
+            reg_submitted = st.form_submit_button(
+                "Create Account", use_container_width=True, type="primary"
+            )
 
         if reg_submitted:
             if not reg_email or not reg_password:
@@ -376,17 +465,16 @@ with center:
             else:
                 result = auth.register(reg_email, reg_password, reg_role)
                 if result["success"]:
-                    st.success("Account created! You can now sign in.")
+                    st.success("Account created. You can now sign in.")
                 else:
                     st.error(result["error"])
 
-# ── Footer ─────────────────────────────────────────────────────────────
+# ── Footer ───────────────────────────────────────────────────────────
 
 st.markdown(
-    """<div class="login-footer">
-      <strong>BioOrchestrator v2</strong> · 21 CFR Part 11 Compliant ·
-      SHA-256 Audit Chain · GxP Ready<br>
-      For authorized pharmaceutical research use only.
-    </div>""",
+    "<div class='login-footer'>"
+    "BioOrchestrator v2 &nbsp;·&nbsp; 21 CFR Part 11 Compliant &nbsp;·&nbsp; "
+    "For authorized pharmaceutical research use only."
+    "</div>",
     unsafe_allow_html=True,
 )
