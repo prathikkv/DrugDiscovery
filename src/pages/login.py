@@ -13,13 +13,17 @@ from src.auth.service import AuthService
 # ── Full-page CSS ────────────────────────────────────────────────────
 
 st.markdown("""<style>
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@500;600;700&display=swap');
 
-/* ── DARK FULL PAGE ── */
+/* ── PAGE FOUNDATION ── */
 .stApp {
-    background-color: #07101e !important;
-    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px) !important;
-    background-size: 28px 28px !important;
+    background-color: #0c0c0f !important;
+    background-image:
+        radial-gradient(rgba(20,184,166,0.055) 1px, transparent 1px),
+        radial-gradient(rgba(20,184,166,0.03) 1px, transparent 1px) !important;
+    background-size: 28px 28px, 56px 56px !important;
+    background-position: 0 0, 14px 14px !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
 .main, .block-container { background: transparent !important; }
 .block-container { max-width: 1300px !important; padding: 4vh 2.5rem 0 !important; }
@@ -33,23 +37,27 @@ footer { display: none !important; }
     align-items: center;
     gap: 14px;
     margin-bottom: 32px;
+    position: relative;
+    z-index: 2;
 }
 .ts-wordmark svg { flex-shrink: 0; }
 .ts-wordname {
     font-size: 1.5rem;
     font-weight: 800;
-    color: #ffffff;
+    color: #f8fafc;
     letter-spacing: -0.03em;
     line-height: 1;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
-.ts-wordname span { color: #38bdf8; }
+.ts-wordname span { color: #14b8a6; }
 .ts-tagline-sm {
-    font-size: 0.58rem;
-    color: rgba(255,255,255,0.32);
+    font-size: 0.57rem;
+    color: rgba(255,255,255,0.28);
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.22em;
     font-weight: 600;
     margin-top: 5px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 /* ── BRAND PANEL ── */
@@ -61,127 +69,135 @@ footer { display: none !important; }
     position: relative;
     z-index: 1;
 }
+.brand-panel::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -40px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(20,184,166,0.08) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+}
 .bp-headline {
     font-size: 3.8rem !important;
-    font-weight: 900 !important;
-    color: #ffffff !important;
+    font-weight: 800 !important;
+    color: #f8fafc !important;
     line-height: 1.05 !important;
     letter-spacing: -0.04em !important;
     margin: 0 0 18px 0 !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    position: relative;
+    z-index: 2;
 }
-.bp-grad {
-    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 60%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
+.bp-grad { color: #14b8a6; }
 .bp-sub {
     font-size: 1.0rem;
-    color: rgba(255,255,255,0.48);
+    color: rgba(255,255,255,0.44);
     line-height: 1.75;
     max-width: 400px;
     margin-bottom: 22px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    position: relative;
+    z-index: 2;
 }
-.bp-sub em { color: #60a5fa; font-style: normal; font-weight: 600; }
+.bp-sub em { color: #2dd4bf; font-style: normal; font-weight: 600; }
 
-/* ── SCORECARD CARD ── */
+/* ── SCORECARD — TERMINAL PRECISION ── */
 .score-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.09);
-    border-radius: 16px;
-    padding: 22px 22px 18px;
+    background: rgba(12,12,15,0.92);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-left: 2px solid #14b8a6;
+    border-radius: 12px;
+    padding: 20px 20px 16px;
     max-width: 390px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
     margin-bottom: 20px;
     position: relative;
-    overflow: hidden;
-}
-.score-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent 10%, #3b82f6, #60a5fa, transparent 90%);
-    opacity: 0.6;
+    z-index: 2;
 }
 .sc-label {
     display: flex;
     align-items: center;
     gap: 8px;
     font-size: 0.58rem;
-    color: #38bdf8;
+    color: #2dd4bf;
     text-transform: uppercase;
     letter-spacing: 0.18em;
     font-weight: 700;
     margin-bottom: 16px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 .sc-dot {
     width: 6px; height: 6px;
     border-radius: 50%;
     background: #16a34a;
-    box-shadow: 0 0 8px #16a34a;
-    animation: livepulse 2s ease-in-out infinite;
+    box-shadow: 0 0 6px rgba(22,163,74,0.8);
+    animation: livepulse 2.5s ease-in-out infinite;
+    flex-shrink: 0;
 }
 @keyframes livepulse {
-    0%,100% { box-shadow: 0 0 4px #16a34a; }
-    50%      { box-shadow: 0 0 12px #16a34a, 0 0 20px rgba(22,163,74,0.4); }
+    0%,100% { opacity: 0.7; }
+    50%      { opacity: 1; box-shadow: 0 0 10px rgba(22,163,74,0.9); }
 }
 .sc-verdict { display: flex; align-items: baseline; gap: 14px; margin-bottom: 12px; }
 .sc-go {
-    background: linear-gradient(135deg, #16a34a, #15803d);
-    color: white;
-    font-size: 0.7rem;
-    font-weight: 800;
-    padding: 4px 16px;
-    border-radius: 20px;
-    letter-spacing: 0.12em;
-    box-shadow: 0 2px 12px rgba(22,163,74,0.4);
+    background: #166534;
+    color: #86efac;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 3px 14px;
+    border-radius: 4px;
+    letter-spacing: 0.14em;
+    border: 1px solid rgba(134,239,172,0.25);
+    font-family: 'JetBrains Mono', monospace;
 }
 .sc-num {
     font-size: 2.4rem;
     font-weight: 700;
-    color: white;
-    font-family: 'IBM Plex Mono', monospace;
+    color: #f8fafc;
+    font-family: 'JetBrains Mono', monospace;
     line-height: 1;
 }
-.sc-denom { font-size: 0.8rem; color: rgba(255,255,255,0.28); font-family: 'IBM Plex Mono', monospace; }
-.sc-bar-bg { background: rgba(255,255,255,0.07); border-radius: 4px; height: 6px; margin-bottom: 22px; overflow: hidden; }
-.sc-bar { background: linear-gradient(90deg, #3b82f6, #60a5fa); border-radius: 4px; height: 6px;
-          animation: barfill 1.8s ease-out; }
+.sc-denom { font-size: 0.78rem; color: rgba(255,255,255,0.25); font-family: 'JetBrains Mono', monospace; }
+.sc-bar-bg { background: rgba(255,255,255,0.07); border-radius: 3px; height: 5px; margin-bottom: 20px; overflow: hidden; }
+.sc-bar { background: linear-gradient(90deg, #0d9488, #2dd4bf); border-radius: 3px; height: 5px;
+          animation: barfill 1.8s cubic-bezier(0.4, 0, 0.2, 1); }
 @keyframes barfill { from { width: 0%; } }
-.sc-grid { display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; margin-bottom: 18px; }
-.sc-dim { font-size: 0.73rem; color: rgba(255,255,255,0.45); }
-.sc-val { font-size: 0.73rem; color: #60a5fa; font-weight: 700; font-family: 'IBM Plex Mono', monospace; text-align: right; }
-.sc-hr { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 12px 0; }
+.sc-grid { display: grid; grid-template-columns: 1fr auto; gap: 7px 16px; margin-bottom: 16px; }
+.sc-dim { font-size: 0.72rem; color: rgba(255,255,255,0.4); font-family: 'Plus Jakarta Sans', sans-serif; }
+.sc-val { font-size: 0.72rem; color: #2dd4bf; font-weight: 600; font-family: 'JetBrains Mono', monospace; text-align: right; }
+.sc-hr { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 10px 0; }
 .sc-srcs { display: flex; flex-wrap: wrap; gap: 5px; }
 .sc-src {
-    background: rgba(26,111,224,0.14);
-    color: rgba(147,197,253,0.9);
-    border: 1px solid rgba(26,111,224,0.22);
-    border-radius: 5px;
+    background: rgba(20,184,166,0.08);
+    color: rgba(45,212,191,0.8);
+    border: 1px solid rgba(20,184,166,0.18);
+    border-radius: 4px;
     padding: 2px 8px;
     font-size: 0.6rem;
     font-weight: 600;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.04em;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 /* Compliance strip */
 .bp-compliance {
-    font-size: 0.67rem;
-    color: rgba(255,255,255,0.2);
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.18);
     letter-spacing: 0.04em;
     display: flex;
     gap: 14px;
     flex-wrap: wrap;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    position: relative;
+    z-index: 2;
 }
-.bp-compliance span { color: rgba(22,163,74,0.55); }
+.bp-compliance span { color: rgba(22,163,74,0.5); }
 
 /* ── FORM PANEL ── */
 .form-panel {
     padding: 56px 8px 44px 44px;
-    border-left: 1px solid rgba(255,255,255,0.07);
+    border-left: 1px solid rgba(20,184,166,0.15);
     position: relative;
     z-index: 1;
 }
@@ -189,112 +205,118 @@ footer { display: none !important; }
 .form-hd h2 {
     font-size: 1.55rem !important;
     font-weight: 800 !important;
-    color: #ffffff !important;
+    color: #f8fafc !important;
     margin-bottom: 6px !important;
     letter-spacing: -0.02em !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
-.form-hd p { font-size: 0.83rem; color: rgba(255,255,255,0.35); margin: 0; }
+.form-hd p {
+    font-size: 0.83rem;
+    color: rgba(255,255,255,0.32);
+    margin: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
 
-/* Dark Streamlit widget overrides */
+/* ── WIDGET OVERRIDES ── */
 .stTabs [data-baseweb="tab-list"] {
     background: transparent !important;
-    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
     gap: 0 !important;
     margin-bottom: 22px !important;
 }
 .stTabs [data-baseweb="tab"] {
-    color: rgba(255,255,255,0.32) !important;
+    color: rgba(255,255,255,0.28) !important;
     font-size: 13px !important;
     font-weight: 600 !important;
     padding: 10px 22px !important;
     background: transparent !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    letter-spacing: 0.01em !important;
 }
-.stTabs [aria-selected="true"] {
-    color: #ffffff !important;
-    background: transparent !important;
-}
-.stTabs [data-baseweb="tab-highlight"] { background: #3b82f6 !important; height: 2px !important; }
+.stTabs [aria-selected="true"] { color: #f8fafc !important; background: transparent !important; }
+.stTabs [data-baseweb="tab-highlight"] { background: #0d9488 !important; height: 2px !important; }
 .stTabs [data-baseweb="tab-border"] { display: none !important; }
 .stTabs [data-baseweb="tab-panel"] { padding: 0 !important; }
 
 /* Inputs */
-.stTextInput > label {
-    color: rgba(255,255,255,0.42) !important;
+.stTextInput > label, .stSelectbox > label {
+    color: rgba(255,255,255,0.38) !important;
     font-size: 11px !important;
     font-weight: 600 !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.08em !important;
+    letter-spacing: 0.1em !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
 .stTextInput > div > div > input {
-    background: rgba(255,255,255,0.05) !important;
-    border: 1px solid rgba(255,255,255,0.09) !important;
+    background: rgba(255,255,255,0.04) !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
     color: #f1f5f9 !important;
-    border-radius: 12px !important;
+    border-radius: 10px !important;
     padding: 13px 16px !important;
     font-size: 14px !important;
-    transition: all 0.2s !important;
-    font-family: 'Inter', sans-serif !important;
+    transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
 .stTextInput > div > div > input:focus {
-    border-color: rgba(59,130,246,0.6) !important;
-    box-shadow: 0 0 0 3px rgba(59,130,246,0.14) !important;
-    background: rgba(59,130,246,0.04) !important;
+    border-color: rgba(20,184,166,0.5) !important;
+    box-shadow: 0 0 0 3px rgba(20,184,166,0.1) !important;
+    background: rgba(20,184,166,0.03) !important;
 }
-.stTextInput > div > div > input::placeholder { color: rgba(255,255,255,0.18) !important; }
+.stTextInput > div > div > input::placeholder { color: rgba(255,255,255,0.16) !important; }
 [data-baseweb="base-input"] { background: transparent !important; }
 
 /* Selectbox */
-.stSelectbox > label {
-    color: rgba(255,255,255,0.42) !important;
-    font-size: 11px !important;
-    font-weight: 600 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.08em !important;
-}
 .stSelectbox > div > div {
-    background: rgba(255,255,255,0.05) !important;
-    border: 1px solid rgba(255,255,255,0.09) !important;
+    background: rgba(255,255,255,0.04) !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
     color: #f1f5f9 !important;
-    border-radius: 12px !important;
+    border-radius: 10px !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
 .stSelectbox svg { fill: rgba(255,255,255,0.4) !important; }
 
 /* Submit button */
 .stFormSubmitButton > button {
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+    background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%) !important;
     border: none !important;
-    color: white !important;
+    color: #f0fdf4 !important;
     font-weight: 700 !important;
     font-size: 14px !important;
     letter-spacing: 0.04em !important;
     border-radius: 10px !important;
     padding: 14px !important;
-    box-shadow: 0 2px 16px rgba(37,99,235,0.32) !important;
-    transition: all 0.18s ease !important;
+    box-shadow: 0 2px 12px rgba(13,148,136,0.28) !important;
+    transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1) !important;
     margin-top: 4px !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
 .stFormSubmitButton > button:hover {
     transform: translateY(-1px) !important;
-    box-shadow: 0 6px 24px rgba(37,99,235,0.44) !important;
+    box-shadow: 0 8px 24px rgba(13,148,136,0.38) !important;
 }
-.stFormSubmitButton > button:active { transform: translateY(0) !important; }
+.stFormSubmitButton > button:active {
+    transform: translateY(0) scale(0.99) !important;
+    box-shadow: 0 1px 6px rgba(13,148,136,0.2) !important;
+}
 
-/* Error / success */
-[data-testid="stAlert"] { border-radius: 12px !important; }
+/* Alerts */
+[data-testid="stAlert"] { border-radius: 10px !important; }
 
 /* Footer */
 .login-footer {
     text-align: center;
-    color: rgba(255,255,255,0.14);
-    font-size: 0.67rem;
-    padding: 0 0 32px;
-    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.13);
+    font-size: 0.65rem;
+    padding: 0 0 28px;
+    letter-spacing: 0.05em;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .bp-headline { font-size: 2.8rem !important; }
-    .brand-panel, .form-panel { min-height: auto; padding: 40px 8px; }
+    .bp-headline { font-size: 2.6rem !important; }
+    .brand-panel, .form-panel { padding: 36px 8px; }
+    .form-panel { border-left: none; border-top: 1px solid rgba(20,184,166,0.15); }
     .block-container { padding: 0 1rem !important; }
 }
 </style>""", unsafe_allow_html=True)
@@ -311,10 +333,12 @@ with col_brand:
 
   <!-- TargetSight wordmark -->
   <div class="ts-wordmark">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" width="40" height="40">
-      <path d="M 20 4 A 16 16 0 1 1 5 26" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round"/>
-      <circle cx="20" cy="20" r="3.5" fill="#3b82f6"/>
-      <path d="M 26 24 A 7 7 0 0 1 19 27" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round" opacity="0.65"/>
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="38" height="38">
+      <polygon points="20,4 33.5,12 33.5,28 20,36 6.5,28 6.5,12"
+        stroke="#14b8a6" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+      <polygon points="20,12.5 27.5,16.75 27.5,25.25 20,29.5 12.5,25.25 12.5,16.75"
+        stroke="#14b8a6" stroke-width="1.1" fill="none" opacity="0.35" stroke-linejoin="round"/>
+      <circle cx="20" cy="20" r="2.4" fill="#14b8a6"/>
     </svg>
     <div>
       <div class="ts-wordname">Target<span>Sight</span></div>
@@ -459,7 +483,7 @@ with col_form:
 
 st.markdown(
     "<div class='login-footer'>"
-    "TargetSight &nbsp;·&nbsp; 21 CFR Part 11 Compliant &nbsp;·&nbsp; "
+    "TargetSight&#8482; &nbsp;·&nbsp; 21 CFR Part 11 Compliant &nbsp;·&nbsp; "
     "SHA-256 Audit Chain &nbsp;·&nbsp; For authorized pharmaceutical research use only."
     "</div>",
     unsafe_allow_html=True,
