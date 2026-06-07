@@ -1,9 +1,9 @@
 """TargetSight — Login page.
 
-Full-page dark immersive layout:
-- Left: TargetSight wordmark + brand statement + animated EGFR scorecard
-- Right: Clean dark form card
-- Animated radial glow, floating scorecard, electric blue CTAs
+Light-mode enterprise layout:
+- Left: TargetSight wordmark + brand statement + dark EGFR scorecard (contrast widget)
+- Right: Floating white card with Stripe-style layered shadow
+- Warm cream background (#f4f3f0), dark navy text, teal accents only in logo/button
 """
 
 import streamlit as st
@@ -15,12 +15,12 @@ from src.auth.service import AuthService
 st.markdown("""<style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@500;600;700&display=swap');
 
-/* ── PAGE FOUNDATION ── */
+/* ── PAGE FOUNDATION — LIGHT MODE ── */
 .stApp {
-    background-color: #0c0c0f !important;
+    background-color: #f4f3f0 !important;
     background-image:
-        radial-gradient(rgba(20,184,166,0.055) 1px, transparent 1px),
-        radial-gradient(rgba(20,184,166,0.03) 1px, transparent 1px) !important;
+        radial-gradient(rgba(15,23,42,0.04) 1px, transparent 1px),
+        radial-gradient(rgba(15,23,42,0.025) 1px, transparent 1px) !important;
     background-size: 28px 28px, 56px 56px !important;
     background-position: 0 0, 14px 14px !important;
     font-family: 'Plus Jakarta Sans', sans-serif !important;
@@ -44,15 +44,15 @@ footer { display: none !important; }
 .ts-wordname {
     font-size: 1.5rem;
     font-weight: 800;
-    color: #f8fafc;
+    color: #0f172a;
     letter-spacing: -0.03em;
     line-height: 1;
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
-.ts-wordname span { color: #14b8a6; }
+.ts-wordname span { color: #0d9488; }
 .ts-tagline-sm {
     font-size: 0.57rem;
-    color: rgba(255,255,255,0.28);
+    color: rgba(15,23,42,0.38);
     text-transform: uppercase;
     letter-spacing: 0.22em;
     font-weight: 600;
@@ -69,19 +69,10 @@ footer { display: none !important; }
     position: relative;
     z-index: 1;
 }
-.brand-panel::before {
-    content: '';
-    position: absolute;
-    top: -60px; left: -40px;
-    width: 320px; height: 320px;
-    background: radial-gradient(circle, rgba(20,184,166,0.08) 0%, transparent 65%);
-    pointer-events: none;
-    z-index: 0;
-}
 .bp-headline {
     font-size: 3.8rem !important;
     font-weight: 800 !important;
-    color: #f8fafc !important;
+    color: #0f172a !important;
     line-height: 1.05 !important;
     letter-spacing: -0.04em !important;
     margin: 0 0 18px 0 !important;
@@ -89,10 +80,10 @@ footer { display: none !important; }
     position: relative;
     z-index: 2;
 }
-.bp-grad { color: #14b8a6; }
+.bp-grad { color: #0d9488; }
 .bp-sub {
     font-size: 1.0rem;
-    color: rgba(255,255,255,0.44);
+    color: #64748b;
     line-height: 1.75;
     max-width: 400px;
     margin-bottom: 22px;
@@ -100,17 +91,20 @@ footer { display: none !important; }
     position: relative;
     z-index: 2;
 }
-.bp-sub em { color: #2dd4bf; font-style: normal; font-weight: 600; }
+.bp-sub em { color: #0d9488; font-style: normal; font-weight: 600; }
 
-/* ── SCORECARD — TERMINAL PRECISION ── */
+/* ── SCORECARD — STAYS DARK (Bloomberg terminal widget) ── */
 .score-card {
-    background: rgba(12,12,15,0.92);
+    background: #17181c;
     border: 1px solid rgba(255,255,255,0.08);
     border-left: 2px solid #14b8a6;
     border-radius: 12px;
     padding: 20px 20px 16px;
     max-width: 390px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+    box-shadow:
+        0 1px 3px rgba(0,0,0,0.10),
+        0 8px 28px rgba(0,0,0,0.14),
+        0 20px 56px rgba(0,0,0,0.10);
     margin-bottom: 20px;
     position: relative;
     z-index: 2;
@@ -183,7 +177,7 @@ footer { display: none !important; }
 /* Compliance strip */
 .bp-compliance {
     font-size: 0.65rem;
-    color: rgba(255,255,255,0.18);
+    color: #94a3b8;
     letter-spacing: 0.04em;
     display: flex;
     gap: 14px;
@@ -192,12 +186,19 @@ footer { display: none !important; }
     position: relative;
     z-index: 2;
 }
-.bp-compliance span { color: rgba(22,163,74,0.5); }
+.bp-compliance span { color: #059669; }
 
-/* ── FORM PANEL ── */
+/* ── FORM PANEL — WHITE FLOATING CARD ── */
 .form-panel {
-    padding: 56px 8px 44px 44px;
-    border-left: 1px solid rgba(20,184,166,0.15);
+    background: #ffffff;
+    border: 1px solid #e8e4de;
+    border-radius: 16px;
+    padding: 40px 36px 32px;
+    box-shadow:
+        0 1px 3px rgba(0,0,0,0.06),
+        0 6px 20px rgba(0,0,0,0.07),
+        0 16px 48px rgba(0,0,0,0.05);
+    margin-top: 16px;
     position: relative;
     z-index: 1;
 }
@@ -205,14 +206,14 @@ footer { display: none !important; }
 .form-hd h2 {
     font-size: 1.55rem !important;
     font-weight: 800 !important;
-    color: #f8fafc !important;
+    color: #0f172a !important;
     margin-bottom: 6px !important;
     letter-spacing: -0.02em !important;
     font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
 .form-hd p {
     font-size: 0.83rem;
-    color: rgba(255,255,255,0.32);
+    color: #64748b;
     margin: 0;
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
@@ -220,12 +221,12 @@ footer { display: none !important; }
 /* ── WIDGET OVERRIDES ── */
 .stTabs [data-baseweb="tab-list"] {
     background: transparent !important;
-    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+    border-bottom: 1px solid #e2e8f0 !important;
     gap: 0 !important;
     margin-bottom: 22px !important;
 }
 .stTabs [data-baseweb="tab"] {
-    color: rgba(255,255,255,0.28) !important;
+    color: #94a3b8 !important;
     font-size: 13px !important;
     font-weight: 600 !important;
     padding: 10px 22px !important;
@@ -233,14 +234,14 @@ footer { display: none !important; }
     font-family: 'Plus Jakarta Sans', sans-serif !important;
     letter-spacing: 0.01em !important;
 }
-.stTabs [aria-selected="true"] { color: #f8fafc !important; background: transparent !important; }
+.stTabs [aria-selected="true"] { color: #0f172a !important; background: transparent !important; }
 .stTabs [data-baseweb="tab-highlight"] { background: #0d9488 !important; height: 2px !important; }
 .stTabs [data-baseweb="tab-border"] { display: none !important; }
 .stTabs [data-baseweb="tab-panel"] { padding: 0 !important; }
 
 /* Inputs */
 .stTextInput > label, .stSelectbox > label {
-    color: rgba(255,255,255,0.38) !important;
+    color: #374151 !important;
     font-size: 11px !important;
     font-weight: 600 !important;
     text-transform: uppercase !important;
@@ -248,9 +249,9 @@ footer { display: none !important; }
     font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
 .stTextInput > div > div > input {
-    background: rgba(255,255,255,0.04) !important;
-    border: 1px solid rgba(255,255,255,0.08) !important;
-    color: #f1f5f9 !important;
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    color: #0f172a !important;
     border-radius: 10px !important;
     padding: 13px 16px !important;
     font-size: 14px !important;
@@ -258,22 +259,22 @@ footer { display: none !important; }
     font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
 .stTextInput > div > div > input:focus {
-    border-color: rgba(20,184,166,0.5) !important;
-    box-shadow: 0 0 0 3px rgba(20,184,166,0.1) !important;
-    background: rgba(20,184,166,0.03) !important;
+    border-color: #0d9488 !important;
+    box-shadow: 0 0 0 3px rgba(13,148,136,0.1) !important;
+    background: #ffffff !important;
 }
-.stTextInput > div > div > input::placeholder { color: rgba(255,255,255,0.16) !important; }
+.stTextInput > div > div > input::placeholder { color: #94a3b8 !important; }
 [data-baseweb="base-input"] { background: transparent !important; }
 
 /* Selectbox */
 .stSelectbox > div > div {
-    background: rgba(255,255,255,0.04) !important;
-    border: 1px solid rgba(255,255,255,0.08) !important;
-    color: #f1f5f9 !important;
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    color: #0f172a !important;
     border-radius: 10px !important;
     font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
-.stSelectbox svg { fill: rgba(255,255,255,0.4) !important; }
+.stSelectbox svg { fill: #64748b !important; }
 
 /* Submit button */
 .stFormSubmitButton > button {
@@ -305,7 +306,7 @@ footer { display: none !important; }
 /* Footer */
 .login-footer {
     text-align: center;
-    color: rgba(255,255,255,0.13);
+    color: #94a3b8;
     font-size: 0.65rem;
     padding: 0 0 28px;
     letter-spacing: 0.05em;
@@ -315,8 +316,8 @@ footer { display: none !important; }
 /* Responsive */
 @media (max-width: 768px) {
     .bp-headline { font-size: 2.6rem !important; }
-    .brand-panel, .form-panel { padding: 36px 8px; }
-    .form-panel { border-left: none; border-top: 1px solid rgba(20,184,166,0.15); }
+    .brand-panel { padding: 36px 8px; }
+    .form-panel { margin-top: 24px; padding: 28px 20px 24px; }
     .block-container { padding: 0 1rem !important; }
 }
 </style>""", unsafe_allow_html=True)
