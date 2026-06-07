@@ -2,18 +2,12 @@
 
 Run with: streamlit run src/app.py
 
-Uses st.navigation and st.Page for routing (not the pages/ directory
-convention). Shows login page for unauthenticated users and 7 pages
-organized into Setup/Analysis/Results sections for authenticated users.
-Design system CSS is injected globally.
+Uses st.navigation and st.Page for routing. All pages are accessible
+without login. Design system CSS is injected globally.
 """
-
-import pathlib
-from datetime import datetime, timezone
 
 import streamlit as st
 
-from src.config import SESSION_TIMEOUT_MINUTES
 from src.logging_config import setup_logging
 from src.pages.components.styles import inject_design_system
 
@@ -28,24 +22,16 @@ st.set_page_config(
 # Inject design system CSS globally (once, after set_page_config)
 inject_design_system()
 
-
-def _check_session_timeout() -> None:
-    """Expire idle sessions after SESSION_TIMEOUT_MINUTES of inactivity."""
-    if "user" not in st.session_state:
-        return
-    now = datetime.now(timezone.utc)
-    last_active = st.session_state.get("last_active_at")
-    if last_active is not None:
-        elapsed = (now - last_active).total_seconds()
-        if elapsed > SESSION_TIMEOUT_MINUTES * 60:
-            st.session_state.clear()
-            st.session_state["session_expired"] = True
-            st.rerun()
-    st.session_state["last_active_at"] = now
+# Auto-set a session user so auth guards on individual pages pass.
+if "user" not in st.session_state:
+    st.session_state["user"] = {
+        "user_id": "default",
+        "email": "admin@targetsight.ai",
+        "role": "admin",
+    }
 
 
 def _build_navigation():
-    """Build navigation for authenticated users."""
     pages = {
         "": [
             st.Page("pages/home.py", title="Home", icon=":material/home:", default=True),
@@ -67,51 +53,23 @@ def _build_navigation():
 
 
 def _render_sidebar():
-    """Render sidebar with user info, mode display, and logout button."""
-    if "user" in st.session_state:
-        user = st.session_state["user"]
-        with st.sidebar:
-            st.markdown(f"**User:** {user['email']}")
-            st.markdown(f"**Role:** {user['role']}")
+    with st.sidebar:
+        # Show active project if set
+        active_project_id = st.session_state.get("active_project_id")
+        if active_project_id:
+            project_name = st.session_state.get(
+                "active_project_name", active_project_id
+            )
+            st.markdown(f"**Project:** {project_name}")
 
-            # Show active project if set
-            active_project_id = st.session_state.get("active_project_id")
-            if active_project_id:
-                project_name = st.session_state.get(
-                    "active_project_name", active_project_id
-                )
-                st.markdown(f"**Project:** {project_name}")
-
-            # Show current mode
-            project_config = st.session_state.get("project_config", {})
-            mode = project_config.get("mode", "exploration")
-            mode_icon = ":material/explore:" if mode == "exploration" else ":material/verified_user:"
-            st.markdown(f"**Mode:** {mode_icon} {mode.title()}")
-
-            st.divider()
-            if st.button("Logout", type="secondary", use_container_width=True):
-                del st.session_state["user"]
-                st.rerun()
+        # Show current mode
+        project_config = st.session_state.get("project_config", {})
+        mode = project_config.get("mode", "exploration")
+        mode_icon = ":material/explore:" if mode == "exploration" else ":material/verified_user:"
+        st.markdown(f"**Mode:** {mode_icon} {mode.title()}")
 
 
 # ── Main ─────────────────────────────────────────────────────────────
-
-_check_session_timeout()
-
-if "user" not in st.session_state:
-    # If the browser is at /login (old bookmark or direct URL), redirect to root.
-    # /login sets <base href="/login/"> which breaks all _stcore API calls.
-    st.markdown(
-        "<script>"
-        "if(window.location.pathname!=='/'){window.location.replace('/');}"
-        "</script>",
-        unsafe_allow_html=True,
-    )
-    # Execute login.py directly — URL stays at / (root).
-    # No /login routing → no <base href="/login/"> tag → no _stcore 404s.
-    _login_path = pathlib.Path(__file__).parent / "pages" / "login.py"
-    exec(compile(_login_path.read_text(), str(_login_path), "exec"), globals())  # noqa: S102
-    st.stop()
 
 pg = _build_navigation()
 _render_sidebar()
