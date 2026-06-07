@@ -433,8 +433,7 @@ with register_tab:
         else:
             result = auth.register(reg_email, reg_password, reg_role)
             if result["success"]:
-                st.session_state["login_email"] = reg_email
-                st.success("Account created! Switch to the **Sign In** tab — your email is pre-filled.")
+                st.success("Account created! Switch to the **Sign In** tab to log in.")
             else:
                 st.error(result["error"])
 
