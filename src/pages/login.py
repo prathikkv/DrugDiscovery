@@ -397,7 +397,7 @@ with login_tab:
                     "email": email,
                     "role": result["role"],
                 }
-                st.switch_page("pages/home.py")
+                st.rerun()
             else:
                 st.error(result["error"])
 
@@ -431,7 +431,8 @@ with register_tab:
         else:
             result = auth.register(reg_email, reg_password, reg_role)
             if result["success"]:
-                st.success("Account created! Switch to Sign In to log in.")
+                st.session_state["login_email"] = reg_email
+                st.success("Account created! Switch to the **Sign In** tab — your email is pre-filled.")
             else:
                 st.error(result["error"])
 
