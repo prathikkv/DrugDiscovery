@@ -356,6 +356,10 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+# AuthService.__init__ calls init_auth_db — must happen before count_users
+# so the users table exists on a fresh deployment.
+auth = AuthService()
+
 # ── First-run detection — guide new deployments to register ──────────
 _db_conn = get_connection(config.AUTH_DB)
 try:
@@ -370,8 +374,6 @@ if _no_users:
     )
 
 login_tab, register_tab = st.tabs(["Sign In", "Create Account"])
-
-auth = AuthService()
 
 # ── Sign In ──────────────────────────────────────────────────────────
 with login_tab:
