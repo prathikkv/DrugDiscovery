@@ -51,59 +51,42 @@ def _build_navigation():
     """
     if "user" not in st.session_state:
         # Unauthenticated: show only login
-        pages = [
+        return st.navigation([
             st.Page("pages/login.py", title="Login", icon=":material/login:"),
-        ]
-        return st.navigation(pages)
+        ])
 
     # Authenticated: 8 pages in 4 sections (Home + Setup + Analysis + Results)
+    # Keep home_page as a variable so we can pass it to st.switch_page() below.
+    home_page = st.Page(
+        "pages/home.py",
+        title="Home",
+        icon=":material/home:",
+        default=True,
+    )
     pages = {
-        "": [
-            st.Page(
-                "pages/home.py",
-                title="Home",
-                icon=":material/home:",
-                default=True,
-            ),
-        ],
+        "": [home_page],
         "Setup": [
-            st.Page(
-                "pages/projects.py",
-                title="Projects",
-                icon=":material/folder:",
-            ),
+            st.Page("pages/projects.py", title="Projects", icon=":material/folder:"),
         ],
         "Analysis": [
-            st.Page(
-                "pages/omics.py",
-                title="Omics Analysis",
-                icon=":material/science:",
-            ),
-            st.Page(
-                "pages/evidence.py",
-                title="Evidence Explorer",
-                icon=":material/search:",
-            ),
-            st.Page(
-                "pages/insights.py",
-                title="AI Insights",
-                icon=":material/psychology:",
-            ),
+            st.Page("pages/omics.py", title="Omics Analysis", icon=":material/science:"),
+            st.Page("pages/evidence.py", title="Evidence Explorer", icon=":material/search:"),
+            st.Page("pages/insights.py", title="AI Insights", icon=":material/psychology:"),
         ],
         "Results": [
-            st.Page(
-                "pages/scorecard.py",
-                title="Scorecard",
-                icon=":material/assessment:",
-            ),
-            st.Page(
-                "pages/audit.py",
-                title="Audit Trail",
-                icon=":material/history:",
-            ),
+            st.Page("pages/scorecard.py", title="Scorecard", icon=":material/assessment:"),
+            st.Page("pages/audit.py", title="Audit Trail", icon=":material/history:"),
         ],
     }
-    return st.navigation(pages)
+    pg = st.navigation(pages)
+
+    # Explicit post-login redirect using the registered st.Page object.
+    # st.switch_page(st.Page) is the correct API for st.navigation() apps;
+    # string paths only work with the legacy pages/ directory convention.
+    if st.session_state.pop("_just_logged_in", False):
+        st.switch_page(home_page)
+
+    return pg
 
 
 def _render_sidebar():
