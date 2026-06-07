@@ -1,6 +1,7 @@
 """Audit trail tests -- append, hash chain, tamper detection, e-signatures."""
 
 import pytest
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 pytestmark = pytest.mark.integration
 
@@ -168,3 +169,42 @@ def test_electronic_signature_bad_password(tmp_path):
 
     assert result["success"] is False
     assert "failed" in result["error"].lower()
+
+
+# ── Concurrency ──────────────────────────────────────────────────────
+
+def test_concurrent_appends_maintain_chain_integrity(audit_trail):
+    """10 concurrent append_record() calls must produce a valid, gap-free hash chain."""
+    n = 10
+
+    def _append(i: int) -> str:
+        return audit_trail.append_record(
+            user_id=f"user-{i}",
+            action="CREATE",
+            resource_type="task",
+            resource_id=f"task-{i:03d}",
+            details={"index": i},
+        )
+
+    with ThreadPoolExecutor(max_workers=n) as executor:
+        futures = [executor.submit(_append, i) for i in range(n)]
+        hashes = [f.result() for f in as_completed(futures)]
+
+    # All writes should have returned a valid 64-char hex hash
+    assert len(hashes) == n
+    for h in hashes:
+        assert isinstance(h, str) and len(h) == 64, f"Invalid hash returned: {h!r}"
+
+    # Chain must be intact after concurrent writes
+    result = audit_trail.verify_chain()
+    assert result["valid"] is True, (
+        f"Hash chain broken after concurrent writes: first_broken={result.get('first_broken')}"
+    )
+    assert result["records_checked"] == n
+
+    # Sequence IDs must be contiguous (no gaps, no duplicates)
+    records = audit_trail.get_records()
+    sequence_ids = sorted(r["sequence_id"] for r in records)
+    assert sequence_ids == list(range(1, n + 1)), (
+        f"Sequence gaps detected: {sequence_ids}"
+    )

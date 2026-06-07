@@ -7,7 +7,10 @@ through 3 HITL checkpoints: Data Quality, Source Relevance, Evidence Sufficiency
 
 import streamlit as st
 
+from src.pages.components.auth_guard import require_auth
 from src.pages.components.hitl_gate import hitl_gate
+
+require_auth()
 from src.pages.components.styles import metric_card, alert_panel, insight_panel
 
 
@@ -185,8 +188,10 @@ def _page():
                 placeholder="EGFR",
                 key="evidence_gene_symbol",
             )
+            default_disease = st.session_state.get("project_config", {}).get("disease_context", "")
             disease_context = st.text_input(
                 "Disease Context (optional)",
+                value=default_disease,
                 placeholder="Non-Small Cell Lung Cancer",
                 key="evidence_disease_context",
             )

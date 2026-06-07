@@ -23,3 +23,7 @@ EVIDENCE_CACHE_DB = DB_DIR / "evidence_cache.db"
 
 # ── Database settings ────────────────────────────────────────────────
 DB_TIMEOUT = 30.0              # SQLite busy_timeout in seconds
+
+# ── Session settings ─────────────────────────────────────────────────
+import os as _os
+SESSION_TIMEOUT_MINUTES = int(_os.getenv("SESSION_TIMEOUT_MINUTES", "30"))

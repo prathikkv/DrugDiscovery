@@ -8,9 +8,15 @@ organized into Setup/Analysis/Results sections for authenticated users.
 Design system CSS is injected globally.
 """
 
+from datetime import datetime, timezone
+
 import streamlit as st
 
+from src.config import SESSION_TIMEOUT_MINUTES
+from src.logging_config import setup_logging
 from src.pages.components.styles import inject_design_system
+
+setup_logging()
 
 st.set_page_config(
     page_title="BioOrchestrator v2",
@@ -22,6 +28,21 @@ st.set_page_config(
 inject_design_system()
 
 
+def _check_session_timeout() -> None:
+    """Expire idle sessions after SESSION_TIMEOUT_MINUTES of inactivity."""
+    if "user" not in st.session_state:
+        return
+    now = datetime.now(timezone.utc)
+    last_active = st.session_state.get("last_active_at")
+    if last_active is not None:
+        elapsed = (now - last_active).total_seconds()
+        if elapsed > SESSION_TIMEOUT_MINUTES * 60:
+            st.session_state.clear()
+            st.session_state["session_expired"] = True
+            st.rerun()
+    st.session_state["last_active_at"] = now
+
+
 def _build_navigation():
     """Build navigation based on authentication state.
 
@@ -31,45 +52,52 @@ def _build_navigation():
     if "user" not in st.session_state:
         # Unauthenticated: show only login
         pages = [
-            st.Page("src/pages/login.py", title="Login", icon=":material/login:"),
+            st.Page("pages/login.py", title="Login", icon=":material/login:"),
         ]
         return st.navigation(pages)
 
-    # Authenticated: 7 pages with section grouping
+    # Authenticated: 8 pages in 4 sections (Home + Setup + Analysis + Results)
     pages = {
+        "": [
+            st.Page(
+                "pages/home.py",
+                title="Home",
+                icon=":material/home:",
+                default=True,
+            ),
+        ],
         "Setup": [
             st.Page(
-                "src/pages/projects.py",
+                "pages/projects.py",
                 title="Projects",
                 icon=":material/folder:",
-                default=True,
             ),
         ],
         "Analysis": [
             st.Page(
-                "src/pages/omics.py",
+                "pages/omics.py",
                 title="Omics Analysis",
-                icon=":material/dna:",
+                icon=":material/science:",
             ),
             st.Page(
-                "src/pages/evidence.py",
+                "pages/evidence.py",
                 title="Evidence Explorer",
                 icon=":material/search:",
             ),
             st.Page(
-                "src/pages/insights.py",
+                "pages/insights.py",
                 title="AI Insights",
                 icon=":material/psychology:",
             ),
         ],
         "Results": [
             st.Page(
-                "src/pages/scorecard.py",
+                "pages/scorecard.py",
                 title="Scorecard",
                 icon=":material/assessment:",
             ),
             st.Page(
-                "src/pages/audit.py",
+                "pages/audit.py",
                 title="Audit Trail",
                 icon=":material/history:",
             ),
@@ -108,6 +136,7 @@ def _render_sidebar():
 
 # ── Main ─────────────────────────────────────────────────────────────
 
+_check_session_timeout()
 pg = _build_navigation()
 _render_sidebar()
 pg.run()

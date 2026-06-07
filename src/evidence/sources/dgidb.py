@@ -186,7 +186,7 @@ class DGIdbSource:
     @retry(
         stop=stop_after_attempt(3),
         wait=wait_exponential(multiplier=1, min=2, max=10),
-        retry=retry_if_exception_type((requests.ConnectionError, requests.Timeout)),
+        retry=retry_if_exception_type((requests.ConnectionError, requests.Timeout, requests.HTTPError)),
     )
     def _query(self, query: str, variables: dict) -> dict:
         """Execute a GraphQL query against DGIdb API.

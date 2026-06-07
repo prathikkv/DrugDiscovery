@@ -15,6 +15,7 @@ import json
 
 import streamlit as st
 
+from src.pages.components.auth_guard import require_auth
 from src.pages.components.styles import (
     alert_panel,
     metric_card,

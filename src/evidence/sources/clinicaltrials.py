@@ -130,7 +130,7 @@ class ClinicalTrialsSource:
     @retry(
         stop=stop_after_attempt(3),
         wait=wait_exponential(multiplier=1, min=1, max=10),
-        retry=retry_if_exception_type((ConnectionError, requests.exceptions.Timeout)),
+        retry=retry_if_exception_type((ConnectionError, requests.exceptions.Timeout, requests.exceptions.HTTPError)),
     )
     def _fetch_studies(self, params: dict) -> list[dict]:
         """Fetch studies from ClinicalTrials.gov v2 API with pagination.

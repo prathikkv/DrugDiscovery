@@ -15,6 +15,9 @@ from src.auth.service import AuthService
 
 st.title("Welcome to BioOrchestrator v2")
 
+if st.session_state.pop("session_expired", False):
+    st.warning("Your session expired due to inactivity. Please log in again.")
+
 login_tab, register_tab = st.tabs(["Login", "Register"])
 
 auth = AuthService()

@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: bioorchestrator
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter          # upgrade to standard for production traffic
+    healthCheckPath: /_stcore/health
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false        # Set manually in Render dashboard — never commit
+      - key: APP_ENV
+        value: production
+      - key: SESSION_TIMEOUT_MINUTES
+        value: "30"
+      - key: STREAMLIT_SERVER_HEADLESS
+        value: "true"
+      - key: STREAMLIT_SERVER_PORT
+        value: "8501"
+      - key: SENTRY_DSN
+        sync: false        # Optional — set in Render dashboard if using Sentry
+    disk:
+      name: bioorchestrator-data
+      mountPath: /app/data
+      sizeGB: 1            # Holds SQLite DBs and showcase scenarios

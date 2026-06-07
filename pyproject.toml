@@ -1,3 +1,11 @@
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]   # pycodestyle errors + pyflakes + isort
+ignore = ["E501"]           # line length handled by formatter
+
 [tool.pytest.ini_options]
 markers = [
     "unit: Fast unit tests, no I/O or DB access (target: all unit tests in <30s)",

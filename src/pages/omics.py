@@ -10,7 +10,10 @@ import uuid
 
 import streamlit as st
 
+from src.pages.components.auth_guard import require_role
 from src.pages.components import get_task_manager
+
+require_role(["admin", "analyst"])
 from src.pages.components.hitl_gate import hitl_gate
 from src.pages.components.styles import metric_card
 
@@ -272,7 +275,8 @@ def _page():
 
             uploaded_file = st.file_uploader(
                 "Upload scRNA-seq data",
-                type=["h5ad", "h5"],
+                type=["h5ad", "h5", "zip"],
+                help=".h5ad or .h5 recommended. For 10x CellRanger output, zip the folder containing matrix.mtx.gz, barcodes.tsv.gz, features.tsv.gz and upload the zip.",
                 key="omics_file_upload",
             )
             tissue_type = st.selectbox(
@@ -288,6 +292,11 @@ def _page():
                 placeholder="EGFR, KRAS, TP53",
                 key="omics_target_genes",
             )
+            disease_input = st.text_input(
+                "Disease / Indication (optional)",
+                placeholder="Non-Small Cell Lung Cancer",
+                key="omics_disease_context",
+            )
             max_mito = st.number_input(
                 "Max Mito %",
                 value=20,
@@ -299,8 +308,36 @@ def _page():
             submitted = st.form_submit_button("Run Pipeline", type="primary")
 
         if submitted:
-            # Determine file path
-            file_path = uploaded_file.name if uploaded_file else "demo_data.h5ad"
+            from pathlib import Path
+            import zipfile
+
+            # Save uploaded file to disk (or extract ZIP for MTX directories)
+            project_dir = Path(f"data/projects/{pid}")
+            for sub in ["uploads", "checkpoints", "results", "exports"]:
+                (project_dir / sub).mkdir(parents=True, exist_ok=True)
+
+            if uploaded_file is not None:
+                if uploaded_file.name.endswith(".zip"):
+                    mtx_dir = project_dir / "uploads" / "mtx"
+                    mtx_dir.mkdir(parents=True, exist_ok=True)
+                    with zipfile.ZipFile(uploaded_file) as zf:
+                        zf.extractall(mtx_dir)
+                    file_path = mtx_dir
+                else:
+                    upload_path = project_dir / "uploads" / uploaded_file.name
+                    upload_path.write_bytes(uploaded_file.getvalue())
+                    file_path = upload_path
+            else:
+                file_path = Path("demo_data.h5ad")
+
+            # Carry gene and disease context forward to evidence page
+            genes_list = [g.strip() for g in target_genes.split(",") if g.strip()]
+            pc = st.session_state.get("project_config", {})
+            if genes_list:
+                pc["gene_symbol"] = genes_list[0]
+            if disease_input:
+                pc["disease_context"] = disease_input
+            st.session_state["project_config"] = pc
 
             # Submit pipeline as background task
             tm = get_task_manager()

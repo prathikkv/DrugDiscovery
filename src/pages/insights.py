@@ -11,7 +11,10 @@ import uuid
 
 import streamlit as st
 
+from src.pages.components.auth_guard import require_auth
 from src.pages.components import get_task_manager
+
+require_auth()
 from src.pages.components.hitl_gate import hitl_gate
 from src.pages.components.styles import metric_card, insight_panel
 

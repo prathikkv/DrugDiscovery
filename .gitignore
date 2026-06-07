@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+*.egg
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Environments
+*.env
+
+# Data (large files)
+*.h5ad
+scientific_analysis/.venv/
+data/backups/
+
+# Claude
+.claude/
