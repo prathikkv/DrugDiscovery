@@ -16,36 +16,16 @@ st.markdown("""<style>
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 /* ── DARK FULL PAGE ── */
-.stApp { background: #06090f !important; }
+.stApp {
+    background-color: #07101e !important;
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px) !important;
+    background-size: 28px 28px !important;
+}
 .main, .block-container { background: transparent !important; }
-.block-container { max-width: 1300px !important; padding: 0 2.5rem !important; }
+.block-container { max-width: 1300px !important; padding: 4vh 2.5rem 0 !important; }
 section[data-testid="stSidebar"] { display: none !important; }
 footer { display: none !important; }
 #MainMenu { display: none !important; }
-
-/* ── GLOBAL GLOW BACKGROUND ── */
-.stApp::before {
-    content: '';
-    position: fixed;
-    top: -30%;
-    left: -15%;
-    width: 800px;
-    height: 800px;
-    background: radial-gradient(circle, rgba(26,111,224,0.10) 0%, transparent 60%);
-    pointer-events: none;
-    z-index: 0;
-}
-.stApp::after {
-    content: '';
-    position: fixed;
-    bottom: -20%;
-    right: -10%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(124,58,237,0.07) 0%, transparent 60%);
-    pointer-events: none;
-    z-index: 0;
-}
 
 /* ── TARGETSIGHT WORDMARK ── */
 .ts-wordmark {
@@ -74,7 +54,7 @@ footer { display: none !important; }
 
 /* ── BRAND PANEL ── */
 .brand-panel {
-    padding: 80px 40px 60px 8px;
+    padding: 56px 40px 44px 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -82,40 +62,39 @@ footer { display: none !important; }
     z-index: 1;
 }
 .bp-headline {
-    font-size: 4.4rem !important;
+    font-size: 3.8rem !important;
     font-weight: 900 !important;
     color: #ffffff !important;
-    line-height: 1.0 !important;
+    line-height: 1.05 !important;
     letter-spacing: -0.04em !important;
-    margin: 0 0 20px 0 !important;
+    margin: 0 0 18px 0 !important;
 }
 .bp-grad {
-    background: linear-gradient(135deg, #38bdf8 0%, #1a6fe0 50%, #818cf8 100%);
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 60%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 .bp-sub {
-    font-size: 1.05rem;
+    font-size: 1.0rem;
     color: rgba(255,255,255,0.48);
     line-height: 1.75;
     max-width: 400px;
-    margin-bottom: 40px;
+    margin-bottom: 22px;
 }
-.bp-sub em { color: #38bdf8; font-style: normal; font-weight: 600; }
+.bp-sub em { color: #60a5fa; font-style: normal; font-weight: 600; }
 
-/* ── SCORECARD CARD (glassmorphism + float) ── */
+/* ── SCORECARD CARD ── */
 .score-card {
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.09);
-    border-radius: 20px;
-    padding: 26px 24px 22px;
+    border-radius: 16px;
+    padding: 22px 22px 18px;
     max-width: 390px;
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
-    animation: floatcard 7s ease-in-out infinite;
-    margin-bottom: 32px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);
+    margin-bottom: 20px;
     position: relative;
     overflow: hidden;
 }
@@ -123,14 +102,9 @@ footer { display: none !important; }
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #1a6fe0, #38bdf8, transparent);
-    opacity: 0.7;
-}
-@keyframes floatcard {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    33%       { transform: translateY(-6px) rotate(0.2deg); }
-    66%       { transform: translateY(-3px) rotate(-0.1deg); }
+    height: 1px;
+    background: linear-gradient(90deg, transparent 10%, #3b82f6, #60a5fa, transparent 90%);
+    opacity: 0.6;
 }
 .sc-label {
     display: flex;
@@ -174,12 +148,12 @@ footer { display: none !important; }
 }
 .sc-denom { font-size: 0.8rem; color: rgba(255,255,255,0.28); font-family: 'IBM Plex Mono', monospace; }
 .sc-bar-bg { background: rgba(255,255,255,0.07); border-radius: 4px; height: 6px; margin-bottom: 22px; overflow: hidden; }
-.sc-bar { background: linear-gradient(90deg, #1a6fe0, #38bdf8); border-radius: 4px; height: 6px;
+.sc-bar { background: linear-gradient(90deg, #3b82f6, #60a5fa); border-radius: 4px; height: 6px;
           animation: barfill 1.8s ease-out; }
 @keyframes barfill { from { width: 0%; } }
 .sc-grid { display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; margin-bottom: 18px; }
 .sc-dim { font-size: 0.73rem; color: rgba(255,255,255,0.45); }
-.sc-val { font-size: 0.73rem; color: #38bdf8; font-weight: 700; font-family: 'IBM Plex Mono', monospace; text-align: right; }
+.sc-val { font-size: 0.73rem; color: #60a5fa; font-weight: 700; font-family: 'IBM Plex Mono', monospace; text-align: right; }
 .sc-hr { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 12px 0; }
 .sc-srcs { display: flex; flex-wrap: wrap; gap: 5px; }
 .sc-src {
@@ -206,10 +180,8 @@ footer { display: none !important; }
 
 /* ── FORM PANEL ── */
 .form-panel {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 80px 8px 60px 24px;
+    padding: 56px 8px 44px 44px;
+    border-left: 1px solid rgba(255,255,255,0.07);
     position: relative;
     z-index: 1;
 }
@@ -241,7 +213,7 @@ footer { display: none !important; }
     color: #ffffff !important;
     background: transparent !important;
 }
-.stTabs [data-baseweb="tab-highlight"] { background: #1a6fe0 !important; height: 2px !important; }
+.stTabs [data-baseweb="tab-highlight"] { background: #3b82f6 !important; height: 2px !important; }
 .stTabs [data-baseweb="tab-border"] { display: none !important; }
 .stTabs [data-baseweb="tab-panel"] { padding: 0 !important; }
 
@@ -264,9 +236,9 @@ footer { display: none !important; }
     font-family: 'Inter', sans-serif !important;
 }
 .stTextInput > div > div > input:focus {
-    border-color: rgba(26,111,224,0.6) !important;
-    box-shadow: 0 0 0 3px rgba(26,111,224,0.18) !important;
-    background: rgba(26,111,224,0.05) !important;
+    border-color: rgba(59,130,246,0.6) !important;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.14) !important;
+    background: rgba(59,130,246,0.04) !important;
 }
 .stTextInput > div > div > input::placeholder { color: rgba(255,255,255,0.18) !important; }
 [data-baseweb="base-input"] { background: transparent !important; }
@@ -289,21 +261,21 @@ footer { display: none !important; }
 
 /* Submit button */
 .stFormSubmitButton > button {
-    background: linear-gradient(135deg, #1a6fe0 0%, #0d4db8 100%) !important;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
     border: none !important;
     color: white !important;
     font-weight: 700 !important;
     font-size: 14px !important;
     letter-spacing: 0.04em !important;
-    border-radius: 12px !important;
+    border-radius: 10px !important;
     padding: 14px !important;
-    box-shadow: 0 4px 24px rgba(26,111,224,0.38) !important;
-    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 16px rgba(37,99,235,0.32) !important;
+    transition: all 0.18s ease !important;
     margin-top: 4px !important;
 }
 .stFormSubmitButton > button:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 10px 36px rgba(26,111,224,0.52) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 24px rgba(37,99,235,0.44) !important;
 }
 .stFormSubmitButton > button:active { transform: translateY(0) !important; }
 
@@ -339,14 +311,10 @@ with col_brand:
 
   <!-- TargetSight wordmark -->
   <div class="ts-wordmark">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none" width="44" height="44">
-      <circle cx="22" cy="22" r="18" stroke="#38bdf8" stroke-width="1.5" opacity="0.55"/>
-      <circle cx="22" cy="22" r="10" stroke="#1a6fe0" stroke-width="1.8"/>
-      <circle cx="22" cy="22" r="3.5" fill="#38bdf8"/>
-      <line x1="4"  y1="22" x2="12" y2="22" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round"/>
-      <line x1="32" y1="22" x2="40" y2="22" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round"/>
-      <line x1="22" y1="4"  x2="22" y2="12" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round"/>
-      <line x1="22" y1="32" x2="22" y2="40" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round"/>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" width="40" height="40">
+      <path d="M 20 4 A 16 16 0 1 1 5 26" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round"/>
+      <circle cx="20" cy="20" r="3.5" fill="#3b82f6"/>
+      <path d="M 26 24 A 7 7 0 0 1 19 27" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round" opacity="0.65"/>
     </svg>
     <div>
       <div class="ts-wordname">Target<span>Sight</span></div>
