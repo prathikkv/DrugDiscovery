@@ -8,6 +8,7 @@ organized into Setup/Analysis/Results sections for authenticated users.
 Design system CSS is injected globally.
 """
 
+import pathlib
 from datetime import datetime, timezone
 
 import streamlit as st
@@ -44,27 +45,11 @@ def _check_session_timeout() -> None:
 
 
 def _build_navigation():
-    """Build navigation based on authentication state.
-
-    Unauthenticated: login page only.
-    Authenticated: 7 pages in 3 sections (Setup, Analysis, Results).
-    """
-    if "user" not in st.session_state:
-        # Unauthenticated: show only login
-        return st.navigation([
-            st.Page("pages/login.py", title="Login", icon=":material/login:", url_path=""),
-        ])
-
-    # Authenticated: 8 pages in 4 sections (Home + Setup + Analysis + Results)
-    # Keep home_page as a variable so we can pass it to st.switch_page() below.
-    home_page = st.Page(
-        "pages/home.py",
-        title="Home",
-        icon=":material/home:",
-        default=True,
-    )
+    """Build navigation for authenticated users."""
     pages = {
-        "": [home_page],
+        "": [
+            st.Page("pages/home.py", title="Home", icon=":material/home:", default=True),
+        ],
         "Setup": [
             st.Page("pages/projects.py", title="Projects", icon=":material/folder:"),
         ],
@@ -78,15 +63,7 @@ def _build_navigation():
             st.Page("pages/audit.py", title="Audit Trail", icon=":material/history:"),
         ],
     }
-    pg = st.navigation(pages)
-
-    # Explicit post-login redirect using the registered st.Page object.
-    # st.switch_page(st.Page) is the correct API for st.navigation() apps;
-    # string paths only work with the legacy pages/ directory convention.
-    if st.session_state.pop("_just_logged_in", False):
-        st.switch_page(home_page)
-
-    return pg
+    return st.navigation(pages)
 
 
 def _render_sidebar():
@@ -120,6 +97,15 @@ def _render_sidebar():
 # ── Main ─────────────────────────────────────────────────────────────
 
 _check_session_timeout()
+
+if "user" not in st.session_state:
+    # Execute login.py directly — URL stays at / (root).
+    # No /login routing → no <base href="/login/"> tag → no _stcore 404s.
+    # This is how Streamlit's own script runner executes page files.
+    _login_path = pathlib.Path(__file__).parent / "pages" / "login.py"
+    exec(compile(_login_path.read_text(), str(_login_path), "exec"), globals())  # noqa: S102
+    st.stop()
+
 pg = _build_navigation()
 _render_sidebar()
 pg.run()

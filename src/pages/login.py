@@ -399,7 +399,6 @@ with login_tab:
                     "email": email,
                     "role": result["role"],
                 }
-                st.session_state["_just_logged_in"] = True
                 st.rerun()
             else:
                 st.error(result["error"])
