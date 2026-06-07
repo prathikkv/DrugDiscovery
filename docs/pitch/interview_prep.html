@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BioOrchestrator — Interview Prep</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;background:#f8fafc;color:#0f172a;line-height:1.6}
+.container{max-width:860px;margin:0 auto;padding:40px 24px}
+header{background:linear-gradient(135deg,#0d1b2a 0%,#1a3a5c 100%);padding:40px;border-bottom:4px solid #1a6fe0}
+header h1{font-size:1.8rem;font-weight:800;color:#38bdf8}
+header p{color:#94a3b8;margin-top:6px}
+.section{background:white;border-radius:12px;padding:28px;margin:20px 0;border:1px solid #e2e8f0;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+.section-label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#1a6fe0;margin-bottom:8px}
+.section h2{font-size:1.1rem;font-weight:700;color:#0d1b2a;margin-bottom:16px}
+.script-box{background:#0d1b2a;color:#e2e8f0;border-radius:10px;padding:24px;font-size:14px;line-height:1.8;position:relative;margin:12px 0}
+.script-box strong{color:#38bdf8}
+.copy-btn{background:#1a6fe0;color:white;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:700;position:absolute;top:12px;right:12px;transition:background 0.2s}
+.copy-btn:hover{background:#1558b8}
+.copy-btn.copied{background:#16a34a}
+.qa-item{margin:16px 0;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden}
+.qa-question{background:#f0f7ff;padding:12px 16px;font-weight:700;font-size:14px;color:#1e40af;border-bottom:1px solid #bfdbfe}
+.qa-answer{padding:14px 16px;font-size:14px;color:#334155;line-height:1.7;position:relative}
+.qa-answer strong{color:#0d1b2a}
+.qa-answer em{color:#64748b;font-style:italic}
+.sysdesign{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;margin:10px 0;font-size:14px;color:#334155}
+.sysdesign .point{display:flex;gap:10px;margin:8px 0}
+.sysdesign .num{background:#1a6fe0;color:white;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+th{background:#0d1b2a;color:white;padding:10px 14px;text-align:left;font-size:13px}
+td{padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#334155}
+tr:nth-child(even) td{background:#f8fafc}
+.salary-box{background:linear-gradient(135deg,#0d1b2a,#1a3a5c);border-radius:12px;padding:28px;margin:20px 0;color:white}
+.salary-box h2{color:#38bdf8;margin-bottom:16px}
+.salary-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0}
+.salary-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:14px;text-align:center}
+.salary-card .level{font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+.salary-card .range{font-size:1rem;font-weight:700;color:#38bdf8}
+.salary-card .label{font-size:11px;color:#94a3b8;margin-top:4px}
+.anchor-tip{background:rgba(26,111,224,0.2);border:1px solid rgba(26,111,224,0.4);border-radius:8px;padding:14px 16px;margin-top:14px;font-size:14px;color:#e2e8f0}
+footer{text-align:center;color:#94a3b8;font-size:12px;padding:24px 0 8px}
+@media print{.copy-btn{display:none}.section{box-shadow:none}header{background:#0d1b2a!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.salary-box{background:#0d1b2a!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media(max-width:600px){.container{padding:16px}header{padding:24px 16px}.section{padding:18px 14px}.salary-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="container" style="padding-top:0;padding-bottom:0">
+    <h1>Interview Prep Guide</h1>
+    <p>Target roles: AI/ML Scientist Drug Discovery (Pfizer, AZ, Novartis, Roche, Merck) · Computational Biology Engineer (Genentech, BMS, Sanofi) · AI Platform Lead (Series B-C biotech)</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="section">
+    <div class="section-label">"Tell Me About a Project"</div>
+    <h2>BioOrchestrator Script — 10-Minute Version</h2>
+    <div class="script-box" id="pitch-script">
+"I built <strong>BioOrchestrator</strong> — an end-to-end AI drug target intelligence platform. The problem it solves is that computational biologists currently spend 2–4 weeks manually triaging a target across 6 different databases before making a GO/NO-GO recommendation. I automated that into a 15-minute workflow.
+
+The architecture has three main layers: first, a <strong>parallel evidence aggregation engine</strong> that queries OpenTargets, DGIdb, PubMed, UniProt, ChEMBL, and ClinicalTrials simultaneously using a 2-phase fetch pattern. Second, an <strong>AI reasoning engine</strong> that runs 5 parallel LLM modes — hypothesis, synthesis, contradiction detection, gap analysis, and confidence assessment — using an agentic tool-calling loop up to 10 rounds deep, with hallucination checking and provenance tracking. Third, a <strong>7-dimension scoring framework</strong> that produces a GO/CONDITIONAL/NO-GO verdict.
+
+I also built a <strong>21 CFR Part 11 compliant audit trail</strong> with SHA-256 hash chain and electronic signatures, because anything used in a pharma regulatory submission needs to be fully auditable.
+
+The platform supports 6 pre-validated pharma targets including EGFR/NSCLC, GLP1R/Obesity, and CD274 for immunotherapy. I'm currently looking for biotech teams to pilot it."
+<button class="copy-btn" onclick="copyScript('pitch-script',this)">Copy Script</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Domain Knowledge Q&amp;A</div>
+    <h2>Know These Cold</h2>
+
+    <div class="qa-item">
+      <div class="qa-question">What is GWAS and how is it relevant to target ID?</div>
+      <div class="qa-answer">
+        <strong>GWAS — Genome-Wide Association Study</strong> — identifies genetic variants associated with disease. It's one of the strongest lines of genetic evidence for target validation. If a gene's variants show statistically significant association with a disease phenotype across large patient cohorts, that's meaningful evidence the gene is causally involved. <strong>OpenTargets integrates GWAS data</strong> to produce genetic evidence scores for gene-disease pairs, which is one of the 7 dimensions in my scoring framework.
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-question">What is GSEA and when would you use it?</div>
+      <div class="qa-answer">
+        <strong>Gene Set Enrichment Analysis.</strong> Instead of looking at individual differentially expressed genes, GSEA asks whether a predefined set of genes — like a pathway from KEGG or Reactome — shows statistically coordinated enrichment at the top or bottom of a ranked gene list. It's <strong>less sensitive to arbitrary fold-change cutoffs</strong>. I use it in the omics pipeline enrichment stage after differential expression to map DE results onto biological pathways.
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-question">What's the difference between Seurat and Scanpy?</div>
+      <div class="qa-answer">
+        Both are standard scRNA-seq analysis toolkits — <strong>Seurat is R-based, Scanpy is Python-based</strong>. They share the same conceptual pipeline: QC → normalization → HVG selection → PCA → neighborhood graph → clustering → annotation → DE. I used <strong>Scanpy</strong> because it integrates well with AnnData (the standard h5ad format) and plays nicely with the Python LLM ecosystem. For DE specifically, Scanpy wraps Wilcoxon rank-sum and t-test by default, while Seurat uses several methods including pseudobulk.
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-question">What is 21 CFR Part 11?</div>
+      <div class="qa-answer">
+        It's the <strong>FDA regulation governing electronic records and electronic signatures</strong> in pharmaceutical settings. In practice, it means: audit trails must be tamper-evident (I implemented this with a SHA-256 hash chain where each record includes the hash of the previous), electronic signatures must require re-authentication, records must be attributable to a specific individual with timestamps, and systems must have access controls. It applies to any software used in the context of regulated activities — clinical trials, manufacturing, regulatory submissions.
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-question">What are the main reasons drug targets fail?</div>
+      <div class="qa-answer">
+        Three main categories: first, <strong>lack of efficacy</strong> — the target isn't actually driving the disease in humans the way it did in the animal model. Second, <strong>safety</strong> — the target has off-target effects that weren't predicted. Third, <strong>technical failure</strong> — the drug can't reach the target or isn't druggable. The root cause of most failures is <em>insufficient target validation at the discovery stage</em> — which is what BioOrchestrator is designed to address.
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-question">What is Leiden clustering vs. Louvain?</div>
+      <div class="qa-answer">
+        Both are community detection algorithms used for clustering cells in single-cell analysis. <strong>Louvain</strong> can produce disconnected communities and is technically not guaranteed to converge. <strong>Leiden fixes this</strong> — it's provably well-connected and generally produces higher quality clusters. Scanpy uses Leiden by default for this reason.
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">System Design Questions</div>
+    <h2>Architecture Deep Dives</h2>
+
+    <p style="font-weight:700;color:#0d1b2a;margin-bottom:10px">Q: How would you design a scalable version of BioOrchestrator?</p>
+    <div class="sysdesign">
+      <p style="color:#64748b;font-size:13px;margin-bottom:12px">For a production pharma deployment, I'd make three main changes:</p>
+      <div class="point"><div class="num">1</div><div>Replace <strong>SQLite with PostgreSQL</strong> for multi-user concurrent access and proper ACID guarantees — the current task state, project, and audit tables map cleanly to relational schema.</div></div>
+      <div class="point"><div class="num">2</div><div>Replace local file storage with <strong>object storage (S3 or GCS)</strong> for uploaded scRNA-seq files, since h5ad files can be 5GB+.</div></div>
+      <div class="point"><div class="num">3</div><div>Containerize the omics pipeline as a <strong>separate worker service</strong> rather than running it in the Streamlit thread — probably Celery or a managed queue like SQS, with the Streamlit app just submitting jobs and polling status. The LLM reasoning layer is already designed for horizontal scale with the multi-provider fallback chain.</div></div>
+    </div>
+
+    <p style="font-weight:700;color:#0d1b2a;margin:20px 0 10px">Q: How does the AI reasoning work?</p>
+    <div class="sysdesign">
+      The <strong>ReasoningEngine uses a tool-calling loop pattern</strong>. It gets a system prompt from a versioned registry, calls the LLM with a gene symbol, disease context, and aggregated evidence. The LLM can call <strong>14 tools</strong> — things like <code style="background:#e2e8f0;padding:2px 5px;border-radius:4px;font-size:12px">query_opentargets</code>, <code style="background:#e2e8f0;padding:2px 5px;border-radius:4px;font-size:12px">gene_expression</code>, <code style="background:#e2e8f0;padding:2px 5px;border-radius:4px;font-size:12px">de_results</code>, <code style="background:#e2e8f0;padding:2px 5px;border-radius:4px;font-size:12px">enrichment_summary</code> — and the tool results are appended to the message history as tool_result blocks. This repeats for up to <strong>10 rounds</strong> until the model stops calling tools. Five modes run in parallel via a fallback chain: Claude primary, then Groq, then Ollama. A <strong>HallucinationChecker</strong> validates that cited genes and claims appear in the actual evidence.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Competitive Landscape</div>
+    <h2>Know These Companies</h2>
+    <table>
+      <thead><tr><th>Company</th><th>What They Do</th><th>How BioOrchestrator Differs</th></tr></thead>
+      <tbody>
+        <tr><td>Recursion</td><td>Drug discovery company using AI internally</td><td>Not a platform sold to others</td></tr>
+        <tr><td>BenevolentAI</td><td>Knowledge graph + AI for target ID</td><td>No scRNA-seq, no GxP compliance</td></tr>
+        <tr><td>Schrödinger</td><td>Physics-based molecular simulation</td><td>Different layer (post-target, pre-clinical)</td></tr>
+        <tr><td>Partek Flow</td><td>Browser-based scRNA-seq analysis</td><td>No AI reasoning, no target triage</td></tr>
+        <tr><td>OpenTargets</td><td>Public database, not a platform</td><td>Data source, not a workflow tool</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="salary-box">
+    <h2>Salary Negotiation Numbers (2025–2026)</h2>
+    <div class="salary-row">
+      <div class="salary-card">
+        <div class="level">Senior (IC3/IC4)</div>
+        <div class="range">$180K–$240K</div>
+        <div class="label">Big Pharma base</div>
+        <div class="range" style="margin-top:8px">$200K–$280K</div>
+        <div class="label">Biotech base</div>
+      </div>
+      <div class="salary-card">
+        <div class="level">Staff (IC5)</div>
+        <div class="range">$240K–$320K</div>
+        <div class="label">Big Pharma base</div>
+        <div class="range" style="margin-top:8px">$280K–$400K</div>
+        <div class="label">Biotech base</div>
+      </div>
+      <div class="salary-card">
+        <div class="level">Principal (IC6)</div>
+        <div class="range">$300K–$420K</div>
+        <div class="label">Big Pharma base</div>
+        <div class="range" style="margin-top:8px">$350K–$500K+</div>
+        <div class="label">Biotech base</div>
+      </div>
+    </div>
+    <div class="anchor-tip">
+      <strong>Anchor high.</strong> Your GxP compliance expertise + working product puts you at <strong>IC4 minimum</strong>. Most ML engineers interviewing for these roles have never heard of 21 CFR Part 11. That's your differentiator — mention it early, defend it technically.
+    </div>
+  </div>
+
+  <footer>BioOrchestrator · Interview Preparation Guide · Confidential</footer>
+</div>
+
+<script>
+function copyScript(id, btn) {
+  const el = document.getElementById(id);
+  const clone = el.cloneNode(true);
+  clone.querySelectorAll('.copy-btn').forEach(b => b.remove());
+  const text = clone.innerText.trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy Script'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+</script>
+</body>
+</html>

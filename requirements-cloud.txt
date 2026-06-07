@@ -1,0 +1,46 @@
+# Streamlit Community Cloud deploy — excludes heavy pipeline deps
+# (rpy2, scrublet, gseapy, celltypist, leidenalg require system libraries
+#  not available on Streamlit Cloud; showcase scenarios bypass them)
+
+# Core framework
+streamlit>=1.40.0,<2.0
+
+# Auth
+bcrypt>=4.0,<5.0
+
+# Scientific computing
+anndata>=0.10.0
+scanpy>=1.10.0,<1.11
+numpy>=1.23,<2.0
+scipy>=1.9.0
+pandas>=1.5.0
+
+# Visualization
+plotly>=5.18.0
+matplotlib>=3.8.0
+seaborn>=0.13.0
+
+# ML
+scikit-learn>=1.4.0
+h5py>=3.10.0
+
+# Text & search
+rapidfuzz>=3.6.0
+
+# LLM clients
+anthropic>=0.40.0
+openai>=1.0.0
+
+# HTTP / evidence APIs
+requests>=2.31
+tenacity>=8.2
+biopython>=1.83
+mygene>=3.2
+chembl-webresource-client>=0.10
+
+# CLI / reporting
+rich>=13.0.0
+fpdf2>=2.7
+
+# Compliance tooling
+pyyaml>=6.0

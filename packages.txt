@@ -1,0 +1,6 @@
+libhdf5-dev
+libopenblas-dev
+gcc
+g++
+libxml2-dev
+libcurl4-openssl-dev

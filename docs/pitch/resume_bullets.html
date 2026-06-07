@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BioOrchestrator — Resume Bullets</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;background:#f8fafc;color:#0f172a;line-height:1.6}
+.container{max-width:860px;margin:0 auto;padding:40px 24px}
+header{background:linear-gradient(135deg,#0d1b2a 0%,#1a3a5c 100%);padding:40px;border-bottom:4px solid #1a6fe0}
+header h1{font-size:1.8rem;font-weight:800;color:#38bdf8}
+header p{color:#94a3b8;margin-top:6px}
+.section{background:white;border-radius:12px;padding:28px;margin:20px 0;border:1px solid #e2e8f0;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+.section-label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#1a6fe0;margin-bottom:8px}
+.section h2{font-size:1.1rem;font-weight:700;color:#0d1b2a;margin-bottom:16px}
+.bullet-item{background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #1a6fe0;border-radius:0 8px 8px 0;padding:14px 16px;margin:10px 0;position:relative;font-size:14px;color:#334155;line-height:1.7}
+.bullet-item strong{color:#0d1b2a}
+.copy-btn{background:#1a6fe0;color:white;border:none;padding:5px 12px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:700;float:right;margin-left:12px;margin-top:2px;transition:background 0.2s}
+.copy-btn:hover{background:#1558b8}
+.copy-btn.copied{background:#16a34a}
+.title-option{background:#0d1b2a;color:#38bdf8;padding:10px 16px;border-radius:8px;margin:8px 0;font-family:'SF Mono',Monaco,monospace;font-size:13px}
+.headline-box{background:linear-gradient(135deg,#0d1b2a,#1a3a5c);color:white;border-radius:12px;padding:24px;margin:20px 0;text-align:center}
+.headline-box .text{font-size:1.05rem;font-style:italic;color:#e2e8f0;line-height:1.7}
+.headline-box .copy-area{margin-top:12px}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.skill-tag{background:#e0f2fe;color:#0369a1;padding:7px 12px;border-radius:8px;font-size:13px;font-weight:600;text-align:center}
+.github-box{background:#0d1b2a;color:#38bdf8;border-radius:10px;padding:20px;font-family:'SF Mono',Monaco,monospace;font-size:13px;line-height:1.7;margin:12px 0}
+.github-box .comment{color:#64748b}
+.topics-row{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.topic{background:#e0f2fe;color:#0369a1;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600;font-family:'SF Mono',Monaco,monospace}
+footer{text-align:center;color:#94a3b8;font-size:12px;padding:24px 0 8px}
+@media print{.copy-btn{display:none}.section{box-shadow:none}header{background:#0d1b2a!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.bullet-item{break-inside:avoid}}
+@media(max-width:600px){.container{padding:16px}header{padding:24px 16px}.section{padding:18px 14px}.skills-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<header>
+  <div class="container" style="padding-top:0;padding-bottom:0">
+    <h1>Resume / CV Bullet Points</h1>
+    <p>BioOrchestrator — Achievement-oriented bullets for pharma AI roles. Pick 4–6 depending on the role.</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="section">
+    <div class="section-label">Project Title Options</div>
+    <h2>How to List It</h2>
+    <div class="title-option">"BioOrchestrator v2 — AI Drug Target Intelligence Platform" (solo project / consulting)</div>
+    <div class="title-option">"Lead AI Engineer — BioOrchestrator" (if framing as a company/startup)</div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Architecture / Engineering</div>
+    <h2>Engineering Bullets</h2>
+
+    <div class="bullet-item" id="b1">
+      <button class="copy-btn" onclick="copyBullet('b1',this)">Copy</button>
+      Architected and shipped a full-stack AI drug target triage platform (Python, Streamlit, SQLite) integrating 6 live pharmaceutical databases — reducing manual target assessment from <strong>2–4 weeks to 15 minutes</strong>
+    </div>
+    <div class="bullet-item" id="b2">
+      <button class="copy-btn" onclick="copyBullet('b2',this)">Copy</button>
+      Designed a multi-provider LLM orchestration layer with <strong>agentic tool-calling loops</strong> (up to 10 rounds), prompt versioning, hallucination detection, and provenance tracking for reproducible AI reasoning
+    </div>
+    <div class="bullet-item" id="b3">
+      <button class="copy-btn" onclick="copyBullet('b3',this)">Copy</button>
+      Built a <strong>parallel evidence aggregation pipeline</strong> using ThreadPoolExecutor across 6 databases (OpenTargets, DGIdb, PubMed, UniProt, ChEMBL, ClinicalTrials) with graceful degradation and stale-cache fallback
+    </div>
+    <div class="bullet-item" id="b4">
+      <button class="copy-btn" onclick="copyBullet('b4',this)">Copy</button>
+      Implemented a background task execution engine (SQLite + ThreadPoolExecutor) with <strong>checkpoint/resume capability</strong> enabling long-running scRNA-seq pipelines to survive Streamlit server restarts
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Domain / Bioinformatics</div>
+    <h2>Domain Bullets</h2>
+
+    <div class="bullet-item" id="b5">
+      <button class="copy-btn" onclick="copyBullet('b5',this)">Copy</button>
+      Developed an end-to-end scRNA-seq analysis pipeline (<strong>QC → normalization → HVG selection → PCA → Leiden clustering → cell-type annotation → differential expression → pathway enrichment</strong>) supporting h5ad inputs up to 5GB
+    </div>
+    <div class="bullet-item" id="b6">
+      <button class="copy-btn" onclick="copyBullet('b6',this)">Copy</button>
+      Built a <strong>7-dimension drug target scoring framework</strong> (genetic evidence, druggability, safety, expression biology, competitive landscape, clinical translation, literature consensus) producing GO/CONDITIONAL/NO-GO verdicts with weighted composite scoring
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Compliance / Regulatory</div>
+    <h2>Compliance Bullets</h2>
+
+    <div class="bullet-item" id="b7">
+      <button class="copy-btn" onclick="copyBullet('b7',this)">Copy</button>
+      Implemented <strong>21 CFR Part 11 compliant audit trail</strong> with SHA-256 hash-chain integrity, electronic signature re-authentication, and tamper-evident record storage — enabling use in GxP-regulated pharmaceutical environments
+    </div>
+    <div class="bullet-item" id="b8">
+      <button class="copy-btn" onclick="copyBullet('b8',this)">Copy</button>
+      Built a dual-mode <strong>Human-in-the-Loop (HITL) gate system</strong>: auto-approval in exploration mode, e-signature gated approval in compliance mode — with 12 gates across the analysis pipeline
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Product / Impact</div>
+    <h2>Impact Bullets</h2>
+
+    <div class="bullet-item" id="b9">
+      <button class="copy-btn" onclick="copyBullet('b9',this)">Copy</button>
+      Designed and deployed an AI platform capable of triage analysis for <strong>6 clinically validated pharma targets</strong> (EGFR/NSCLC, ESR1/Breast Cancer, PIK3CA/HR+Breast, GLP1R/Obesity, PARP1/BRCA+, CD274/Immunotherapy)
+    </div>
+    <div class="bullet-item" id="b10">
+      <button class="copy-btn" onclick="copyBullet('b10',this)">Copy</button>
+      Built pharmaceutical-grade product with <strong>multi-provider LLM fallback</strong> (Claude → GPT-4 → Groq → Ollama), GxP compliance, and on-premise deployment capability targeting Series B-C biotech companies
+    </div>
+  </div>
+
+  <div class="headline-box">
+    <div class="section-label" style="color:#38bdf8;text-align:center">LinkedIn Headline / One-Liner</div>
+    <div class="text" id="headline">"Built BioOrchestrator — an AI drug target intelligence platform that automates 2–4 weeks of manual target triage into 15 minutes, with 21 CFR Part 11 compliance built in."</div>
+    <div class="copy-area">
+      <button class="copy-btn" style="position:static;float:none;margin-top:12px" onclick="copyId('headline',this)">Copy One-Liner</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Skills to Add to Profile</div>
+    <h2>From this project, you can credibly claim:</h2>
+    <div class="skills-grid">
+      <div class="skill-tag">Streamlit</div>
+      <div class="skill-tag">Python 3.11</div>
+      <div class="skill-tag">SQLite / Docker</div>
+      <div class="skill-tag">LLM Orchestration</div>
+      <div class="skill-tag">Agentic AI Systems</div>
+      <div class="skill-tag">Hallucination Detection</div>
+      <div class="skill-tag">scRNA-seq Analysis</div>
+      <div class="skill-tag">Scanpy / AnnData</div>
+      <div class="skill-tag">Leiden Clustering</div>
+      <div class="skill-tag">21 CFR Part 11</div>
+      <div class="skill-tag">GxP Compliance</div>
+      <div class="skill-tag">Target Identification</div>
+      <div class="skill-tag">Evidence Aggregation</div>
+      <div class="skill-tag">REST API Integration</div>
+      <div class="skill-tag">Pharma R&D Domain</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">GitHub Repository</div>
+    <h2>Description + Topics</h2>
+    <div class="github-box" id="github-desc"><span class="comment"># Repository description:</span>
+BioOrchestrator v2: AI-powered drug target intelligence platform.
+Gene → 6-database evidence aggregation → 5 LLM reasoning modes →
+7-dimension scoring → GO/NO-GO verdict with 21 CFR Part 11 audit trail.</div>
+    <button class="copy-btn" style="position:static;float:none;margin-top:8px" onclick="copyId('github-desc',this)">Copy Description</button>
+    <p style="margin-top:16px;font-weight:600;font-size:13px;color:#334155">Topics to add on GitHub:</p>
+    <div class="topics-row">
+      <span class="topic">drug-discovery</span>
+      <span class="topic">bioinformatics</span>
+      <span class="topic">streamlit</span>
+      <span class="topic">llm</span>
+      <span class="topic">scrna-seq</span>
+      <span class="topic">computational-biology</span>
+      <span class="topic">pharma</span>
+      <span class="topic">ai</span>
+      <span class="topic">gxp</span>
+      <span class="topic">python</span>
+    </div>
+  </div>
+
+  <footer>BioOrchestrator · Resume &amp; CV Materials</footer>
+</div>
+
+<script>
+function copyBullet(id, btn) {
+  const el = document.getElementById(id);
+  const clone = el.cloneNode(true);
+  clone.querySelectorAll('.copy-btn').forEach(b => b.remove());
+  const text = clone.innerText.trim();
+  navigator.clipboard.writeText('• ' + text).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+function copyId(id, btn) {
+  const el = document.getElementById(id);
+  const clone = el.cloneNode(true);
+  clone.querySelectorAll('.copy-btn,.section-label').forEach(b => b.remove());
+  const text = clone.innerText.trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+</script>
+</body>
+</html>

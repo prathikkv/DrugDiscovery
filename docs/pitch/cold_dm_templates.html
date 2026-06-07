@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BioOrchestrator — Cold DM Templates</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;background:#f8fafc;color:#0f172a;line-height:1.6}
+.container{max-width:860px;margin:0 auto;padding:40px 24px}
+header{background:linear-gradient(135deg,#0d1b2a 0%,#1a3a5c 100%);padding:40px;border-bottom:4px solid #1a6fe0}
+header h1{font-size:1.8rem;font-weight:800;color:#38bdf8}
+header p{color:#94a3b8;margin-top:6px}
+.section{background:white;border-radius:12px;padding:28px;margin:20px 0;border:1px solid #e2e8f0;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+.section-label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#1a6fe0;margin-bottom:8px}
+.section h2{font-size:1.1rem;font-weight:700;color:#0d1b2a;margin-bottom:16px}
+.template-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:20px;font-size:14px;line-height:1.8;color:#334155;white-space:pre-wrap;position:relative;margin:12px 0}
+.copy-btn{background:#1a6fe0;color:white;border:none;padding:7px 16px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700;position:absolute;top:12px;right:12px;transition:background 0.2s}
+.copy-btn:hover{background:#1558b8}
+.copy-btn.copied{background:#16a34a}
+.subject-line{background:#0d1b2a;color:#38bdf8;padding:8px 14px;border-radius:6px;font-size:13px;font-weight:600;margin-bottom:10px;display:inline-block}
+.tip{background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:12px 16px;font-size:13px;color:#0369a1;margin:8px 0}
+.tip strong{color:#0d1b2a}
+.response-section{background:#fefce8;border:1px solid #fde68a;border-radius:10px;padding:20px;margin-top:16px}
+.response-section h3{font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#92400e;margin-bottom:12px}
+.response-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0}
+.response-q{background:#fff;border:1px solid #fde68a;border-radius:8px;padding:12px;font-size:13px}
+.response-q .q{font-weight:700;color:#92400e;margin-bottom:4px}
+.response-q .a{color:#334155}
+.source-section{background:#f0f7ff;border:1px solid #bfdbfe;border-radius:10px;padding:20px;margin-top:16px}
+.source-section h3{color:#1e40af;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px}
+.source-section ol{padding-left:20px;font-size:14px;color:#334155}
+.source-section li{margin:6px 0}
+footer{text-align:center;color:#94a3b8;font-size:12px;padding:24px 0 8px}
+@media print{.copy-btn{display:none}.section{box-shadow:none}header{background:#0d1b2a!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media(max-width:600px){.container{padding:16px}header{padding:24px 16px}.section{padding:18px 14px}.response-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="container" style="padding-top:0;padding-bottom:0">
+    <h1>Cold DM / Outreach Templates</h1>
+    <p>For LinkedIn targeting: Director / VP / Head of Computational Biology, Target ID, Drug Discovery<br>
+    Target companies: Series B–C biotech (50–500 people) or Big Pharma innovation teams</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="section">
+    <div class="section-label">Template 1 · Recommended First Message</div>
+    <h2>Demo Offer</h2>
+    <div class="subject-line">Hi [Name] — I built an AI platform that automates drug target triage. Mind if I show you a 15-minute demo on one of your current targets?</div>
+    <div class="template-box" id="t1">Hi [Name],
+
+I noticed you're leading computational biology at [Company] — looks like you're working on [disease area/program if visible on profile].
+
+I recently built BioOrchestrator, an AI platform that takes a gene target and produces a GO/NO-GO recommendation in 15 minutes — aggregating OpenTargets, PubMed, ChEMBL, DGIdb, UniProt, and ClinicalTrials simultaneously, running 5 parallel reasoning modes, and generating a 21 CFR Part 11 compliant audit trail.
+
+I'm offering free 20-minute demos to computational biology teams this month. Happy to run it live on any target you're currently evaluating — no prep needed on your end.
+
+Worth a quick look? I can send a Calendly link.
+
+[Your name]<button class="copy-btn" onclick="copyText('t1',this)">Copy</button></div>
+    <div class="tip"><strong>Best for:</strong> Cold outreach when you have done some profile research. Personalizing with their disease area doubles response rates.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Template 2 · Higher Response Rate</div>
+    <h2>Problem-First</h2>
+    <div class="template-box" id="t2">Hi [Name],
+
+Quick question: how long does your team currently spend on manual target triage before a GO/NO-GO decision?
+
+I'm asking because I built a platform that compresses that workflow from 2–4 weeks to 15 minutes — with a full audit trail. Just launched and looking for feedback from people actually doing this work.
+
+If you have 20 minutes, I'd love to run it on one of your targets live. No slides, just the tool.
+
+[Your name]<button class="copy-btn" onclick="copyText('t2',this)">Copy</button></div>
+    <div class="tip"><strong>Why it works:</strong> Opens with a question — gets people thinking about their own pain. Short, no pitch until they engage. Works well for unknown prospects.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Template 3 · Warm Trigger</div>
+    <h2>After They View Your LinkedIn Post</h2>
+    <div class="template-box" id="t3">Hi [Name] — saw you viewed my post about BioOrchestrator. Would love your take on it as someone working in [their field]. Happy to do a live demo if you're curious — takes 15 minutes and I'll run it on any target you throw at me.<button class="copy-btn" onclick="copyText('t3',this)">Copy</button></div>
+    <div class="tip"><strong>Timing:</strong> Send within 24 hours of seeing the view. This is your highest-converting trigger.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Template 4 · Warm Introduction</div>
+    <h2>After Conference / Shared Connection</h2>
+    <div class="template-box" id="t4">Hi [Name],
+
+[Mutual connection] suggested I reach out — I built an AI drug target intelligence platform and he thought you'd have an interesting perspective on it.
+
+The short version: it takes a gene symbol, queries 6 live databases in parallel, runs 5 LLM reasoning modes, and produces a GO/NO-GO scorecard with a GxP-compliant audit trail. Built for exactly the kind of work [Company] is doing in [disease area].
+
+20 minutes for a demo? I'll run it on a target of your choice.<button class="copy-btn" onclick="copyText('t4',this)">Copy</button></div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Template 5 · Follow-Up</div>
+    <h2>Send 5 Days After No Reply</h2>
+    <div class="template-box" id="t5">Hi [Name] — just following up on my earlier message. If this isn't relevant to what you're working on right now, totally understand. But if target triage speed or regulatory documentation is a pain point on your team, I'd love to show you what BioOrchestrator produces. No commitment — just 15 minutes and a live demo.<button class="copy-btn" onclick="copyText('t5',this)">Copy</button></div>
+    <div class="tip"><strong>Rule:</strong> Maximum 2 follow-ups (Day 1 + Day 5 + Day 14). After that, move on. Don't spam.</div>
+  </div>
+
+  <div class="response-section">
+    <h3>Response Handling Scripts</h3>
+    <div class="response-row">
+      <div class="response-q">
+        <div class="q">"Interesting, tell me more"</div>
+        <div class="a">Send Loom link + offer Calendly for 30-min call. Keep it short — let the demo do the work.</div>
+      </div>
+      <div class="response-q">
+        <div class="q">"What does it cost?"</div>
+        <div class="a">"For early design partners I'm offering a free 2-week pilot on 3 targets. If it adds value, we can talk about a paid engagement. No pressure — I just want feedback from people doing real target ID work."</div>
+      </div>
+      <div class="response-q">
+        <div class="q">"We already have tools for this"</div>
+        <div class="a">"Totally makes sense. The main thing that's different is the GxP audit trail and the AI reasoning synthesis — most tools give you data, this gives you a defensible decision. Happy to show you in 15 minutes if you're ever curious how it compares."</div>
+      </div>
+      <div class="response-q">
+        <div class="q">"Send me more info"</div>
+        <div class="a">Send the 1-page capability deck (capability_deck.html) + demo URL. Follow up in 3 days if no reply.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="source-section">
+    <h3>Target List Sources</h3>
+    <ol>
+      <li><strong>LinkedIn Sales Navigator</strong> (free trial) → search "Computational Biology" + "Biotech" + "Director OR VP OR Head"</li>
+      <li><strong>Y Combinator portfolio</strong> (ycombinator.com/companies) → filter by "Biotech" → find comp bio leads</li>
+      <li><strong>Crunchbase</strong> → filter Series B-C biotechs → find leadership on LinkedIn</li>
+      <li><strong>STAT News, FierceBiotech job postings</strong> → companies actively hiring comp bio = active target ID programs</li>
+      <li><strong>AACR / Bio-IT World</strong> attendee lists (often public)</li>
+    </ol>
+  </div>
+
+  <footer>BioOrchestrator · Cold Outreach Playbook</footer>
+</div>
+
+<script>
+function copyText(id, btn) {
+  const el = document.getElementById(id);
+  const btn_el = el.querySelector('.copy-btn');
+  // Get text content without the button text
+  const clone = el.cloneNode(true);
+  const btnInClone = clone.querySelector('.copy-btn');
+  if (btnInClone) btnInClone.remove();
+  const text = clone.innerText.trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+</script>
+</body>
+</html>

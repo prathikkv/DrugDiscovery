@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BioOrchestrator — Capability Statement</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;background:#f8fafc;color:#0f172a;line-height:1.6}
+.container{max-width:860px;margin:0 auto;padding:40px 24px}
+header{background:linear-gradient(135deg,#0d1b2a 0%,#1a3a5c 100%);padding:48px 40px;border-bottom:4px solid #1a6fe0}
+header h1{font-size:2.2rem;font-weight:800;color:#38bdf8}
+header .role{color:#94a3b8;margin-top:4px;font-size:0.95rem}
+header .contact{margin-top:16px;color:#e2e8f0;font-size:0.9rem}
+header .contact a{color:#38bdf8;text-decoration:none}
+.section{background:white;border-radius:12px;padding:32px;margin:24px 0;border:1px solid #e2e8f0;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+.section-title{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1a6fe0;margin-bottom:12px}
+.section h2{font-size:1.35rem;font-weight:700;color:#0d1b2a;margin-bottom:12px}
+.section p{color:#334155;margin:8px 0}
+.section ul{padding-left:20px;color:#334155}
+.section li{margin:6px 0}
+.big-stat{font-size:1.6rem;font-weight:800;color:#dc2626;margin:8px 0}
+pre{background:#0d1b2a;color:#38bdf8;border-radius:10px;padding:20px;font-size:13px;line-height:1.7;overflow-x:auto;font-family:'SF Mono',Monaco,monospace;margin:16px 0}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.tag{background:#e0f2fe;color:#0369a1;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+th{background:#0d1b2a;color:white;padding:10px 14px;text-align:left;font-size:13px}
+td{padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#334155}
+tr:nth-child(even) td{background:#f8fafc}
+td:first-child{font-weight:600;color:#0d1b2a}
+td:last-child{font-weight:600;color:#1a6fe0}
+.cta{background:linear-gradient(135deg,#0d1b2a,#1a3a5c);color:white;border-radius:12px;padding:32px;text-align:center;margin:24px 0}
+.cta h2{color:#38bdf8;font-size:1.3rem;margin-bottom:12px}
+.cta p{color:#94a3b8;margin:8px 0}
+.cta a{color:#38bdf8;text-decoration:none;font-weight:600}
+.cta .btn{display:inline-block;background:#1a6fe0;color:white;padding:12px 28px;border-radius:8px;font-weight:700;font-size:15px;margin:16px 8px 8px;text-decoration:none}
+.scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+.scenario{background:#f0f7ff;border:1px solid #bfdbfe;border-radius:8px;padding:10px 14px;font-size:13px;font-weight:600;color:#1e40af;text-align:center}
+footer{text-align:center;color:#94a3b8;font-size:12px;padding:24px 0 8px}
+@media print{body{background:white}header{background:#0d1b2a!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.section{box-shadow:none}header{page-break-after:avoid}}
+@media(max-width:600px){.container{padding:16px}header{padding:24px 16px}.section{padding:20px 16px}.scenarios{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<header>
+  <div class="container" style="padding-top:0;padding-bottom:0">
+    <h1>BioOrchestrator v2</h1>
+    <div class="role">AI-Powered Drug Target Intelligence Platform</div>
+    <div class="contact">
+      [Your Name] · AI Engineer &amp; Computational Biology Specialist<br>
+      [your@email.com] · [linkedin.com/in/yourprofile] · <a href="#">[demo URL]</a>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="section">
+    <div class="section-title">The Problem</div>
+    <p>Drug target selection is the highest-stakes, most manual step in pharmaceutical R&D.</p>
+    <p style="margin-top:10px">A typical computational biology team spends <strong>2–4 weeks</strong> manually triaging a single target — bouncing between 6+ disconnected databases, assembling evidence in spreadsheets, before presenting a GO/NO-GO recommendation to leadership.</p>
+    <div class="big-stat">$100M–$2.6B</div>
+    <p>Wrong decisions here cost hundreds of millions and years of failed development.<br>
+    <strong>90% of drugs that enter Phase I trials fail. The leading cause: wrong target selection.</strong></p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">The Solution</div>
+    <h2>BioOrchestrator compresses 2–4 weeks into 15 minutes.</h2>
+    <pre>Gene Symbol  →  Evidence  →  AI Reasoning  →  Scoring  →  GO/NO-GO
+               (6 DBs)       (5 LLM modes)   (7 dims)    + Audit Trail</pre>
+    <p><strong>Evidence Sources (queried simultaneously):</strong></p>
+    <div class="tags">
+      <span class="tag">OpenTargets</span>
+      <span class="tag">DGIdb</span>
+      <span class="tag">PubMed</span>
+      <span class="tag">UniProt</span>
+      <span class="tag">ChEMBL</span>
+      <span class="tag">ClinicalTrials.gov</span>
+    </div>
+    <p style="margin-top:12px"><strong>AI Reasoning Modes (run in parallel):</strong></p>
+    <div class="tags">
+      <span class="tag">Hypothesis Generation</span>
+      <span class="tag">Evidence Synthesis</span>
+      <span class="tag">Contradiction Detection</span>
+      <span class="tag">Gap Analysis</span>
+      <span class="tag">Confidence Assessment</span>
+    </div>
+    <p style="margin-top:12px"><strong>Scoring Dimensions:</strong></p>
+    <div class="tags">
+      <span class="tag">Genetic Evidence</span>
+      <span class="tag">Druggability</span>
+      <span class="tag">Safety &amp; Selectivity</span>
+      <span class="tag">Expression Biology</span>
+      <span class="tag">Competitive Landscape</span>
+      <span class="tag">Clinical Translation</span>
+      <span class="tag">Literature Consensus</span>
+    </div>
+    <p style="margin-top:16px"><strong>Compliance:</strong> 21 CFR Part 11 compliant SHA-256 hash-chain audit trail with electronic signatures. Human-in-the-loop approval gates at every critical decision point.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Who This Is For</div>
+    <ul>
+      <li><strong>Computational Biology teams</strong> at Series B+ biotech companies</li>
+      <li><strong>Drug Discovery scientists</strong> who need to triage 10–20 targets per program</li>
+      <li><strong>Regulated environments</strong> requiring documented, auditable decision trails</li>
+      <li><strong>Innovation labs</strong> at Big Pharma evaluating AI tooling for target ID</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">What I Offer</div>
+    <table>
+      <thead><tr><th>Engagement</th><th>Description</th><th>Investment</th></tr></thead>
+      <tbody>
+        <tr><td>Free Pilot</td><td>Run BioOrchestrator on 3 of your targets, 2 weeks, no commitment</td><td>Free</td></tr>
+        <tr><td>Paid POC</td><td>Full deployment + integration with your data sources</td><td>$15K–$25K</td></tr>
+        <tr><td>SaaS License</td><td>Platform access for your team</td><td>$2,500–$8,000/mo</td></tr>
+        <tr><td>Consulting</td><td>Custom AI pipeline development</td><td>$150–$250/hr</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Showcase Scenarios</div>
+    <p>Six pre-validated pharma targets with complete evidence packages:</p>
+    <div class="scenarios">
+      <div class="scenario">EGFR / NSCLC</div>
+      <div class="scenario">ESR1 / Breast Cancer</div>
+      <div class="scenario">PIK3CA / HR+ Breast</div>
+      <div class="scenario">GLP1R / Obesity</div>
+      <div class="scenario">PARP1 / Ovarian</div>
+      <div class="scenario">CD274 / Pan-cancer</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Tech Stack</div>
+    <div class="tags">
+      <span class="tag">Python 3.11</span>
+      <span class="tag">Streamlit</span>
+      <span class="tag">Anthropic Claude</span>
+      <span class="tag">Scanpy</span>
+      <span class="tag">AnnData</span>
+      <span class="tag">Multi-provider LLM (Claude → GPT-4 → Groq)</span>
+      <span class="tag">SQLite</span>
+      <span class="tag">Docker</span>
+      <span class="tag">21 CFR Part 11</span>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>Ready for a 20-minute live demo?</h2>
+    <p>I'll run BioOrchestrator on a target of your choice, live.</p>
+    <p>No prep needed. Just a gene name and a disease context.</p>
+    <a href="#" class="btn">Book a Demo</a>
+    <a href="#" class="btn" style="background:transparent;border:2px solid #38bdf8">See It Live</a>
+    <p style="margin-top:16px;font-size:12px">Built and maintained by [Your Name] — available for consulting engagements and design partnerships.</p>
+  </div>
+
+  <footer>BioOrchestrator v2 · AI Drug Target Intelligence Platform</footer>
+</div>
+</body>
+</html>

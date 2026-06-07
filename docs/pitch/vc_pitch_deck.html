@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BioOrchestrator — VC Seed Pitch Deck</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;background:#f8fafc;color:#0f172a;line-height:1.6}
+.container{max-width:920px;margin:0 auto;padding:40px 24px}
+header{background:linear-gradient(135deg,#0d1b2a 0%,#1a3a5c 100%);color:white;padding:48px 40px;border-bottom:4px solid #1a6fe0}
+header h1{font-size:2.4rem;font-weight:800;color:#38bdf8;letter-spacing:-0.5px}
+header .subtitle{color:#94a3b8;font-size:1rem;margin-top:6px}
+header .tagline{margin-top:16px;font-size:1.1rem;color:#e2e8f0;font-style:italic;padding:12px 16px;border-left:3px solid #1a6fe0;background:rgba(26,111,224,0.1);border-radius:0 8px 8px 0}
+.meta{display:flex;gap:16px;margin-top:16px;flex-wrap:wrap}
+.meta-pill{background:rgba(56,189,248,0.15);color:#38bdf8;padding:4px 14px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid rgba(56,189,248,0.3)}
+.slide{background:white;border-radius:12px;padding:36px;margin:24px 0;border:1px solid #e2e8f0;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+.slide-header{display:flex;align-items:center;margin-bottom:20px}
+.slide-num{background:#1a6fe0;color:white;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0;margin-right:14px}
+.slide h2{font-size:1.3rem;color:#0d1b2a;font-weight:700}
+.slide h3{font-size:1rem;color:#1a6fe0;font-weight:600;margin:16px 0 8px}
+.slide p{color:#334155;margin:8px 0}
+.slide ul{padding-left:20px;color:#334155}
+.slide li{margin:6px 0}
+.highlight{font-weight:700;color:#0d1b2a}
+.stat-row{display:flex;gap:12px;margin:16px 0;flex-wrap:wrap}
+.stat-pill{background:#0d1b2a;color:white;padding:10px 20px;border-radius:30px;font-size:13px;font-weight:600}
+.stat-pill span{color:#38bdf8}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+th{background:#0d1b2a;color:white;padding:10px 14px;text-align:left;font-size:13px}
+td{padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#334155}
+tr:nth-child(even) td{background:#f8fafc}
+pre{background:#0d1b2a;color:#38bdf8;border-radius:10px;padding:20px;font-size:13px;line-height:1.7;overflow-x:auto;font-family:'SF Mono',Monaco,monospace}
+blockquote{border-left:3px solid #1a6fe0;padding:12px 16px;background:#f0f7ff;border-radius:0 8px 8px 0;margin:12px 0;font-style:italic;color:#1e40af}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px}
+.card h4{font-size:13px;font-weight:700;color:#0d1b2a;margin-bottom:8px}
+.card p{font-size:13px;color:#64748b}
+.matrix-wrap{background:#0d1b2a;border-radius:12px;padding:24px}
+.matrix-wrap pre{background:transparent;padding:0;color:#94a3b8}
+.matrix-wrap pre .highlight-cell{color:#38bdf8;font-weight:700}
+.appendix{background:#f0f7ff;border:1px solid #bfdbfe;border-radius:12px;padding:24px;margin:24px 0}
+.appendix h3{color:#1e40af;margin-bottom:12px}
+.q{font-weight:700;color:#0d1b2a;margin:14px 0 4px}
+.a{color:#334155;padding-left:12px;border-left:2px solid #bfdbfe}
+footer{text-align:center;color:#94a3b8;font-size:12px;padding:32px 0 16px}
+@media print{body{background:white}header{background:#0d1b2a!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.slide{box-shadow:none;break-inside:avoid}}
+@media(max-width:600px){.container{padding:16px}header{padding:24px 16px}.slide{padding:20px 16px}.grid-2{grid-template-columns:1fr}.stat-row{flex-direction:column}}
+</style>
+</head>
+<body>
+<header>
+  <div class="container" style="padding-top:0;padding-bottom:0">
+    <h1>BioOrchestrator</h1>
+    <div class="subtitle">VC Seed Pitch Deck · 10 Slides · Target: $500K–$2M Pre-Seed / Seed</div>
+    <div class="tagline">"From gene to GO/NO-GO in 15 minutes — with a regulatory audit trail."</div>
+    <div class="meta">
+      <span class="meta-pill">AI Drug Target Intelligence</span>
+      <span class="meta-pill">GxP Compliant</span>
+      <span class="meta-pill">Pre-Seed / Seed Round</span>
+      <span class="meta-pill">$14B TAM · 23% CAGR</span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- SLIDE 1 -->
+  <div class="slide">
+    <div class="slide-header"><div class="slide-num">1</div><h2>Title</h2></div>
+    <h1 style="font-size:2rem;color:#0d1b2a;font-weight:800">BioOrchestrator</h1>
+    <p style="font-size:1.1rem;color:#64748b;margin-top:4px"><em>AI Drug Target Intelligence Platform</em></p>
+    <p style="margin-top:16px;color:#334155">[Your Name], Founder &amp; CEO<br>
+    [your@email.com] · [demo URL]</p>
+    <blockquote style="margin-top:20px">"From gene to GO/NO-GO in 15 minutes — with a regulatory audit trail."</blockquote>
+  </div>
+
+  <!-- SLIDE 2 -->
+  <div class="slide">
+    <div class="slide-header"><div class="slide-num">2</div><h2>The Problem</h2></div>
+    <p style="font-size:1.4rem;font-weight:800;color:#dc2626">$100 billion lost annually to wrong target selection.</p>
+    <ul style="margin-top:16px">
+      <li>90% of drugs entering Phase I trials fail</li>
+      <li>Leading cause: <span class="highlight">the target was wrong</span> — selected on incomplete evidence</li>
+      <li>A computational biology team spends <span class="highlight">2–4 weeks per target</span> manually stitching together data from 6+ disconnected databases</li>
+      <li>Then a CSO makes a <span class="highlight">$50M+ bet</span> based on that analysis — in a spreadsheet</li>
+    </ul>
+    <p style="margin-top:20px;font-weight:700;color:#0d1b2a">This is not a data problem. It's a workflow and AI problem.</p>
+    <div class="stat-row" style="margin-top:16px">
+      <div class="stat-pill">$194B <span>pharma R&amp;D spend (2024)</span></div>
+      <div class="stat-pill">1.5% <span>AI penetration today</span></div>
+      <div class="stat-pill">90% <span>Phase I failure rate</span></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 -->
+  <div class="slide">
+    <div class="slide-header"><div class="slide-num">3</div><h2>The Solution</h2></div>
+    <p style="font-weight:700;font-size:1.1rem;color:#0d1b2a">BioOrchestrator: one workflow, 15 minutes, auditable.</p>
+    <pre style="margin-top:16px">Gene Symbol
+    ↓
+Evidence Aggregation  ←  6 databases in parallel
+    ↓
+AI Reasoning          ←  5 LLM modes, agentic tool-calling
+    ↓
+7-Dimension Scoring   ←  Genetic · Druggability · Safety · Expression
+    ↓                     Competitive · Clinical · Literature
+GO / NO-GO Verdict    ←  With 21 CFR Part 11 audit trail</pre>
+    <h3>What's different:</h3>
+    <ul>
+      <li>Full pipeline in one platform (no tool-switching)</li>
+      <li>GxP compliance built-in from day one</li>
+      <li>Human-in-the-loop gates for regulated environments</li>
+      <li>Works on real data or pre-loaded pharma scenarios</li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 4 -->
+  <div class="slide">
+    <div class="slide-header"><div class="slide-num">4</div><h2>Product Demo</h2></div>
+    <p style="color:#64748b;font-style:italic">[Insert 3–4 screenshots or Loom embed]</p>
+    <h3>Key screens to show:</h3>
+    <ol>
+      <li>Home page — hero banner, platform overview</li>
+      <li>Evidence Explorer — 6 databases aggregated live for EGFR</li>
+      <li>AI Insights — 5 reasoning modes with tool-call trace</li>
+      <li>Scorecard — GO verdict with 7 dimension breakdown + audit hash</li>
+    </ol>
+    <blockquote style="margin-top:20px">"This is a live, working product. You can access it at [demo URL]."</blockquote>
+    <h3>Showcase Scenarios:</h3>
+    <div class="stat-row">
+      <span style="background:#e0f2fe;color:#0369a1;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600">EGFR/NSCLC</span>
+      <span style="background:#e0f2fe;color:#0369a1;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600">ESR1/Breast</span>
+      <span style="background:#e0f2fe;color:#0369a1;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600">PIK3CA/HR+Breast</span>
+      <span style="background:#e0f2fe;color:#0369a1;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600">GLP1R/Obesity</span>
+      <span style="background:#e0f2fe;color:#0369a1;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600">PARP1/BRCA</span>
+      <span style="background:#e0f2fe;color:#0369a1;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600">CD274/Immunotherapy</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 -->
+  <div class="slide">
+    <div class="slide-header"><div class="slide-num">5</div><h2>Market Size</h2></div>
+    <p style="font-weight:700;font-size:1.1rem;color:#0d1b2a">The AI drug target identification market is large and fast-growing.</p>
+    <table style="margin-top:16px">
+      <thead><tr><th>Market</th><th>2025</th><th>2031–2034</th><th>CAGR</th></tr></thead>
+      <tbody>
+        <tr><td>AI Target Discovery Services</td><td>$3.4B</td><td>$14.2B</td><td style="color:#16a34a;font-weight:700">23%</td></tr>
+        <tr><td>AI Drug Target ID</td><td>$3.8B</td><td>$18.2B</td><td style="color:#16a34a;font-weight:700">19%</td></tr>
+        <tr><td>Broader AI Drug Discovery</td><td>$2.1B</td><td>$18.6B</td><td style="color:#16a34a;font-weight:700">31%</td></tr>
+      </tbody>
+    </table>
+    <h3>SAM (Serviceable):</h3>
+    <p>~3,500 biotech companies globally with active drug discovery programs.<br>
+    At $50K–$200K/year per customer: <span class="highlight">$175M–$700M ARR opportunity at 1% penetration.</span></p>
+    <h3>Why now:</h3>
+    <ul>
+      <li>LLMs capable enough for scientific reasoning (as of 2024)</li>
+      <li>Regulatory bodies actively encouraging AI audit trails</li>
+      <li>Biotech funding cycle: Series B-C companies have budget, no enterprise tool lock-in</li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 6 -->
+  <div class="slide">
+    <div class="slide-header"><div class="slide-num">6</div><h2>Competitive Landscape</h2></div>
+    <div class="matrix-wrap">
+      <pre>                    HIGH
+                  GxP / Compliance
+                      |
+     BioOrchestrator  |
+          ★           |
+                      |
+──────────────────────┼──────────────────────
+ Analysis-only        |         Drug cos.
+ (Partek, Omics PG)   |   (Recursion, BenevolentAI,
+                      |    Insilico, Exscientia)
+                      |
+                    LOW
+                      Analysis  →  Full AI Reasoning</pre>
+    </div>
+    <h3>Key insight:</h3>
+    <p>All major competitors are <span class="highlight">drug discovery companies</span> — they use AI for their own pipelines. No one has built the <span class="highlight">B2B platform</span> for pharma teams to use.</p>
+    <p style="margin-top:12px">BenevolentAI is the closest — but it's a drug company, not a tool sold to others.<br>
+    Schrödinger does molecular simulation — a different layer (post-target selection).</p>
+    <p style="margin-top:16px;font-weight:700;color:#1a6fe0">Our moat: GxP compliance + full pipeline integration + B2B SaaS model.</p>
+  </div>
+
+  <!-- SLIDE 7 -->
+  <div class="slide">
+    <div class="slide-header"><div class="slide-num">7</div><h2>Business Model</h2></div>
+    <p style="font-weight:700;color:#0d1b2a">Land with POC, expand to SaaS, upsell to Enterprise.</p>
+    <table style="margin-top:16px">
+      <thead><tr><th>Tier</th><th>Description</th><th>Price</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Free Pilot</strong></td><td>3 targets, 2 weeks, no commitment</td><td style="color:#16a34a;font-weight:700">$0</td></tr>
+        <tr><td><strong>Starter SaaS</strong></td><td>1 project, up to 5 users</td><td style="font-weight:700">$2,500/mo</td></tr>
+        <tr><td><strong>Team SaaS</strong></td><td>Unlimited projects, 10 users, compliance mode</td><td style="font-weight:700">$8,000/mo</td></tr>
+        <tr><td><strong>Enterprise</strong></td><td>On-premise, custom data integration, SSO</td><td style="font-weight:700">$200K+/yr</td></tr>
+      </tbody>
+    </table>
+    <div class="grid-2" style="margin-top:16px">
+      <div class="card">
+        <h4>Unit Economics</h4>
+        <p>CAC: ~$5K (direct outreach + demo)<br>LTV (Team): ~$96K (12-month average)<br>LTV/CAC: ~<strong>19x</strong></p>
+      </div>
+      <div class="card">
+        <h4>GTM Motion</h4>
+        <p>Founder-led sales → 3 design partners → case study → outbound at scale</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8 -->
+  <div class="slide">
+    <div class="slide-header"><div class="slide-num">8</div><h2>Traction</h2></div>
+    <p style="color:#64748b;font-style:italic;margin-bottom:16px">[Update this slide as you get traction]</p>
+    <ul>
+      <li>✅ Working product live at [demo URL]</li>
+      <li>✅ 6 validated pharma showcase scenarios</li>
+      <li>✅ 21 CFR Part 11 compliance implemented</li>
+      <li>✅ [X] demo requests / LinkedIn post views</li>
+      <li>🔄 [X] conversations with potential design partners</li>
+      <li>🔄 Targeting first signed LOI / paid POC</li>
+    </ul>
+    <h3>Milestones this funding enables:</h3>
+    <ol>
+      <li>First paid POC ($15K–$25K) → validated problem/solution fit</li>
+      <li>3 design partner SaaS contracts → $100K+ ARR</li>
+      <li>Integration with 2 proprietary data sources (customer internal databases)</li>
+    </ol>
+  </div>
+
+  <!-- SLIDE 9 -->
+  <div class="slide">
+    <div class="slide-header"><div class="slide-num">9</div><h2>Team</h2></div>
+    <h3>[Your Name] — Founder &amp; CEO</h3>
+    <ul>
+      <li>Built BioOrchestrator end-to-end: full-stack AI engineering, GxP compliance, scRNA-seq pipeline, LLM orchestration</li>
+      <li>[Your background: ML/AI engineering experience]</li>
+      <li>[Any pharma/biotech exposure or relevant domain knowledge]</li>
+      <li>[Previous companies / education]</li>
+    </ul>
+    <h3>Why me for this problem:</h3>
+    <ul>
+      <li>GxP compliance expertise (21 CFR Part 11) — <em>rare in ML engineering</em></li>
+      <li>Built a working product before asking for money</li>
+      <li>Direct access to potential customers through [your network/background]</li>
+    </ul>
+    <h3>Advisory / Seeking:</h3>
+    <ul>
+      <li>Computational Biology domain advisor</li>
+      <li>Regulatory/GxP advisor</li>
+      <li>Business development lead with pharma network</li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 10 -->
+  <div class="slide">
+    <div class="slide-header"><div class="slide-num">10</div><h2>The Ask</h2></div>
+    <p style="font-size:1.5rem;font-weight:800;color:#1a6fe0">Raising $500K – $2M pre-seed / seed.</p>
+    <h3>Use of funds:</h3>
+    <table>
+      <thead><tr><th>Allocation</th><th>%</th><th>Use</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Product</strong></td><td>40%</td><td>Cloud infrastructure, LLM API costs, enterprise features (SSO, on-premise)</td></tr>
+        <tr><td><strong>Sales</strong></td><td>35%</td><td>Founder-led outreach → first BD hire at 12 months</td></tr>
+        <tr><td><strong>Operations</strong></td><td>15%</td><td>Legal (IP, contracts), compliance consulting</td></tr>
+        <tr><td><strong>Reserve</strong></td><td>10%</td><td>Buffer</td></tr>
+      </tbody>
+    </table>
+    <h3>18-month milestones:</h3>
+    <ol>
+      <li><strong>Month 3:</strong> First signed paid POC ($15K–$25K)</li>
+      <li><strong>Month 6:</strong> 3 design partner SaaS contracts → $150K+ ARR</li>
+      <li><strong>Month 12:</strong> Product-market fit signal, raise Series A ($3M–$8M)</li>
+      <li><strong>Month 18:</strong> 10 paying customers, $500K+ ARR</li>
+    </ol>
+    <h3>Target investors:</h3>
+    <div class="stat-row" style="margin-top:8px">
+      <span style="background:#e0f2fe;color:#0369a1;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600">a16z Bio</span>
+      <span style="background:#e0f2fe;color:#0369a1;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600">GV (Google Ventures)</span>
+      <span style="background:#e0f2fe;color:#0369a1;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600">Y Combinator</span>
+      <span style="background:#e0f2fe;color:#0369a1;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600">OrbiMed</span>
+      <span style="background:#e0f2fe;color:#0369a1;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600">Lux Capital</span>
+      <span style="background:#e0f2fe;color:#0369a1;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600">Pillar VC</span>
+    </div>
+  </div>
+
+  <!-- APPENDIX -->
+  <div class="appendix">
+    <h3>Appendix — Frequently Asked Questions</h3>
+    <div class="q">Q: Why can't Big Pharma just build this internally?</div>
+    <div class="a">Internal tools take 18–36 months, cost $2M+ to build, and still need GxP validation. A validated SaaS product with an audit trail is cheaper and faster. Same reason they buy Benchling instead of building their ELN.</div>
+    <div class="q">Q: What's stopping Illumina or Thermo Fisher from copying this?</div>
+    <div class="a">They focus on wet-lab instruments and sequencing tools, not AI reasoning layers. They'd acquire, not build. That's an exit path.</div>
+    <div class="q">Q: Do you need proprietary data to be useful?</div>
+    <div class="a">No — runs entirely on public databases and customer-uploaded data. Proprietary data integration is a paid enterprise tier.</div>
+    <div class="q">Q: What's the regulatory risk of AI in pharma?</div>
+    <div class="a">The audit trail and HITL gates address this. AI produces evidence synthesis and scoring — a human scientist makes the final GO/NO-GO decision and signs off. Analogous to AI-assisted radiology: AI flags, human decides.</div>
+    <div class="q">Q: Why is GxP compliance a moat?</div>
+    <div class="a">It's not a feature — it's a barrier to entry. Getting into a regulated pharma workflow requires validated software (IQ/OQ/PQ) which takes months and requires specific documentation. We built the framework (VMP, URS, FRS, FMEA, SOPs) from day one. Competitors would need to retrofit this.</div>
+  </div>
+
+  <footer>
+    BioOrchestrator · AI Drug Target Intelligence Platform · Confidential — For Discussion Purposes Only
+  </footer>
+</div>
+</body>
+</html>
