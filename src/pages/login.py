@@ -6,7 +6,10 @@ Hero → Form → Product proof (dark scorecard) → Compliance → Footer.
 
 import streamlit as st
 
+from src import config
+from src.auth.db import count_users
 from src.auth.service import AuthService
+from src.db import get_connection
 
 # ── Full-page CSS ────────────────────────────────────────────────────
 
@@ -353,6 +356,19 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+# ── First-run detection — guide new deployments to register ──────────
+_db_conn = get_connection(config.AUTH_DB)
+try:
+    _no_users = count_users(_db_conn) == 0
+finally:
+    _db_conn.close()
+
+if _no_users:
+    st.info(
+        "**No accounts exist yet.** "
+        "Switch to the **Create Account** tab to register your first user."
+    )
+
 login_tab, register_tab = st.tabs(["Sign In", "Create Account"])
 
 auth = AuthService()
@@ -381,7 +397,7 @@ with login_tab:
                     "email": email,
                     "role": result["role"],
                 }
-                st.rerun()
+                st.switch_page("pages/home.py")
             else:
                 st.error(result["error"])
 
